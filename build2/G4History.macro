@@ -36,25 +36,9 @@
 /analysis/h2/getVector
 /vis/viewer/set/style s
 /vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style s
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style w
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style s
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style w
-/vis/viewer/refresh
-/vis/viewer/set/hiddenEdge 1
-/vis/viewer/refresh
-/vis/viewer/set/style w
-/vis/viewer/refresh
 /vis/viewer/set/hiddenEdge 0
+/vis/viewer/refresh
+/vis/viewer/set/style s
+/vis/viewer/refresh
+/vis/viewer/set/hiddenEdge 1
 /vis/viewer/refresh

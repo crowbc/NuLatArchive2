@@ -140,32 +140,34 @@ void NuLatDetectorConstruction::DefineMaterials()
 	[12] Eljen Technology. (2016, July 27, 2018). GENERAL PURPOSE EJ-200, EJ-204, EJ-208, EJ-212. 
 		Available: https://eljentechnology.com/products/plastic-scintillators/ej-200-ej-204-ej-208-ej-212
 	Information provided at this reference is as follows:
-	___________________________________________________________________________________________
+	______________________________________________________________________________________________
 	PROPERTIES				EJ-200		EJ-204		EJ-208		EJ-212
-	___________________________________________________________________________________________
+	______________________________________________________________________________________________
 	Light Output (% Anthracene)		64		68		60		65
 	Scintillation Efficiency		10,000		10,400		9,200		10,000
 	(photons/1 MeV e-) 
 	Wavelength of Maximum Emission (nm)	425		408		435		423
 	Light Attenuation Length (cm)		380		160		400		250
 	Rise Time (ns)				0.9		0.7		1.0		0.9
-	Decay Time (ns)			2.1		1.8		3.3		2.4
+	Decay Time (ns)				2.1		1.8		3.3		2.4
 	Pulse Width, FWHM (ns)			2.5		2.2		4.2		2.7
-	No. of H Atoms per cm3 (x10^22)	5.17		5.15		5.17		5.17
-	No. of C Atoms per cm3 (x10^22)	4.69		4.68		4.69		4.69
+	No. of H Atoms per cm3 (x10^22)		5.17		5.15		5.17		5.17
+	No. of C Atoms per cm3 (x10^22)		4.69		4.68		4.69		4.69
 	No. of Electrons per cm3 (x10^23)	3.33		3.33		3.33		3.33
-	Density (g/cm3)			1.023		1.023		1.023		1.023
-	Polymer Base				<-----------------Polyvinyltoluene------------------>
-	Refractive Index			<-----------------------1.58------------------------>
-	Softening Point			<-----------------------75°C------------------------>
-	Vapor Pressure				<----------------Vacuum-compatible------------------>
-	Coefficient of Linear Expansion	<--------------7.8 x 10^-5 below 67°C--------------->
-	Light Output vs. Temperature		<------At 60°C, L.O. = 95% of that at 20°C---------->
-						<-----------No change from 20°C to -60°C------------>
-	Temperature Range			<----------------- -20°C to 60°C-------------------->
-	___________________________________________________________________________________________
-	to do:	make table of fast component as function of wavelength, and get range of wavelengths from that table to use in all other material properties
-	notes:	425 nm is wavelength of maximum emission on fcPVT table imported from Materials.hh (verified in photon_energy_wlens.ods)
+	Density (g/cm3)				1.023		1.023		1.023		1.023
+	Polymer Base				<-----------------Polyvinyltoluene------------------->
+	Refractive Index			<-----------------------1.58------------------------->
+	Softening Point				<-----------------------75°C------------------------->
+	Vapor Pressure				<----------------Vacuum-compatible------------------->
+	Coefficient of Linear Expansion		<--------------7.8 x 10^-5 below 67°C---------------->
+	Light Output vs. Temperature		<------At 60°C, L.O. = 95% of that at 20°C----------->
+						<-----------No change from 20°C to -60°C------------->
+	Temperature Range			<----------------- -20°C to 60°C--------------------->
+	______________________________________________________________________________________________
+	to do:	make table of scintillation component as function of wavelength, and get range of wavelengths from that table to use
+			in all other material properties 
+		validate the remaining entries for the scPVT table
+	notes:	425 nm is wavelength of maximum emission on scPVT table imported from Materials.hh (verified in photon_energy_wlens.ods)
 		Geant4 properties tables uses 1.032*g/cm3 as density of PVT. May need to define my own using this table
 	*/
 	G4double reflAl[numEntries];
@@ -226,25 +228,25 @@ void NuLatDetectorConstruction::DefineMaterials()
 		//aLenBeCuPhotoCath[i] = 0.001*mm;// taken from Materials.hh
 		//rindexBorosilicateGlass[i] = 1.55;// taken from Materials.hh - look for dispersion formula
 		//aLenBorosilicateGlass[i] = 10.*m;// taken from Materials.hh
-		if(debugMsg)
+		/*if(debugMsg)
 		{
 			G4cout << "Wavelength (nm:) " << wlenNM[i] << " ; Energy (eV:) " << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i] << G4endl;
-		}
+		}*/
 	}
 	/*
 	More data on NaI:
 	source:	IOP Publishing 1221 (2022) 012002
-	DOI:		doi:10.1088/1757-899X/1221/1/012002
+	DOI:	doi:10.1088/1757-899X/1221/1/012002
 	___________________________________________________________________________________________________________________________________________________________________________
 	Scintillation crystal	Elemental composition (wt.%)	Light yield (photons/MeV)	Decay time, τ (ns)	Radiation length (cm)	Density (g/cm 3 )	Ref.(s)
 	___________________________________________________________________________________________________________________________________________________________________________
-	PWO (PbWO4)		45.5%Pb; 40.5%W 14.0% O	250				5-15			0.89			8.28			[7, 14, 15]
-	PbF2			84.5%Pb; 15.5%F		<1000				30, 6			0.93			7.77			[16, 17]
-	CsI			51.1%Cs; 48.8%I		16,800				10			1.86			4.51			[17, 18]
-	LYSO:Ce		57.5%Lu; 3.24%Y		30,000				40			1.14			7.11			[2, 5, 8, 15, 19]
+	PWO (PbWO4)		45.5%Pb; 40.5%W 14.0% O		250				5-15			0.89			8.28			[7, 14, 15]
+	PbF2			84.5%Pb; 15.5%F			<1000				30, 6			0.93			7.77			[16, 17]
+	CsI			51.1%Cs; 48.8%I			16,800				10			1.86			4.51			[17, 18]
+	LYSO:Ce			57.5%Lu; 3.24%Y			30,000				40			1.14			7.11			[2, 5, 8, 15, 19]
 	(0.05 mol.%)		24.63%Si; 14.6%O
 				0.01% Ce
-	LuAG:Ce		61.6%Lu; 15.8%Al		25,000				820, 50		1.45			6.76			[5, 20]
+	LuAG:Ce			61.6%Lu; 15.8%Al		25,000				820, 50			1.45			6.76			[5, 20]
 	(0.1 mol.%)		22.5%O; 0.02%Ce
 	BaF 2 :Y		76.29%Ba; 21.1%F		2,000				600, 0.5		2.03			4.89			[5, 9]
 	(5 mol.%)		2.6%Y
@@ -254,11 +256,10 @@ void NuLatDetectorConstruction::DefineMaterials()
 	(0.3 mol.%)		0.41%Tl
 	___________________________________________________________________________________________________________________________________________________________________________
 	References:
-			[1] Blasse G, 1994, Scintillator materials Chem. Mater. 6 1465-1475.
-			[20] Hu C, Li J, Yang F, Jiang B, Zhang L,and Zhu R-Y, 2020, LuAG ceramic scintillators for future HEP experiments
-				Nucl. Instrum. Methods Phys. Res. A 954 161723.
-	*/
-	/*
+	[1] Blasse G, 1994, Scintillator materials Chem. Mater. 6 1465-1475.
+	[20] Hu C, Li J, Yang F, Jiang B, Zhang L,and Zhu R-Y, 2020, LuAG ceramic scintillators for future HEP experiments
+		Nucl. Instrum. Methods Phys. Res. A 954 161723.
+	___________________________________________________________________________________________________________________________________________________________________________
 	Notes on Hamamatsu PMT's:
 	From catalog on Photomultiplier Tubes and Assemblies for Scintillation Counting and High Energy Physics:
 	Borosilicate high frequency cutoff: ~300 nm
@@ -269,12 +270,12 @@ void NuLatDetectorConstruction::DefineMaterials()
 	Table 1: Summary of scintillator characteristics
 	_________________________________________________________________________________________________________________________________________________________________________
 				Nal(Tl)	BGO		Csl(Tl)	Pure Csl	BaF2		GSO: Ce	Plastic	LaBr3: Ce	LSO: Ce	YAP: Ce
-	Density (g/cm3)	3.67		7.13		4.51		4.51		4.88		6.71		1.03		5.29		7.35		5.55
+	Density (g/cm3)		3.67		7.13		4.51		4.51		4.88		6.71		1.03		5.29		7.35		5.55
 	L_rad (cm)		2.59		1.12		1.85		1.85		2.10		1.38		40		2.1		0.88		2.70
 	Refractive index	1.85		2.15		1.80		1.80		1.58		1.85		1.58		1.9		1.82		1.97
 	Hygroscopic		Yes		No		Slightly	Slightly	Slightly	No		No		Yes		No		No
 	Luminescence (nm)	410		480		530		310		220 / 325	430		400		380		420		380
-	Decay time (ns)	230		300		1000		10		0.9 / 630	30		2.0		16		40		30
+	Decay time (ns)		230		300		1000		10		0.9 / 630	30		2.0		16		40		30
 	Relative light output	100		15		45 to 50	<10		20		20		25		165		70		40
 	_________________________________________________________________________________________________________________________________________________________________________
 	
