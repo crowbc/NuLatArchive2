@@ -1,7 +1,7 @@
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatGenerator.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatGenerator.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatGenerator.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatGenerator.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleGun.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \

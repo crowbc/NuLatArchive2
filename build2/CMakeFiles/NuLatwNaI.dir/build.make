@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jack/Documents/geant4/NuLatwNaI
+CMAKE_SOURCE_DIR = /home/jack/Documents/geant4/NuLat
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jack/Documents/geant4/NuLatwNaI/build2
+CMAKE_BINARY_DIR = /home/jack/Documents/geant4/NuLat/build2
 
 # Utility rule file for NuLatwNaI.
 
@@ -81,6 +81,6 @@ CMakeFiles/NuLatwNaI.dir/clean:
 .PHONY : CMakeFiles/NuLatwNaI.dir/clean
 
 CMakeFiles/NuLatwNaI.dir/depend:
-	cd /home/jack/Documents/geant4/NuLatwNaI/build2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jack/Documents/geant4/NuLatwNaI /home/jack/Documents/geant4/NuLatwNaI /home/jack/Documents/geant4/NuLatwNaI/build2 /home/jack/Documents/geant4/NuLatwNaI/build2 /home/jack/Documents/geant4/NuLatwNaI/build2/CMakeFiles/NuLatwNaI.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jack/Documents/geant4/NuLat/build2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jack/Documents/geant4/NuLat /home/jack/Documents/geant4/NuLat /home/jack/Documents/geant4/NuLat/build2 /home/jack/Documents/geant4/NuLat/build2 /home/jack/Documents/geant4/NuLat/build2/CMakeFiles/NuLatwNaI.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NuLatwNaI.dir/depend
 

@@ -3,20 +3,6 @@
 // Constructor
 NuLatDetectorConstruction::NuLatDetectorConstruction()
 {
-	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");//set up /voxel and other subdirectories
-	fMessenger->DeclareProperty("xVoxels", xVoxels, "Number of voxels (cubes) in the x-dimension");
-	fMessenger->DeclareProperty("yVoxels", yVoxels, "Number of voxels (cubes) in the y-dimension");
-	fMessenger->DeclareProperty("zVoxels", zVoxels, "Number of voxels (cubes) in the z-dimension");
-	//fMessenger->DeclareProperty("xVoxelSize", xVoxelSize, "Length of voxel in the x-dimension");
-	//fMessenger->DeclareProperty("yVoxelSize", yVoxelSize, "Length of voxel in the y-dimension");
-	//fMessenger->DeclareProperty("zVoxelSize", zVoxelSize, "Length of voxel in the z-dimension");
-	//fMessenger->DeclareProperty("xVoxelSpace", xVoxelSpace, "Gap between voxels in the x-dimension");
-	//fMessenger->DeclareProperty("yVoxelSpace", yVoxelSpace, "Gap between voxels in the y-dimension");
-	//fMessenger->DeclareProperty("zVoxelSpace", zVoxelSpace, "Gap between voxels in the z-dimension");
-	fMessenger->DeclareProperty("NaIdetector", NaIdetector, "Toggle NaI detector installed on -z Face of NuLat detector (On by default)");
-	fMessenger->DeclareProperty("Li6doped", Li6doped, "Toggle Li-6 doping in PVT voxels (Off by default)");
-	fMessenger->DeclareProperty("massfracLi6", massfracLi6, "Mass fraction of Li-6 doping in PVT (0.5*perCent by default)");
-	//fMessenger->DeclareProperty("NaILoc", NaILoc, "Locate NaI detector at the center of this (uninstrumented) face (set to X, Y or Z: default is Z face)");
 	// Set Parameter Default Values - to do: set default values in the messenger
 	xVoxels = 5;
 	yVoxels = 5;
@@ -46,6 +32,21 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	NaILoc = "Z";// Set default location to bottom face
 	// Acrylic side plate thickness
 	tAcrylicPlate = 2.5*mm;
+	// Define the messenger and declare properties
+	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");//set up /voxel and other subdirectories
+	fMessenger->DeclareProperty("xVoxels", xVoxels, "Number of voxels (cubes) in the x-dimension");
+	fMessenger->DeclareProperty("yVoxels", yVoxels, "Number of voxels (cubes) in the y-dimension");
+	fMessenger->DeclareProperty("zVoxels", zVoxels, "Number of voxels (cubes) in the z-dimension");
+	//fMessenger->DeclareProperty("xVoxelSize", xVoxelSize, "Length of voxel in the x-dimension");
+	//fMessenger->DeclareProperty("yVoxelSize", yVoxelSize, "Length of voxel in the y-dimension");
+	//fMessenger->DeclareProperty("zVoxelSize", zVoxelSize, "Length of voxel in the z-dimension");
+	//fMessenger->DeclareProperty("xVoxelSpace", xVoxelSpace, "Gap between voxels in the x-dimension");
+	//fMessenger->DeclareProperty("yVoxelSpace", yVoxelSpace, "Gap between voxels in the y-dimension");
+	//fMessenger->DeclareProperty("zVoxelSpace", zVoxelSpace, "Gap between voxels in the z-dimension");
+	fMessenger->DeclareProperty("NaIdetector", NaIdetector, "Toggle NaI detector installed on -z Face of NuLat detector (On by default)");
+	fMessenger->DeclareProperty("Li6doped", Li6doped, "Toggle Li-6 doping in PVT voxels (Off by default)");
+	fMessenger->DeclareProperty("massfracLi6", massfracLi6, "Mass fraction of Li-6 doping in PVT (0.5*perCent by default)");
+	//fMessenger->DeclareProperty("NaILoc", NaILoc, "Locate NaI detector at the center of this (uninstrumented) face (set to X, Y or Z: default is Z face)");
 	// Define Detector Construction Materials
 	DefineMaterials();
 }
@@ -171,7 +172,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 		Geant4 properties tables uses 1.032*g/cm3 as density of PVT. May need to define my own using this table
 	*/
 	G4double reflAl[numEntries];
-	//G4double aLenAl[numEntries];
+	G4double aLenAl[numEntries];
 	/*
 	See Hamamatsu website for documentation on Photomultiplier Tube component properties
 	*/
@@ -197,12 +198,15 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// Define Materials
 	air = nist->FindOrBuildMaterial("G4_AIR");
 	//vacuum = nist->FindOrBuildMaterial("G4_GALACTIC");
-	PVT = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+	//PVT = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
 	EJ200 = new G4Material("EJ200", rhoEJ200, 2);
 	EJ200->AddElement(C, 10);
 	EJ200->AddElement(H, 8);
 	aluminum = nist->FindOrBuildMaterial("G4_Al");
 	NaI = nist->FindOrBuildMaterial("G4_SODIUM_IODIDE");
+	//NaI = new G4Material("NaI", rhoNaI, 2);
+	//NaI->AddElement(Na, 1);
+	//NaI->AddElement(I, 1);
 	//NaI_Tl = new G4Material("NaI_Tl", rhoNaI_Tl, 2);
 	//NaI_Tl->AddMaterial(NaI, 99.59*perCent);
 	//NaI_Tl->AddElement(Tl, 0.41*perCent);// see table below
@@ -280,8 +284,14 @@ void NuLatDetectorConstruction::DefineMaterials()
 	_________________________________________________________________________________________________________________________________________________________________________
 	
 	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
+	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm)
+	...test function for scNaI[i]: scNaI[i] = exp(-(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(2*0.065*0.065));
 	
 	*/
+	G4String wlenMUMStr = "Wavelength (microns:) ";
+	G4String eStr = "; Energy (eV:) ";
+	G4String rindexStr = "; refractive index, NaI: ";
+	G4String scStr = "; scintillation component: ";
 	for (size_t i = 0; i<nI; i++){
 		// Set wavlengths from 0.900 micron to 0.200 micron in steps of 0.005micron (when nI = 141)
 		wlenMUM[i]=wlenMax-wlenDelta*i;
@@ -294,12 +304,12 @@ void NuLatDetectorConstruction::DefineMaterials()
 		/************************************************************************************************************/
 		rindexNaI[i]=sqrt(a0NaI+a1NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b1NaI*b1NaI)+a2NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b2NaI*b2NaI));
 		aLenNaI[i] = 2.59*cm;// see above table
-		scNaI[i] = 1.;// arbitrary. find believable value. Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm
+		scNaI[i] = exp(-(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(2*0.065*0.065));// See Hamamatsu Catalog p.73 above
 		// Debug Print statement
-		if(debugMsg)
+		/*if(debugMsg)
 		{
-			G4cout << "Wavelength (microns:) " << wlenMUM[i] << "; Energy (eV:) " << energy[i]*1E06 << "; refractive index, NaI: " << rindexNaI[i] << G4endl;
-		}
+			G4cout << wlenMUMStr << wlenMUM[i] << eStr << energy[i]*1E06 << rindexStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
+		}*/
 	}
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
@@ -326,7 +336,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptPVT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcPVT);
 	mptPVT->AddConstProperty("RESOLUTIONSCALE", 1.0);
 	mptPVT->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
-	PVT->SetMaterialPropertiesTable(mptPVT);
+	//PVT->SetMaterialPropertiesTable(mptPVT);
 	EJ200->SetMaterialPropertiesTable(mptPVT);
 	mptAl = new G4MaterialPropertiesTable();
 	//mptAl->AddProperty("ABSLENGTH", photonEnergy, aLenAl, numEntries);
@@ -358,7 +368,7 @@ void NuLatDetectorConstruction::BuildVCBox()
 	physVCBox = new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicVCBox, "physVCBox", logicWorld, false, 0, true);
 	// Do Voxel Parameterization
 	solidVoxel = new G4Box("solidVoxel", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
-	logicVoxel = new G4LogicalVolume(solidVoxel, PVT, "logicVoxel");
+	logicVoxel = new G4LogicalVolume(solidVoxel, EJ200, "logicVoxel");
 	// make yellow colored voxels - to do: set opacity and set to solid texture
 	attr = new G4VisAttributes(G4Colour(0.9,0.9,0.0));
 	logicVoxel->SetVisAttributes(attr);
@@ -504,7 +514,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	}
 	// to do: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary)
 }
-// Light Guide with no PMT constructor (don't need until ready to add aluminum baffles and aluminum sidewalls)
+// Light Guide with no PMT constructor (don't need until ready to add aluminum dividers and aluminum sidewalls)
 //void NuLatDetectorConstruction::BuildLGnoPMT()
 // Light Guide (LG) and PMT constructor for mother volumes (not used - reimplement if needed)
 /*void NuLatDetectorConstruction::BuildLGandPMTBoxes()
@@ -561,7 +571,7 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	G4double rOuter = 16.5*mm+r1;
 	G4double tSensDet = 20.*mm;
 	G4double hCrystal = hBarrel + tFlange;
-	G4double tSourcePuck = 5.0*mm;
+	G4double tSourcePuck = 10.0*mm;
 	G4double zOffset = zVCBoxSize/2 + tAcrylicPlate + tSourcePuck;
 	G4double z0 = zOffset + tAl/2;
 	G4double z1 = zOffset + tAl + hBarrel/2;
@@ -620,7 +630,10 @@ G4VPhysicalVolume* NuLatDetectorConstruction::Construct()
 	// Light Guide and PMT's
 	BuildLGandPMT();
 	// NaI detector
-	BuildNaIDetector();
+	if(NaIdetector)
+	{
+		BuildNaIDetector();
+	}
 	// return value
 	return physWorld;
 }

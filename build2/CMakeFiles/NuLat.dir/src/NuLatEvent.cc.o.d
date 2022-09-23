@@ -1,7 +1,7 @@
 CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatEvent.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatEvent.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatEvent.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatEvent.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserEventAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Event.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \
@@ -351,6 +351,6 @@ CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericAnalysisManager.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatRun.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatRun.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserRunAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Run.hh

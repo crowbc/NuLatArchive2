@@ -1,7 +1,7 @@
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatDetectorConstruction.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatDetectorConstruction.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatDetectorConstruction.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatDetectorConstruction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserDetectorConstruction.hh \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -440,7 +440,7 @@ CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatPMTsensDet.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTsensDet.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
@@ -627,4 +627,4 @@ CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericAnalysisManager.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatVoxelSensDet.hh
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh

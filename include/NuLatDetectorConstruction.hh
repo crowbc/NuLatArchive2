@@ -86,6 +86,7 @@ private:
 	// densities of various materials
 	const G4double rhoAcrylic = 1.180*g/cm3;
 	const G4double rhoEJ200 = 1.023*g/cm3;
+	const G4double rhoNaI = 3.667*g/cm3;
 	// variable declarations
 	// World volume size in x, y and z dimensions
 	G4double xWorld, yWorld, zWorld;

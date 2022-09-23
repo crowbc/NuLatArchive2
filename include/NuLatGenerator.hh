@@ -21,6 +21,9 @@ private:
 	G4ParticleGun* fParticleGun;
 	// useful constants
 	const G4double in = 25.4*mm;
+	// variables for particle properties
+	G4double charge, energy;
+	G4int Z, A;
 };
 
 #endif

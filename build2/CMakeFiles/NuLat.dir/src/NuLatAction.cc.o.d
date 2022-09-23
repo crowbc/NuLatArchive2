@@ -1,9 +1,9 @@
 CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatAction.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatAction.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatAction.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserActionInitialization.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatGenerator.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatGenerator.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleGun.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \
@@ -277,7 +277,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IonTable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleTable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Ions.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatRun.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatRun.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserRunAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AnalysisManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericAnalysisManager.hh \
@@ -363,7 +363,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/PTL/Utility.hh \
  /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatEvent.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatEvent.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserEventAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Event.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/evtdefs.hh \
@@ -374,7 +374,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrajectoryContainer.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTrajectory.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserEventInformation.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatStepping.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatStepping.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
@@ -445,7 +445,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsModelCatalog.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Track.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatDetectorConstruction.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatDetectorConstruction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserDetectorConstruction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.hh \
@@ -529,7 +529,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatPMTsensDet.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTsensDet.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
@@ -645,4 +645,4 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingMessenger.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserTrackingAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManagerKernel.hh \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatVoxelSensDet.hh
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh

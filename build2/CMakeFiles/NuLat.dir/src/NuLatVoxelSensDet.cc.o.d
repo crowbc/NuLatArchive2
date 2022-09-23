@@ -1,7 +1,7 @@
 CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatVoxelSensDet.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatVoxelSensDet.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatVoxelSensDet.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \

@@ -1,7 +1,7 @@
 CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o: \
- /home/jack/Documents/geant4/NuLatwNaI/src/NuLatPhysics.cc \
+ /home/jack/Documents/geant4/NuLat/src/NuLatPhysics.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/NuLatwNaI/include/NuLatPhysics.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPhysics.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VModularPhysicsList.hh \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
