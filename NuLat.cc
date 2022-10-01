@@ -1,5 +1,10 @@
-// This code is for the NuLat detector simulation with added NaI detector in coincidence
-
+/*
+	Nulat.cc
+	Version: 2.1.0 - start of version tracking
+	Author: Brian Crow
+	Date: 23Sep2022
+	This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
+*/
 // Included C++ libraries
 #include <iostream>
 #include <fstream>
@@ -14,12 +19,12 @@
 #include "NuLatDetectorConstruction.hh"
 #include "NuLatPhysics.hh"
 #include "NuLatAction.hh"
-
+// main() function
 int main(int argc, char** argv)
 {
 	// define UI session
 	G4UIExecutive *ui = 0;
-	
+	// conditional for starting runmanager in multithread mode
 	#ifdef G4MULTITHREADED
 		G4MTRunManager *runManager = new G4MTRunManager();
 		// set mandatory initialization classes
@@ -42,23 +47,20 @@ int main(int argc, char** argv)
 		// Debug Message
 		//G4cout << "Running in Single Thread mode." << G4endl;
 	#endif
-	
+	// strings for initializing macros
 	G4String macCmd = "/control/execute ";
 	G4String macName = "init_vis.mac";
-	
+	// Set default UI if no command line arguments. Otherwise leave UI set to 0
 	if(argc==1)
 	{
-		// Set default UI if no command line arguments. Otherwise leave UI set to 0
 		ui = new G4UIExecutive(argc, argv);
 	}
-	
 	// construct and initialize the visualization manager
 	G4VisManager *visManager = new G4VisExecutive();
 	visManager->Initialize();
-	
 	// get the pointer to the UI manager and define session
 	G4UImanager *UImanager = G4UImanager::GetUIpointer();
-	
+	// select interactive mode if UI is defined. Otherwise select batch mode:
 	if(ui)
 	{
 		// open viewer, run interactive mode
@@ -71,7 +73,6 @@ int main(int argc, char** argv)
 		macName=argv[1];
 		UImanager->ApplyCommand(macCmd+macName);
 	}
-	
 	// job termination
 	delete runManager;
 	delete visManager;

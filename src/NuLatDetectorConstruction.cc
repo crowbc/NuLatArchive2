@@ -44,8 +44,8 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	//fMessenger->DeclareProperty("yVoxelSpace", yVoxelSpace, "Gap between voxels in the y-dimension");
 	//fMessenger->DeclareProperty("zVoxelSpace", zVoxelSpace, "Gap between voxels in the z-dimension");
 	fMessenger->DeclareProperty("NaIdetector", NaIdetector, "Toggle NaI detector installed on -z Face of NuLat detector (On by default)");
-	fMessenger->DeclareProperty("Li6doped", Li6doped, "Toggle Li-6 doping in PVT voxels (Off by default)");
-	fMessenger->DeclareProperty("massfracLi6", massfracLi6, "Mass fraction of Li-6 doping in PVT (0.5*perCent by default)");
+	//fMessenger->DeclareProperty("Li6doped", Li6doped, "Toggle Li-6 doping in PVT voxels (Off by default)");// uncomment when implemented
+	//fMessenger->DeclareProperty("massfracLi6", massfracLi6, "Mass fraction of Li-6 doping in PVT (0.5*perCent by default)");// uncomment when implemented
 	//fMessenger->DeclareProperty("NaILoc", NaILoc, "Locate NaI detector at the center of this (uninstrumented) face (set to X, Y or Z: default is Z face)");
 	// Define Detector Construction Materials
 	DefineMaterials();
@@ -58,6 +58,12 @@ void NuLatDetectorConstruction::DefineMaterials()
 {
 	// Boolean to toggle debug messages
 	G4bool debugMsg = false;
+	// Strings for debug messages
+	G4String wlenNMStr = "Wavelength (nm:) ";
+	G4String wlenMUMStr = "Wavelength (microns:) ";
+	G4String eStr = "; Energy (eV:) ";
+	G4String rindexNaIStr = "; refractive index, NaI: ";
+	G4String scStr = "; scintillation component: ";
 	G4NistManager *nist = G4NistManager::Instance();
 	const size_t nI = 141;// to do: combine into one array for energies and have same lengths for all materials properties
 	G4double wlenMUM[nI];
@@ -174,7 +180,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	G4double reflAl[numEntries];
 	G4double aLenAl[numEntries];
 	/*
-	See Hamamatsu website for documentation on Photomultiplier Tube component properties
+	
 	*/
 	//G4double rindexBeCuPhotoCath[numEntries];
 	//G4double aLenBeCuPhotoCath[numEntries];
@@ -234,7 +240,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 		//aLenBorosilicateGlass[i] = 10.*m;// taken from Materials.hh
 		/*if(debugMsg)
 		{
-			G4cout << "Wavelength (nm:) " << wlenNM[i] << " ; Energy (eV:) " << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i] << G4endl;
+			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i] << G4endl;
 		}*/
 	}
 	/*
@@ -284,14 +290,11 @@ void NuLatDetectorConstruction::DefineMaterials()
 	_________________________________________________________________________________________________________________________________________________________________________
 	
 	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
-	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm)
-	...test function for scNaI[i]: scNaI[i] = exp(-(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(2*0.065*0.065));
+	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm). There is a similar graph and table on p. 15
+	of the same catalog. The formula from this information is contained in note (1) below:
+	(1) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(0.110*0.110));
 	
 	*/
-	G4String wlenMUMStr = "Wavelength (microns:) ";
-	G4String eStr = "; Energy (eV:) ";
-	G4String rindexStr = "; refractive index, NaI: ";
-	G4String scStr = "; scintillation component: ";
 	for (size_t i = 0; i<nI; i++){
 		// Set wavlengths from 0.900 micron to 0.200 micron in steps of 0.005micron (when nI = 141)
 		wlenMUM[i]=wlenMax-wlenDelta*i;
@@ -304,12 +307,12 @@ void NuLatDetectorConstruction::DefineMaterials()
 		/************************************************************************************************************/
 		rindexNaI[i]=sqrt(a0NaI+a1NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b1NaI*b1NaI)+a2NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b2NaI*b2NaI));
 		aLenNaI[i] = 2.59*cm;// see above table
-		scNaI[i] = exp(-(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(2*0.065*0.065));// See Hamamatsu Catalog p.73 above
+		scNaI[i] = exp(-2*(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(0.110*0.110));// See Hamamatsu Catalog pp. 15 & 73, and note (1) above
 		// Debug Print statement
 		/*if(debugMsg)
 		{
-			G4cout << wlenMUMStr << wlenMUM[i] << eStr << energy[i]*1E06 << rindexStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
-		}*/
+			G4cout << wlenMUMStr << wlenMUM[i] << eStr << energy[i]*1E06 << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
+		}/**/
 	}
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
@@ -584,11 +587,13 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	// bottom plate
 	solidAlBottom = new G4Tubs("solidAlBottom", 0, r1, tAl/2, 0, 360*deg);
 	logicAlBottom = new G4LogicalVolume(solidAlBottom, aluminum, "logicAlBottom");
+	skinBottom = new G4LogicalSkinSurface("skinBottom", logicAlBottom, mirrorSurface);
 	logicAlBottom->SetVisAttributes(attr);
 	physAlBottom = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z0), logicAlBottom, "physAlBottom", logicWorld, false, 0, true);
 	// sidewall barrel
 	solidAlBarrel = new G4Tubs("solidAlBarrel", ir1, r1, hBarrel/2, 0, 360*deg);
 	logicAlBarrel = new G4LogicalVolume(solidAlBarrel, aluminum, "logicAlBarrel");
+	skinBarrel = new G4LogicalSkinSurface("skinBarrel", logicAlBarrel, mirrorSurface);
 	logicAlBarrel->SetVisAttributes(attr);
 	physAlBarrel = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z1), logicAlBarrel, "physAlBarrel", logicWorld, false, 0, true);
 	// PMT Flange

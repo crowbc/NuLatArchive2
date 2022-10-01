@@ -17,15 +17,15 @@ void NuLatSteppingAction::UserSteppingAction(const G4Step *step)
 	G4LogicalVolume *fScoringVolumeNuLat = detCons->GetScoringVolumeNuLat();
 	G4LogicalVolume *fScoringVolumeNaI = detCons->GetScoringVolumeNaI();
 	// Add energy deposit if it's in the scoring volume, otherwise return without computing
-	/*if(volume == fScoringVolumeNuLat)
-	{
-		// To do: do scoring and location for NuLat Voxels
-		return;
-	}*/
 	if(volume == fScoringVolumeNaI)
 	{
 		G4double edep = step->GetTotalEnergyDeposit();// inaccurate: get the energy of the gammas only. look at stepping methods to improve
-		// useful things to track might be found in hits collections, decay products allocators
+		// useful things to track might be found in hits collections (probably best), decay products allocators, and maybe trajectories and tracks
 		fEventAction->AddEdepNaI(edep);
+	}
+	if(volume == fScoringVolumeNuLat)
+	{
+		// To do: do scoring and location for NuLat Voxels
+		return;// remove return statement. put in conditional to return if volume is neither
 	}
 }

@@ -307,6 +307,30 @@ src/NuLatGenerator.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.s
 .PHONY : src/NuLatGenerator.cc.s
 
+src/NuLatPMTHit.o: src/NuLatPMTHit.cc.o
+.PHONY : src/NuLatPMTHit.o
+
+# target to build an object file
+src/NuLatPMTHit.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o
+.PHONY : src/NuLatPMTHit.cc.o
+
+src/NuLatPMTHit.i: src/NuLatPMTHit.cc.i
+.PHONY : src/NuLatPMTHit.i
+
+# target to preprocess a source file
+src/NuLatPMTHit.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.i
+.PHONY : src/NuLatPMTHit.cc.i
+
+src/NuLatPMTHit.s: src/NuLatPMTHit.cc.s
+.PHONY : src/NuLatPMTHit.s
+
+# target to generate assembly for a file
+src/NuLatPMTHit.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.s
+.PHONY : src/NuLatPMTHit.cc.s
+
 src/NuLatPMTsensDet.o: src/NuLatPMTsensDet.cc.o
 .PHONY : src/NuLatPMTsensDet.o
 
@@ -403,6 +427,30 @@ src/NuLatStepping.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatStepping.cc.s
 .PHONY : src/NuLatStepping.cc.s
 
+src/NuLatVoxelHit.o: src/NuLatVoxelHit.cc.o
+.PHONY : src/NuLatVoxelHit.o
+
+# target to build an object file
+src/NuLatVoxelHit.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o
+.PHONY : src/NuLatVoxelHit.cc.o
+
+src/NuLatVoxelHit.i: src/NuLatVoxelHit.cc.i
+.PHONY : src/NuLatVoxelHit.i
+
+# target to preprocess a source file
+src/NuLatVoxelHit.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.i
+.PHONY : src/NuLatVoxelHit.cc.i
+
+src/NuLatVoxelHit.s: src/NuLatVoxelHit.cc.s
+.PHONY : src/NuLatVoxelHit.s
+
+# target to generate assembly for a file
+src/NuLatVoxelHit.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.s
+.PHONY : src/NuLatVoxelHit.cc.s
+
 src/NuLatVoxelSensDet.o: src/NuLatVoxelSensDet.cc.o
 .PHONY : src/NuLatVoxelSensDet.o
 
@@ -456,6 +504,9 @@ help:
 	@echo "... src/NuLatGenerator.o"
 	@echo "... src/NuLatGenerator.i"
 	@echo "... src/NuLatGenerator.s"
+	@echo "... src/NuLatPMTHit.o"
+	@echo "... src/NuLatPMTHit.i"
+	@echo "... src/NuLatPMTHit.s"
 	@echo "... src/NuLatPMTsensDet.o"
 	@echo "... src/NuLatPMTsensDet.i"
 	@echo "... src/NuLatPMTsensDet.s"
@@ -468,6 +519,9 @@ help:
 	@echo "... src/NuLatStepping.o"
 	@echo "... src/NuLatStepping.i"
 	@echo "... src/NuLatStepping.s"
+	@echo "... src/NuLatVoxelHit.o"
+	@echo "... src/NuLatVoxelHit.i"
+	@echo "... src/NuLatVoxelHit.s"
 	@echo "... src/NuLatVoxelSensDet.o"
 	@echo "... src/NuLatVoxelSensDet.i"
 	@echo "... src/NuLatVoxelSensDet.s"

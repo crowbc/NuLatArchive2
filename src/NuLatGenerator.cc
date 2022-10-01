@@ -6,7 +6,7 @@ NuLatPrimaryGenerator::NuLatPrimaryGenerator()
 	fParticleGun = new G4ParticleGun(1);
 	// define the particle
 	G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-	G4String particleName = "geantino";//"gamma";//"ion";
+	G4String particleName = "geantino";//"gamma";
 	G4ParticleDefinition *particle = particleTable->FindParticle(particleName);
 	// set ion properties for Co-60 decay source
 	Z = 27;
@@ -34,6 +34,10 @@ NuLatPrimaryGenerator::NuLatPrimaryGenerator()
 		fParticleGun->SetParticleMomentum(eCo60Lo);
 	}
 	fParticleGun->SetParticleDefinition(particle);
+	if(particleName=="ion")
+	{
+		fParticleGun->SetParticleCharge(charge);
+	}
 }
 // Destructor
 NuLatPrimaryGenerator::~NuLatPrimaryGenerator()

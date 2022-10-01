@@ -13,10 +13,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jack/Documents/geant4/NuLat/src/NuLatDetectorConstruction.cc" "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatEvent.cc" "CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatGenerator.cc" "CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o.d"
+  "/home/jack/Documents/geant4/NuLat/src/NuLatPMTHit.cc" "CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatPMTsensDet.cc" "CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatPhysics.cc" "CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatRun.cc" "CMakeFiles/NuLat.dir/src/NuLatRun.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatRun.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatStepping.cc" "CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o.d"
+  "/home/jack/Documents/geant4/NuLat/src/NuLatVoxelHit.cc" "CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatVoxelSensDet.cc" "CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o.d"
   )
 

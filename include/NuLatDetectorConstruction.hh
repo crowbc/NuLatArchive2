@@ -48,21 +48,21 @@ private:
 	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox;
 	G4Box *solidAcrylicSidePlateX, *solidAcrylicSidePlateY, *solidAcrylicSidePlateZ;
 	G4Box *solidLGBoxPlusX, *solidLGBoxPlusY, *solidLGBoxPlusZ, *solidLGBoxMinusX, *solidLGBoxMinusY, *solidLGBoxMinusZ;
-	G4Trd *solidLGTrd;
+	G4Trd *solidLGTrd, *solidAcrylicPanel, *solidAlPanel;
 	G4Tubs *solidPMT, *solidAlBottom, *solidAlBarrel, *solidAlFlange, *solidNaICrystal, *solidNaIPMT;
 	G4Cons *solidLGCone;
 	G4IntersectionSolid *solidLG;
 	G4LogicalVolume *logicWorld, *logicVCBox, *logicVoxel, *logicLGBox, *logicLG, *logicPMT, *fScoringVolumeNuLat;
-	G4LogicalVolume *logicAcrylicSidePlateX, *logicAcrylicSidePlateY, *logicAcrylicSidePlateZ;
+	G4LogicalVolume *logicAcrylicSidePlateX, *logicAcrylicSidePlateY, *logicAcrylicSidePlateZ, *logicAcrylicPanel, *logicAlPanel;
 	G4LogicalVolume *logicLGBoxPlusX, *logicLGBoxPlusY, *logicLGBoxPlusZ, *logicLGBoxMinusX, *logicLGBoxMinusY, *logicLGBoxMinusZ;
 	G4LogicalVolume *logicAlBottom, *logicAlBarrel, *logicAlFlange, *logicNaICrystal, *logicNaIPMT, *fScoringVolumeNaI;
-	G4VPhysicalVolume *physWorld, *physVCBox, *physVoxel, *physLGBox, *physLG, *physPMT;
+	G4VPhysicalVolume *physWorld, *physVCBox, *physVoxel, *physLGBox, *physLG, *physPMT, *physAcrylicPanel, *physAlPanel;
 	G4VPhysicalVolume *physAcrylicSidePlatePlusX, *physAcrylicSidePlatePlusY, *physAcrylicSidePlatePlusZ, *physAcrylicSidePlateMinusX, *physAcrylicSidePlateMinusY, *physAcrylicSidePlateMinusZ;
 	G4VPhysicalVolume *physLGBoxPlusX, *physLGBoxPlusY, *physLGBoxPlusZ, *physLGBoxMinusX, *physLGBoxMinusY, *physLGBoxMinusZ;
 	G4VPhysicalVolume *physAlBottom, *physAlBarrel, *physAlFlange, *physNaICrystal, *physNaIPMT;
 	// Declare optical surfaces
 	G4OpticalSurface *mirrorSurface;
-	G4LogicalSkinSurface *skinBarrel, *skinBottom;
+	G4LogicalSkinSurface *skinBarrel, *skinBottom, *skinSidePanel;
 	// Material declarations
 	G4Material *air, *PVT, *acrylic, *NaI, *EJ200, *aluminum/*, *vacuum, *muMetal, *BeCuPhotoCath, *borosilicateGlass, *NaI_Tl*/;
 	G4Element *H/*, *Be*/, *C, *O/*, *F*/, *Na/*, *Al, *Si, *Fe, *Ni, *Cu*/, *I/*, *Tl*/;
