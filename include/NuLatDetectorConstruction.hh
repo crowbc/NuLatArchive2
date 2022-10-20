@@ -39,6 +39,7 @@ public:
 	NuLatDetectorConstruction();
 	~NuLatDetectorConstruction();
 	// method for looking up scoring volume - improve this to find which scoring volume is being used
+	// to do: declare single scoring volume for NaI and use hit classes for scoring voxel hits
 	G4LogicalVolume *GetScoringVolumeNuLat() const { return fScoringVolumeNuLat; }
 	G4LogicalVolume *GetScoringVolumeNaI() const { return fScoringVolumeNaI; }
 	// construct function for detector factory
@@ -46,19 +47,21 @@ public:
 private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
 	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox;
+	// to do: reallocate single volume for acrylic pieces and use transformations to place duplicates
 	G4Box *solidAcrylicSidePlateX, *solidAcrylicSidePlateY, *solidAcrylicSidePlateZ;
-	G4Box *solidLGBoxPlusX, *solidLGBoxPlusY, *solidLGBoxPlusZ, *solidLGBoxMinusX, *solidLGBoxMinusY, *solidLGBoxMinusZ;
+	// to do: reallocate volumes for single LG box and use transformations to place duplicates
+	//G4Box *solidLGBoxPlusX, *solidLGBoxPlusY, *solidLGBoxPlusZ, *solidLGBoxMinusX, *solidLGBoxMinusY, *solidLGBoxMinusZ;
 	G4Trd *solidLGTrd, *solidAcrylicPanel, *solidAlPanel;
 	G4Tubs *solidPMT, *solidAlBottom, *solidAlBarrel, *solidAlFlange, *solidNaICrystal, *solidNaIPMT;
 	G4Cons *solidLGCone;
 	G4IntersectionSolid *solidLG;
 	G4LogicalVolume *logicWorld, *logicVCBox, *logicVoxel, *logicLGBox, *logicLG, *logicPMT, *fScoringVolumeNuLat;
 	G4LogicalVolume *logicAcrylicSidePlateX, *logicAcrylicSidePlateY, *logicAcrylicSidePlateZ, *logicAcrylicPanel, *logicAlPanel;
-	G4LogicalVolume *logicLGBoxPlusX, *logicLGBoxPlusY, *logicLGBoxPlusZ, *logicLGBoxMinusX, *logicLGBoxMinusY, *logicLGBoxMinusZ;
+	//G4LogicalVolume *logicLGBoxPlusX, *logicLGBoxPlusY, *logicLGBoxPlusZ, *logicLGBoxMinusX, *logicLGBoxMinusY, *logicLGBoxMinusZ;
 	G4LogicalVolume *logicAlBottom, *logicAlBarrel, *logicAlFlange, *logicNaICrystal, *logicNaIPMT, *fScoringVolumeNaI;
 	G4VPhysicalVolume *physWorld, *physVCBox, *physVoxel, *physLGBox, *physLG, *physPMT, *physAcrylicPanel, *physAlPanel;
 	G4VPhysicalVolume *physAcrylicSidePlatePlusX, *physAcrylicSidePlatePlusY, *physAcrylicSidePlatePlusZ, *physAcrylicSidePlateMinusX, *physAcrylicSidePlateMinusY, *physAcrylicSidePlateMinusZ;
-	G4VPhysicalVolume *physLGBoxPlusX, *physLGBoxPlusY, *physLGBoxPlusZ, *physLGBoxMinusX, *physLGBoxMinusY, *physLGBoxMinusZ;
+	//G4VPhysicalVolume *physLGBoxPlusX, *physLGBoxPlusY, *physLGBoxPlusZ, *physLGBoxMinusX, *physLGBoxMinusY, *physLGBoxMinusZ;
 	G4VPhysicalVolume *physAlBottom, *physAlBarrel, *physAlFlange, *physNaICrystal, *physNaIPMT;
 	// Declare optical surfaces
 	G4OpticalSurface *mirrorSurface;
@@ -86,7 +89,7 @@ private:
 	// densities of various materials
 	const G4double rhoAcrylic = 1.180*g/cm3;
 	const G4double rhoEJ200 = 1.023*g/cm3;
-	const G4double rhoNaI = 3.667*g/cm3;
+	//const G4double rhoNaI = 3.667*g/cm3;
 	// variable declarations
 	// World volume size in x, y and z dimensions
 	G4double xWorld, yWorld, zWorld;

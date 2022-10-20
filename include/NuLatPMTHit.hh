@@ -80,6 +80,8 @@ private:
 	// variables used to identify hit information
 	G4int fPMTID;
 	G4double peHits, wlen;
+	// variable to toggle feedback
+	G4bool fbOn = false;
 	// data containers
 	static std::vector<G4int> PMTHitParticleIDVec;
 	static std::vector<G4int> PMTPEVec;

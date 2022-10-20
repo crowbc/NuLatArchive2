@@ -17,10 +17,18 @@ void NuLatSteppingAction::UserSteppingAction(const G4Step *step)
 	G4LogicalVolume *fScoringVolumeNuLat = detCons->GetScoringVolumeNuLat();
 	G4LogicalVolume *fScoringVolumeNaI = detCons->GetScoringVolumeNaI();
 	// Add energy deposit if it's in the scoring volume, otherwise return without computing
+	if((volume != fScoringVolumeNaI) && (volume != fScoringVolumeNuLat))
+	{
+		return;
+	}
 	if(volume == fScoringVolumeNaI)
 	{
-		G4double edep = step->GetTotalEnergyDeposit();// inaccurate: get the energy of the gammas only. look at stepping methods to improve
-		// useful things to track might be found in hits collections (probably best), decay products allocators, and maybe trajectories and tracks
+		if (step->GetTrack()->GetDefinition()->GetParticleName()=="opticalphoton")
+		{
+			return;
+		}
+		// Only add edep after ignoring optical photons
+		G4double edep = step->GetTotalEnergyDeposit();
 		fEventAction->AddEdepNaI(edep);
 	}
 	if(volume == fScoringVolumeNuLat)

@@ -241,15 +241,15 @@ void NuLatDetectorConstruction::DefineMaterials()
 		/*if(debugMsg)
 		{
 			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i] << G4endl;
-		}*/
+		}/**/
 	}
 	/*
 	More data on NaI:
 	source:	IOP Publishing 1221 (2022) 012002
 	DOI:	doi:10.1088/1757-899X/1221/1/012002
-	___________________________________________________________________________________________________________________________________________________________________________
+	_________________________________________________________________________________________________________________________________________________________________________________
 	Scintillation crystal	Elemental composition (wt.%)	Light yield (photons/MeV)	Decay time, τ (ns)	Radiation length (cm)	Density (g/cm 3 )	Ref.(s)
-	___________________________________________________________________________________________________________________________________________________________________________
+	_________________________________________________________________________________________________________________________________________________________________________________
 	PWO (PbWO4)		45.5%Pb; 40.5%W 14.0% O		250				5-15			0.89			8.28			[7, 14, 15]
 	PbF2			84.5%Pb; 15.5%F			<1000				30, 6			0.93			7.77			[16, 17]
 	CsI			51.1%Cs; 48.8%I			16,800				10			1.86			4.51			[17, 18]
@@ -264,22 +264,22 @@ void NuLatDetectorConstruction::DefineMaterials()
 	(Bi4Ge3O12)		15.4%O
 	NaI:Tl			15.27%Na; 84.31%I		40,000				230			2.59			3.67			[1, 20]
 	(0.3 mol.%)		0.41%Tl
-	___________________________________________________________________________________________________________________________________________________________________________
+	_________________________________________________________________________________________________________________________________________________________________________________
 	References:
 	[1] Blasse G, 1994, Scintillator materials Chem. Mater. 6 1465-1475.
 	[20] Hu C, Li J, Yang F, Jiang B, Zhang L,and Zhu R-Y, 2020, LuAG ceramic scintillators for future HEP experiments
 		Nucl. Instrum. Methods Phys. Res. A 954 161723.
-	___________________________________________________________________________________________________________________________________________________________________________
+	_________________________________________________________________________________________________________________________________________________________________________________
 	Notes on Hamamatsu PMT's:
 	From catalog on Photomultiplier Tubes and Assemblies for Scintillation Counting and High Energy Physics:
 	Borosilicate high frequency cutoff: ~300 nm
 	Quantum Efficiency: QE = S*1240/wlen*perCent, where S is radiant sensitivity given by: S = Photoelectric current/Radiant power of light (A/W)
 	note on QE: 1240 looks remarkably similar in dimensionality and magnitude to hc in eV*nm but there is a leftover factor of charge dimensionality
 	Table of Scintillator Properties in Hamamatsu catalog:
-	_________________________________________________________________________________________________________________________________________________________________________
+	_______________________________________________________________________________________________________________________________________________________________________________
 	Table 1: Summary of scintillator characteristics
-	_________________________________________________________________________________________________________________________________________________________________________
-				Nal(Tl)	BGO		Csl(Tl)	Pure Csl	BaF2		GSO: Ce	Plastic	LaBr3: Ce	LSO: Ce	YAP: Ce
+	_______________________________________________________________________________________________________________________________________________________________________________
+				NaI(Tl)		BGO		CsI(Tl)		Pure CsI	BaF2		GSO: Ce		Plastic		LaBr3: Ce	LSO: Ce		YAP: Ce
 	Density (g/cm3)		3.67		7.13		4.51		4.51		4.88		6.71		1.03		5.29		7.35		5.55
 	L_rad (cm)		2.59		1.12		1.85		1.85		2.10		1.38		40		2.1		0.88		2.70
 	Refractive index	1.85		2.15		1.80		1.80		1.58		1.85		1.58		1.9		1.82		1.97
@@ -287,7 +287,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	Luminescence (nm)	410		480		530		310		220 / 325	430		400		380		420		380
 	Decay time (ns)		230		300		1000		10		0.9 / 630	30		2.0		16		40		30
 	Relative light output	100		15		45 to 50	<10		20		20		25		165		70		40
-	_________________________________________________________________________________________________________________________________________________________________________
+	_______________________________________________________________________________________________________________________________________________________________________________
 	
 	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
 	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm). There is a similar graph and table on p. 15

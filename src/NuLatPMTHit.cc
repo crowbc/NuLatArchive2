@@ -97,5 +97,9 @@ std::vector<G4AttValue>* NuLatPMTHit::CreateAttValues() const
 // Print() function
 void NuLatPMTHit::Print()
 {
-	G4cout << "PMT[" << fPMTID << "] hits: " << peHits << G4endl;
+	// Print if feedback enabled
+	if(fbOn)
+	{
+		G4cout << "PMT[" << fPMTID << "] hits: " << peHits << G4endl;
+	}
 }

@@ -1,6 +1,10 @@
 /*
 	Nulat.cc
 	Version: 2.1.0 - start of version tracking
+	### Added Hit Scoring classes for NuLat PMT's and NuLat Voxels
+	### Added Sensitive detector classes for NuLat PMT's and NuLat Voxels
+	### Set Generator to use a Co-60 source as the default when the particle is defined as a geantino
+	### Added Gaussian model for NaI scintillation component centered on 410 nm with FWHM of 110 nm
 	Author: Brian Crow
 	Date: 23Sep2022
 	This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.

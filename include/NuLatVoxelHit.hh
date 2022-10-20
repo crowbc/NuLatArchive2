@@ -86,6 +86,7 @@ private:
 	// variable declarations
 	G4int fCellID;
 	G4double eDep;
+	G4bool fbOn = false;
 	// storage structures
 	static std::vector<G4int>  eDepParticleTypeIDNumber;
 	static std::vector<G4double>  eDepEDep;

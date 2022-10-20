@@ -31,7 +31,7 @@ G4VHit()
 // Destructor
 NuLatVoxelHit::~NuLatVoxelHit()
 {}
-
+// Operators
 const NuLatVoxelHit& NuLatVoxelHit::operator= (const NuLatVoxelHit &right)
 {
 	fCellID  = right.fCellID;
@@ -41,7 +41,6 @@ const NuLatVoxelHit& NuLatVoxelHit::operator= (const NuLatVoxelHit &right)
 	fPLogV   = right.fPLogV;
 	return *this;
 }
-
 int NuLatVoxelHit::operator==(const NuLatVoxelHit &right) const
 {
 	return (fCellID==right.fCellID);
@@ -97,5 +96,9 @@ std::vector<G4AttValue>* NuLatVoxelHit::CreateAttValues() const
 // Print() method
 void NuLatVoxelHit::Print()
 {
-	G4cout << "  Cell[" << fCellID << "] " << eDep/MeV << " (MeV)" << G4endl;
+	// only print if feedback enabled
+	if(fbOn)
+	{
+		G4cout << "  Cell[" << fCellID << "] " << eDep/MeV << " (MeV)" << G4endl;
+	}
 }
