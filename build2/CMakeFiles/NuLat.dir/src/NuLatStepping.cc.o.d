@@ -402,6 +402,7 @@ CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BooleanSolid.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SubtractionSolid.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCofThisEvent.hh \
@@ -639,6 +640,18 @@ CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDefStore.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDef.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TypeKey.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttValue.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatEvent.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserEventAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Event.hh \

@@ -24,7 +24,7 @@
 /vis/viewer/set/autoRefresh false
 /vis/verbose errors
 #
-# initialize single thread if multithreading enabled
+# initialize single thread if multithreading enabled in binary file
 #
 /run/numberOfThreads 1
 /run/initialize
@@ -40,7 +40,7 @@
 #/vis/viewer/zoom 8
 #
 # Specify style (surface or wireframe):
-#/vis/viewer/set/style wireframe
+/vis/viewer/set/style surface
 #
 # Draw scale
 #
@@ -53,12 +53,12 @@
 #
 /vis/scene/add/eventID
 #
-# Draw smooth trajectories at end of event, showing trajectory points
-# as markers 2 pixels wide:
+# Draw smooth trajectories at end of event, showing trajectory points as markers 2 pixels wide:
 /vis/scene/add/trajectories smooth
 /vis/modeling/trajectories/create/drawByCharge
 /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
 /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+#/tracking/storeTrajectory 0
 # (if too many tracks cause core dump => /tracking/storeTrajectory 0)
 #
 # Draw hits at end of event:
@@ -92,4 +92,4 @@
 #/vis/scene/endOfEventAction accumulate
 #
 #
-/run/beamOn 1
+#/run/beamOn 1

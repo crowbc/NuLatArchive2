@@ -14,6 +14,7 @@
 /vis/scene/add/volume world -1 -1 none m 0 0 0 0 0 0
 /vis/sceneHandler/attach
 /vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/set/style surface
 /vis/scene/add/scale 10 cm
 /vis/scene/notifyHandlers
 /vis/scene/add/axes 0 0 0 20. cm
@@ -31,6 +32,3 @@
 /vis/viewer/set/autoRefresh true
 /vis/viewer/refresh
 /vis/verbose warnings
-/run/beamOn 1
-/analysis/h1/getVector
-/analysis/h2/getVector
