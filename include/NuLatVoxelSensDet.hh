@@ -13,6 +13,8 @@
 #include "G4SDManager.hh"
 #include "G4TrackingManager.hh"
 #include "G4EventManager.hh"
+// included user defined header files
+#include "NuLatVoxelHit.hh"
 // write the class
 class NuLatVoxelSensitiveDetector : public G4VSensitiveDetector
 {
@@ -29,7 +31,7 @@ private:
 	// Constant for calculating wavelength in nm from energy
 	const G4double HCNM = 1239.841939*eV;
 	// Hit Collection object
-	//NuLatVoxelHitsCollection *voxelHitCollection;
+	NuLatVoxelHitsCollection *voxelHitCollection;
 	// ID variaible
 	G4int voxelHitCollectionID;
 };

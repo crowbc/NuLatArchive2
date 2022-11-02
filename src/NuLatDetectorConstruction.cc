@@ -31,7 +31,7 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	massfracLi6 = 0.5*perCent;
 	NaILoc = "Z";// Set default location to bottom face
 	// Acrylic side plate thickness
-	tAcrylicPlate = 2.5*mm;
+	tAcrylicPlate = 0.125*in;
 	// Define the messenger and declare properties
 	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");//set up /voxel and other subdirectories
 	fMessenger->DeclareProperty("xVoxels", xVoxels, "Number of voxels (cubes) in the x-dimension");
@@ -60,27 +60,23 @@ void NuLatDetectorConstruction::DefineMaterials()
 	G4bool debugMsg = false;
 	// Strings for debug messages
 	G4String wlenNMStr = "Wavelength (nm:) ";
-	G4String wlenMUMStr = "Wavelength (microns:) ";
 	G4String eStr = "; Energy (eV:) ";
 	G4String rindexNaIStr = "; refractive index, NaI: ";
 	G4String scStr = "; scintillation component: ";
 	G4NistManager *nist = G4NistManager::Instance();
-	const size_t nI = 141;// to do: combine into one array for energies and have same lengths for all materials properties
-	G4double wlenMUM[nI];
-	G4double energy[nI];
-	G4double rindexNaI[nI];
-	// constants for calculating wavelengths (note: values are given in microns)
-	const G4double wlenMax = 0.9000;
-	const G4double wlenMin = 0.2000;
-	const G4double wlenDelta = (wlenMax-wlenMin)/(nI-1);
+	// size_t variable for property array lengths
+	const size_t numEntries = 182;
+	G4double rindexNaI[numEntries];
 	// constants for dispersion coefficients and factors
 	const G4double a0NaI = 1.478;
 	const G4double a1NaI = 1.532;
 	const G4double b1NaI = 0.170;
 	const G4double a2NaI = 4.27;
 	const G4double b2NaI = 86.21;
-	// Photon energy range for energy dependent material responses (get as function of wavelength to correlate to dispersion formulae)
-	const size_t numEntries = 182;
+	// constants for Gaussian fit of NaI scintillation component
+	const G4double meanWlenNaI = 410.;
+	const G4double FWHMNaI = 110.;
+	// Photon energy range for energy dependent material responses
 	G4double photonEnergy[numEntries] = {
 		2.034*eV, 2.068*eV, 2.103*eV, 2.139*eV, 2.177*eV, 2.216*eV, 2.256*eV, 2.298*eV, 2.341*eV, 2.386*eV, //10
 		2.433*eV, 2.481*eV, 2.487*eV, 2.496*eV, 2.506*eV, 2.516*eV, 2.524*eV, 2.531*eV, 2.539*eV, 2.547*eV, //20
@@ -133,8 +129,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// 2012 J. Phys.: Conf. Ser. 356 012049 for acrylic optical properties - note: this reference is for films, not bulk material
 	G4double rindexAcrylic[numEntries];
 	G4double aLenAcrylic[numEntries];
-	G4double aLenNaI[nI];
-	G4double scNaI[nI];
+	G4double aLenNaI[numEntries];
+	G4double scNaI[numEntries];
 	G4double rindexPVT[numEntries];
 	G4double aLenPVT[numEntries];
 	/*
@@ -179,28 +175,24 @@ void NuLatDetectorConstruction::DefineMaterials()
 	*/
 	G4double reflAl[numEntries];
 	G4double aLenAl[numEntries];
-	/*
-	
-	*/
-	//G4double rindexBeCuPhotoCath[numEntries];
-	//G4double aLenBeCuPhotoCath[numEntries];
-	//G4double rindexBorosilicateGlass[numEntries];
-	//G4double aLenBorosilicateGlass[numEntries];
+	/*G4double rindexBeCuPhotoCath[numEntries];
+	G4double aLenBeCuPhotoCath[numEntries];
+	G4double rindexBorosilicateGlass[numEntries];
+	G4double aLenBorosilicateGlass[numEntries];/**/
 	// Define Elements
 	H = nist->FindOrBuildElement("H");
 	//Be = nist->FindOrBuildElement("Be");
 	C = nist->FindOrBuildElement("C");
 	O = nist->FindOrBuildElement("O");
-	//F = nist->FindOrBuildElement("F");
-	//Na = nist->FindOrBuildElement("Na");
-	//Al = nist->FindOrBuildElement("Al");
-	//Si = nist->FindOrBuildElement("Si");
-	//Fe = nist->FindOrBuildElement("Fe");
-	//Ni = nist->FindOrBuildElement("Ni");
-	//Cu = nist->FindOrBuildElement("Cu");
-	//I = nist->FindOrBuildElement("I");
-	// use for 1E-03 molar doping of NaI (see Chapter 6 of Tsoulfanidis, Nicholas, and Sheldon Landsberger. Measurement and Detection of Radiation. CRC Press LLC, 2010.)
-	//Tl = nist->FindOrBuildElement("Tl");
+	Na = nist->FindOrBuildElement("Na");
+	/*Si = nist->FindOrBuildElement("Si");
+	Fe = nist->FindOrBuildElement("Fe");
+	Ni = nist->FindOrBuildElement("Ni");
+	Cu = nist->FindOrBuildElement("Cu");/**/
+	I = nist->FindOrBuildElement("I");
+	// use for 3*1E-03 molar doping of NaI (see table below)
+	Tl = nist->FindOrBuildElement("Tl");
+	// See also Chapter 6 of Tsoulfanidis, Nicholas, and Sheldon Landsberger. Measurement and Detection of Radiation. CRC Press LLC, 2010.
 	// Define Materials
 	air = nist->FindOrBuildMaterial("G4_AIR");
 	//vacuum = nist->FindOrBuildMaterial("G4_GALACTIC");
@@ -209,13 +201,14 @@ void NuLatDetectorConstruction::DefineMaterials()
 	EJ200->AddElement(C, 10);
 	EJ200->AddElement(H, 8);
 	aluminum = nist->FindOrBuildMaterial("G4_Al");
-	NaI = nist->FindOrBuildMaterial("G4_SODIUM_IODIDE");
+	//NaI = nist->FindOrBuildMaterial("G4_SODIUM_IODIDE");
 	//NaI = new G4Material("NaI", rhoNaI, 2);
 	//NaI->AddElement(Na, 1);
 	//NaI->AddElement(I, 1);
-	//NaI_Tl = new G4Material("NaI_Tl", rhoNaI_Tl, 2);
-	//NaI_Tl->AddMaterial(NaI, 99.59*perCent);
-	//NaI_Tl->AddElement(Tl, 0.41*perCent);// see table below
+	NaI_Tl = new G4Material("NaI_Tl", rhoNaI_Tl, 3);
+	NaI_Tl->AddElement(Na, 15.27*perCent);
+	NaI_Tl->AddElement(I, 84.31*perCent);
+	NaI_Tl->AddElement(Tl, 0.41*perCent);// see table below
 	acrylic = new G4Material("acrylic", rhoAcrylic, 3);
 	acrylic->AddElement(O, 2);
 	acrylic->AddElement(C, 5);
@@ -225,8 +218,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//BeCuPhotoCath->AddElement(Cu, 1);
 	// Set Material Properties
 	for (size_t i = 0; i<numEntries; i++){
-		// Calculate photon energy from wavelength
-		wlenNM[i] = HCNM/photonEnergy[i];// Energy is input directly above. It is displayed as a factor of 1E-06 too small in the G4cout statement!
+		// Calculate wavelength (in nm) from photon energy
+		wlenNM[i] = HCNM/photonEnergy[i];// Energy is input directly above. Note: energy is displayed as a factor of 1E-06 too small in the G4cout statement!
 		rindexAir[i] = 1.;
 		rindexAcrylic[i] = 1.492;// taken from Materials.hh
 		aLenAcrylic[i] = 10.*m;// taken from Materials.hh - look for correct values
@@ -234,13 +227,25 @@ void NuLatDetectorConstruction::DefineMaterials()
 		aLenPVT[i] = 380.*cm;
 		//aLenAl[i] = 10.*cm;// taken from Materials.hh - look for correct values
 		reflAl[i] = 0.95;// taken from Materials.hh - look for correct values
+		// NaI properties merged from other array
+		/************************************************************************************************************/
+		/* Reference for dispersion formula shown below: https://refractiveindex.info/?shelf=main&book=NaI&page=Li  */
+		/* dispersion formula as function of wavelength: n^2−1=0.478+1.532*λ^2/(λ^2−0.170^2)+4.27*λ^2/(λ^2−86.21^2) */
+		/* See also J. Phys. Chem. Ref. Data 5, 329-528 (1976) at https://aip.scitation.org/doi/10.1063/1.555536    */
+		/************************************************************************************************************/
+		rindexNaI[i]=sqrt(a0NaI+a1NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b1NaI*b1NaI)+a2NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b2NaI*b2NaI));
+		// see table below
+		aLenNaI[i] = 2.59*cm;
+		// See Hamamatsu Catalog pp. 15 & 73, and note (1) below
+		scNaI[i] = exp(-2*(wlenNM[i]-meanWlenNaI)*(wlenNM[i]-meanWlenNaI)/(FWHMNaI*FWHMNaI));
 		//rindexBeCuPhotoCath[i] = 2.7;// taken from Materials.hh
 		//aLenBeCuPhotoCath[i] = 0.001*mm;// taken from Materials.hh
 		//rindexBorosilicateGlass[i] = 1.55;// taken from Materials.hh - look for dispersion formula
 		//aLenBorosilicateGlass[i] = 10.*m;// taken from Materials.hh
 		/*if(debugMsg)
 		{
-			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i] << G4endl;
+			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i];
+			G4cout << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
 		}/**/
 	}
 	/*
@@ -292,41 +297,23 @@ void NuLatDetectorConstruction::DefineMaterials()
 	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
 	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm). There is a similar graph and table on p. 15
 	of the same catalog. The formula from this information is contained in note (1) below:
-	(1) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(0.110*0.110));
+	(1) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenNM[i]-410.0)*(wlenNM[i]-410.0)/(110.0*110.0));
 	
 	*/
-	for (size_t i = 0; i<nI; i++){
-		// Set wavlengths from 0.900 micron to 0.200 micron in steps of 0.005micron (when nI = 141)
-		wlenMUM[i]=wlenMax-wlenDelta*i;
-		// Calculate photon energy from wavelength - Evidently the factor of 1E-06 is not a problem
-		energy[i] = HCMUM/wlenMUM[i];
-		/************************************************************************************************************/
-		/* Reference for dispersion formula shown below: https://refractiveindex.info/?shelf=main&book=NaI&page=Li  */
-		/* dispersion formula as function of wavelength: n^2−1=0.478+1.532*λ^2/(λ^2−0.170^2)+4.27*λ^2/(λ^2−86.21^2) */
-		/* See also J. Phys. Chem. Ref. Data 5, 329-528 (1976) at https://aip.scitation.org/doi/10.1063/1.555536    */
-		/************************************************************************************************************/
-		rindexNaI[i]=sqrt(a0NaI+a1NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b1NaI*b1NaI)+a2NaI*wlenMUM[i]*wlenMUM[i]/(wlenMUM[i]*wlenMUM[i]-b2NaI*b2NaI));
-		aLenNaI[i] = 2.59*cm;// see above table
-		scNaI[i] = exp(-2*(wlenMUM[i]-0.410)*(wlenMUM[i]-0.410)/(0.110*0.110));// See Hamamatsu Catalog pp. 15 & 73, and note (1) above
-		// Debug Print statement
-		/*if(debugMsg)
-		{
-			G4cout << wlenMUMStr << wlenMUM[i] << eStr << energy[i]*1E06 << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
-		}/**/
-	}
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
 	mptAir->AddProperty("RINDEX", photonEnergy, rindexAir, numEntries);
 	air->SetMaterialPropertiesTable(mptAir);
 	mptNaI = new G4MaterialPropertiesTable();
-	mptNaI->AddProperty("RINDEX", energy, rindexNaI, nI);
-	mptNaI->AddProperty("ABSLENGTH", energy, aLenNaI, nI);
-	mptNaI->AddProperty("SCINTILLATIONCOMPONENT1", energy, scNaI, nI);
+	mptNaI->AddProperty("RINDEX", photonEnergy, rindexNaI, numEntries);
+	mptNaI->AddProperty("ABSLENGTH", photonEnergy, aLenNaI, numEntries);
+	mptNaI->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scNaI, numEntries);
 	mptNaI->AddConstProperty("SCINTILLATIONYIELD", scintYieldNaI);
 	mptNaI->AddConstProperty("RESOLUTIONSCALE", 1.0);
 	mptNaI->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcNaI);
 	mptNaI->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
-	NaI->SetMaterialPropertiesTable(mptNaI);
+	//NaI->SetMaterialPropertiesTable(mptNaI);
+	NaI_Tl->SetMaterialPropertiesTable(mptNaI);
 	mptAcrylic = new G4MaterialPropertiesTable();
 	mptAcrylic->AddProperty("RINDEX", photonEnergy, rindexAcrylic, numEntries);
 	mptAcrylic->AddProperty("ABSLENGTH", photonEnergy, aLenAcrylic, numEntries);
@@ -362,18 +349,18 @@ void NuLatDetectorConstruction::BuildVCBox()
 	// Define position variables
 	G4double xpos, ypos, zpos;
 	// Define Visual Attributes object for adjusting coloring and visibility of various components
-	attr = new G4VisAttributes(G4Colour(0.9,0.0,0.0));
+	attr = new G4VisAttributes(G4Colour(0.9,0.0,0.0,0.05));
 	// Define Calorimeter
 	solidVCBox = new G4Box("solidVCBox", xVCBoxSize/2, yVCBoxSize/2, zVCBoxSize/2);
 	logicVCBox = new G4LogicalVolume(solidVCBox, air, "logicVCBox");
-	// make VCBox red in color - to do: set opacity and set to solid texture
+	// make VCBox red in color
 	logicVCBox->SetVisAttributes(attr);
 	physVCBox = new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicVCBox, "physVCBox", logicWorld, false, 0, true);
 	// Do Voxel Parameterization
 	solidVoxel = new G4Box("solidVoxel", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
 	logicVoxel = new G4LogicalVolume(solidVoxel, EJ200, "logicVoxel");
-	// make yellow colored voxels - to do: set opacity and set to solid texture
-	attr = new G4VisAttributes(G4Colour(0.9,0.9,0.0));
+	// make yellow colored voxels
+	attr = new G4VisAttributes(G4Colour(0.9,0.9,0.0,0.4));
 	logicVoxel->SetVisAttributes(attr);
 	// Set NuLat voxel as NuLat scoring volume
 	fScoringVolumeNuLat = logicVoxel;
@@ -396,19 +383,22 @@ void NuLatDetectorConstruction::BuildVCBox()
 void NuLatDetectorConstruction::BuildAcrylicBox()
 {
 	// Define and build acrylic side panels - to do: redefine as trapezoidal solids using single volume and set rotation matrices. Set trapzoids in positions so bevels touch
-	// also to do: leave color as white, set attributes to low opacity and solid texture
+	attr = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0, 0.2));
 	solidAcrylicSidePlateX = new G4Box("solidAcrylicSidePlateX", tAcrylicPlate, yVCBoxSize/2, zVCBoxSize/2);
 	logicAcrylicSidePlateX = new G4LogicalVolume(solidAcrylicSidePlateX, acrylic, "logicAcrylicSidePlateX");
+	logicAcrylicSidePlateX->SetVisAttributes(attr);
 	G4double xpos = xVCBoxSize/2+tAcrylicPlate;
 	physAcrylicSidePlatePlusX = new G4PVPlacement(0, G4ThreeVector(xpos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlatePlusX", logicWorld, false, 0, true);
 	physAcrylicSidePlateMinusX = new G4PVPlacement(0, G4ThreeVector(-xpos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlateMinusX", logicWorld, false, 0, true);
 	solidAcrylicSidePlateY = new G4Box("solidAcrylicSidePlateY", xVCBoxSize/2, 2.5*mm, zVCBoxSize/2);
 	logicAcrylicSidePlateY = new G4LogicalVolume(solidAcrylicSidePlateY, acrylic, "logicAcrylicSidePlateY");
+	logicAcrylicSidePlateY->SetVisAttributes(attr);
 	G4double ypos = yVCBoxSize/2+tAcrylicPlate;
 	physAcrylicSidePlatePlusY = new G4PVPlacement(0, G4ThreeVector(0., ypos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlatePlusY", logicWorld, false, 0, true);
 	physAcrylicSidePlateMinusY = new G4PVPlacement(0, G4ThreeVector(0., -ypos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlateMinusY", logicWorld, false, 0, true);
 	solidAcrylicSidePlateZ = new G4Box("solidAcrylicSidePlateZ", xVCBoxSize/2, yVCBoxSize/2, 2.5*mm);
 	logicAcrylicSidePlateZ = new G4LogicalVolume(solidAcrylicSidePlateZ, acrylic, "logicAcrylicSidePlateZ");
+	logicAcrylicSidePlateZ->SetVisAttributes(attr);
 	G4double zpos = zVCBoxSize/2+tAcrylicPlate;
 	physAcrylicSidePlatePlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zpos), logicAcrylicSidePlateZ, "physAcrylicSidePlatePlusZ", logicWorld, false, 0, true);
 	physAcrylicSidePlateMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zpos), logicAcrylicSidePlateZ, "physAcrylicSidePlateMinusZ", logicWorld, false, 0, true);
@@ -417,9 +407,9 @@ void NuLatDetectorConstruction::BuildAcrylicBox()
 void NuLatDetectorConstruction::BuildLGandPMT()
 {
 	// Define Visual Attributes object for adjusting coloring and visibility of various components
-	G4double dx1 = xVoxelSize+xVoxelSpace-1.27*mm;
+	G4double dx1 = xVoxelSize+xVoxelSpace-0.05*in;
 	G4double dx2 = 46.*mm;
-	G4double dy1 = yVoxelSize+yVoxelSpace-1.27*mm;
+	G4double dy1 = yVoxelSize+yVoxelSpace-0.05*in;
 	G4double dy2 = 46.*mm;
 	G4double dz = lenLGTaper;
 	G4double xpos, ypos, zpos;
@@ -437,12 +427,20 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	G4double r1 = 3.465*in/2;
 	G4double r2 = 1.811*in/2;
 	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1, 0.*cm, r2, dz/2, 0, 360*deg);
-	// Define the light guide from the two solids defined above
+	// Define the light guide from the intersection of the two solids defined above
 	solidLG = new G4IntersectionSolid("solidLG", solidLGTrd, solidLGCone);
 	logicLG = new G4LogicalVolume(solidLG, acrylic, "logicLG");
-	// make these orange just to stand out - to do: set to low opacity and set to solid texture
-	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0));
+	// make these orange just to stand out
+	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
+	// Aluminum dividers
+	solidAlDivOuter = new G4Box("solidAlDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
+	solidAlDivInner = new G4Box("solidAlDivInner", dx1/2, dy1/2, 6.5*in/2);
+	solidAlDiv = new G4SubtractionSolid("solidAlDiv", solidAlDivOuter, solidAlDivInner, 0, G4ThreeVector(0., 0., 0.));
+	logicAlDiv = new G4LogicalVolume(solidAlDiv, aluminum, "logicAlDiv");
+	// make divider plates light gray
+	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
+	logicAlDiv->SetVisAttributes(attr);
 	// make +z light guides
 	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
 	for (G4int i=0; i<xVoxels; i++)
@@ -452,6 +450,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			ypos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 			physLG = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
+			physAlDiv = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x light guides
@@ -463,6 +462,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(xRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xpos + 58.7*mm, ypos, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y light guides
@@ -474,16 +474,17 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos + 58.7*mm, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// Define PMT's
-	solidPMT = new G4Tubs("solidPMT", 0, r2, lenPMT/10, 0, 360*deg);
+	solidPMT = new G4Tubs("solidPMT", 0, r2, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
-	// make PMT volumes purple cylinders - to do: set to low opacity and solid texture
-	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5));
+	// make PMT volumes purple cylinders
+	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
 	// make +z PMT's
-	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/10;
+	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -494,7 +495,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		}
 	}
 	// make +x PMT's
-	xpos = xVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/10;
+	xpos = xVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
 	for (G4int i=0; i<yVoxels; i++)
 	{
 		ypos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
@@ -505,7 +506,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		}
 	}
 	// make -y PMT's
-	ypos = -yVCBoxSize/2-2*tAcrylicPlate-dz-lenPMT/10;
+	ypos = -yVCBoxSize/2-2*tAcrylicPlate-dz-lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -515,7 +516,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 			physPMT = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos, zpos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
-	// to do: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary)
+	// to do: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary) 
 }
 // Light Guide with no PMT constructor (don't need until ready to add aluminum dividers and aluminum sidewalls)
 //void NuLatDetectorConstruction::BuildLGnoPMT()
@@ -572,7 +573,7 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	G4double hBarrel = 4.75*in-tAl;
 	G4double tFlange = 0.75*in;
 	G4double rOuter = 16.5*mm+r1;
-	G4double tSensDet = 20.*mm;
+	G4double tSensDet = 200.*mm;
 	G4double hCrystal = hBarrel + tFlange;
 	G4double tSourcePuck = 10.0*mm;
 	G4double zOffset = zVCBoxSize/2 + tAcrylicPlate + tSourcePuck;
@@ -582,7 +583,7 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	G4double z3 = zOffset + tAl + hBarrel + tFlange/2;
 	G4double z4 = zOffset + tAl + hBarrel + tFlange + tSensDet/2;
 	// Declare new visual attributes object and assign values for different components - make aluminum light gray
-	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5));
+	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
 	// Define Solids and assign materials to logical volumes, then place physical volumes, to do: parameterize placements for different NaI locations (-X, +Y or -Z faces)
 	// bottom plate
 	solidAlBottom = new G4Tubs("solidAlBottom", 0, r1, tAl/2, 0, 360*deg);
@@ -603,15 +604,15 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	physAlFlange = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z3), logicAlFlange, "physAlFlange", logicWorld, false, 0, true);
 	// NaI Crystal
 	solidNaICrystal = new G4Tubs("solidNaICrystal", 0, ir1, hCrystal/2, 0, 360*deg);
-	logicNaICrystal = new G4LogicalVolume(solidNaICrystal, NaI, "logicNaICrystal");
-	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.));
+	logicNaICrystal = new G4LogicalVolume(solidNaICrystal, NaI_Tl, "logicNaICrystal");
+	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.0,0.4));
 	logicNaICrystal->SetVisAttributes(attr);
 	physNaICrystal = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z2), logicNaICrystal, "physNaICrystal", logicWorld, false, 0, true);
 	// NaI Detector PMT
 	solidNaIPMT = new G4Tubs("solidNaIPMT", 0, ir1, tSensDet/2, 0, 360*deg);
 	logicNaIPMT = new G4LogicalVolume(solidNaIPMT, air, "logicNaIPMT");
 	// make purple like other PMT's
-	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5));
+	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicNaIPMT->SetVisAttributes(attr);
 	physNaIPMT = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z4), logicNaIPMT, "physNaIPMT", logicWorld, false, 0, true);
 	// Set NaI crystal as scoring volume
@@ -622,7 +623,19 @@ G4VPhysicalVolume* NuLatDetectorConstruction::Construct()
 {
 	// Define Visual Attributes object for adjusting coloring and visibility of various components - set to false to make components invisible
 	attr = new G4VisAttributes(false);
-	// World Volume
+	// World Volume - min size 1m on a side where NaI is installed
+	if(xWorld<0.5*m && (NaILoc=="X" || NaILoc=="x"))
+	{
+		xWorld = 0.5*m;
+	}
+	if(yWorld<0.5*m && (NaILoc=="Y" || NaILoc=="y"))
+	{
+		yWorld = 0.5*m;
+	}
+	if(zWorld<0.5*m && (NaILoc=="Z" || NaILoc=="z"))
+	{
+		zWorld = 0.5*m;
+	}
 	solidWorld = new G4Box("solidWorld", xWorld, yWorld, zWorld);
 	logicWorld =  new G4LogicalVolume(solidWorld, air, "logicWorld");
 	// make world volume invisible
@@ -648,9 +661,9 @@ void NuLatDetectorConstruction::ConstructSDandField()
 	// Define PMT's as sensitive volumes
 	NuLatPMTSensitiveDetector *detPMT = new NuLatPMTSensitiveDetector("NuLatPMT");
 	logicPMT->SetSensitiveDetector(detPMT);
-	// Define Voxels as sensitive volumes - figure out why this one doesn't work
-	//NuLatVoxelSensitiveDetector *detVoxel = NuLatVoxelSensitiveDetector("NuLatVoxel");
-	//logicVoxel->SetSensitiveDetector(detVoxel);
+	// Define Voxels as sensitive volumes - segmentation fault occurs when enabled (too much memory allocated to process hits)
+	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("NuLatVoxel");
+	logicVoxel->SetSensitiveDetector(detVoxel);/**/
 	// Define NaI PMT as sensitve volume
 	NuLatPMTSensitiveDetector *detNaIPMT = new NuLatPMTSensitiveDetector("NaIPMT");
 	logicNaIPMT->SetSensitiveDetector(detNaIPMT);

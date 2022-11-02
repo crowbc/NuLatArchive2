@@ -18,6 +18,7 @@
 #include "G4UImanager.hh"
 #include "G4VisManager.hh"
 #include "G4VisExecutive.hh"
+#include "G4TrajectoryDrawByParticleID.hh"
 #include "G4UIExecutive.hh"
 // Included simulation libraries
 #include "NuLatDetectorConstruction.hh"
@@ -62,6 +63,17 @@ int main(int argc, char** argv)
 	// construct and initialize the visualization manager
 	G4VisManager *visManager = new G4VisExecutive();
 	visManager->Initialize();
+	// Draw particle by particle ID
+	G4TrajectoryDrawByParticleID *model = new G4TrajectoryDrawByParticleID();
+	// set track colors
+	model->SetDefault("cyan");
+	model->Set("gamma", "green");
+	model->Set("e+", "blue");
+	model->Set("e-", "red");
+	//model->Set("opticalphoton", G4Colour(0.0, 0.2, 1.0));
+	// Register models and set trajectory models
+	visManager->RegisterModel(model);
+	visManager->SelectTrajectoryModel(model->Name());
 	// get the pointer to the UI manager and define session
 	G4UImanager *UImanager = G4UImanager::GetUIpointer();
 	// select interactive mode if UI is defined. Otherwise select batch mode:

@@ -22,9 +22,9 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	G4TouchableHistory *touch = (G4TouchableHistory*)(aStep->GetPreStepPoint()->GetTouchable());
 	G4VPhysicalVolume *physVol = ROHist->GetVolume();
 	G4int copyNo = physVol->GetCopyNo();
-	//NuLatVoxelHit *hit = (*voxelHitCollection)[copyNo];
+	NuLatVoxelHit *hit = (*voxelHitCollection)[copyNo];
 	// check if it is first touch
-	/*if (!(hit->GetLogV()))
+	if (!(hit->GetLogV()))
 	{
 		// fill volume information
 		hit->SetLogV(physVol->GetLogicalVolume());
@@ -32,7 +32,7 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 		transform.Invert();
 		hit->SetRot(transform.NetRotation());
 		hit->SetPos(transform.NetTranslation());
-	}/**/
+	}
 	// populate variables
 	evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
 	xpos = aStep->GetTrack()->GetPosition().x();
@@ -44,16 +44,16 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	pY0 = aStep->GetTrack()->GetVertexMomentumDirection().phi();
 	pZ0 = aStep->GetTrack()->GetVertexMomentumDirection().z();
 	// add energy deposit to this voxel
-	/*hit->AddEdep(tedep);
+	hit->AddEdep(tedep);
 	hit->PushEDepParticleTypeIDNumber(pID);
 	hit->PushEDep(tedep);
 	hit->PushEDepXPosition(xpos);
 	hit->PushEDepYPosition(ypos);
 	hit->PushEDepZPosition(zpos);
 	hit->PushEDepTime(time);
-	hit->PushinitialXMomentum(pX0);
+	hit->PushInitialXMomentum(pX0);
 	hit->PushInitialYMomentum(pY0);
-	hit->PushInitialZMomentum(pZ0);/**/
+	hit->PushInitialZMomentum(pZ0);
 	// initialize analysis manager and fill Ntuples
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
 	// Fill Ntuple columns with Voxel energy deposition information - add column for particle ID number

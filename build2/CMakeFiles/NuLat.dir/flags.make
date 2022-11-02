@@ -6,5 +6,5 @@ CXX_DEFINES = -DG4LIB_BUILD_DLL -DG4UI_BUILD_XM_SESSION -DG4UI_USE_QT -DG4UI_USE
 
 CXX_INCLUDES = -I/home/jack/Documents/geant4/NuLat/include -isystem /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4 -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtPrintSupport
 
-CXX_FLAGS = -fPIC
+CXX_FLAGS = -g -Werror -fPIC
 

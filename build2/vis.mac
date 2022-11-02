@@ -87,9 +87,5 @@
 # For file-based drivers, use this to create an empty detector view:
 #/vis/viewer/flush
 #
-# Set visualization to accumulate events into one picture
-#
-#/vis/scene/endOfEventAction accumulate
-#
-#
+# Start with a 1 event run
 #/run/beamOn 1
