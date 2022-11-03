@@ -1,0 +1,27 @@
+Starting program: /home/jack/Documents/geant4/NuLat/build2/NuLat 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7fffef93c640 (LWP 47222)]
+[New Thread 0x7fffedf23640 (LWP 47223)]
+[New Thread 0x7fffed722640 (LWP 47224)]
+[New Thread 0x7fffecee0640 (LWP 47225)]
+[New Thread 0x7fffdffff640 (LWP 47226)]
+[New Thread 0x7fffdf7fe640 (LWP 47227)]
+[Detaching after fork from child process 47229]
+[New Thread 0x7fffdd1ef640 (LWP 47233)]
+[New Thread 0x7fffdc9ee640 (LWP 47234)]
+[New Thread 0x7fffca05b640 (LWP 47235)]
+[New Thread 0x7fffc985a640 (LWP 47236)]
+[New Thread 0x7fffc9059640 (LWP 47237)]
+[New Thread 0x7fffc8858640 (LWP 47238)]
+[New Thread 0x7fffb3fff640 (LWP 47239)]
+[New Thread 0x7fffb37fe640 (LWP 47240)]
+[New Thread 0x7fffb2c7d640 (LWP 47241)]
+[New Thread 0x7fffa3fff640 (LWP 47242)]
+[Thread 0x7fffa3fff640 (LWP 47242) exited]
+[Thread 0x7fffed722640 (LWP 47224) exited]
+[New Thread 0x7fffed722640 (LWP 47244)]
+[Switching to Thread 0x7fffb2c7d640 (LWP 47241)]
+
+Thread 16 "NuLat" hit Breakpoint 1, NuLatVoxelSensitiveDetector::ProcessHits (this=0x7fff9c0a16a0, aStep=0x7fff9c04ced0, ROHist=0x0) at /home/jack/Documents/geant4/NuLat/src/NuLatVoxelSensDet.cc:13
+13	{

@@ -1,26 +1,47 @@
 // included user defined header
 #include "NuLatVoxelSensDet.hh"
 // Constructor
-NuLatVoxelSensitiveDetector::NuLatVoxelSensitiveDetector(G4String name) : G4VSensitiveDetector(name)
+NuLatVoxelSensitiveDetector::NuLatVoxelSensitiveDetector(G4String name, G4int xVox, G4int yVox, G4int zVox) : G4VSensitiveDetector(name), voxelHitCollection(0), voxelHitCollectionID(-1)
 {
-	collectionName.insert(name);
+	collectionName.insert("NuLatVoxelColl");
+	xVoxels = xVox;
+	yVoxels = yVox;
+	zVoxels = zVox;
 }
 // Destructor
 NuLatVoxelSensitiveDetector::~NuLatVoxelSensitiveDetector()
 {}
-// ProcessHits()
+// Initialze the Sensitive Detector
+void NuLatVoxelSensitiveDetector::Initialize(G4HCofThisEvent* hce)
+{
+	voxelHitCollection = new NuLatVoxelHitsCollection(SensitiveDetectorName, collectionName[0]);
+	if (voxelHitCollectionID<0)
+	{
+		voxelHitCollectionID = G4SDManager::GetSDMpointer()->GetCollectionID(voxelHitCollection);
+	}
+	hce->AddHitsCollection(voxelHitCollectionID, voxelHitCollection);
+	// fill NuLatVoxelHits with zero energy deposition
+	for (G4int i = 0; i < xVoxels*yVoxels*zVoxels; i++)
+	{
+		NuLatVoxelHit* hit = new NuLatVoxelHit(i);
+		voxelHitCollection->insert(hit);
+	}
+}
+// Process Hits in the Sensitive Detector
 G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROHist)
 {
-	G4bool debugMsg = false;// set to true to enable debug messages
 	G4int evt, pID;
 	G4double tedep = aStep->GetTotalEnergyDeposit();
 	G4double xpos, ypos, zpos, time, pX0, pY0, pZ0;
-	if (tedep==0.)
+	G4String pName = aStep->GetTrack()->GetDefinition()->GetParticleName();
+	//G4ThreeVector posHit, momHit;
+	if (tedep == 0.)
 		return true;
-	if (aStep->GetTrack()->GetDefinition()->GetParticleName()=="opticalphoton")
+	if (pName == "opticalphoton")
 		return true;
-	G4TouchableHistory *touch = (G4TouchableHistory*)(aStep->GetPreStepPoint()->GetTouchable());
-	G4VPhysicalVolume *physVol = ROHist->GetVolume();
+	//G4TouchableHistory *touch = (G4TouchableHistory*)(aStep->GetPreStepPoint()->GetTouchable());
+	const G4VTouchable *touch = aStep->GetPreStepPoint()->GetTouchable();
+	G4VPhysicalVolume *physVol = touch->GetVolume();
 	G4int copyNo = physVol->GetCopyNo();
 	NuLatVoxelHit *hit = (*voxelHitCollection)[copyNo];
 	// check if it is first touch
@@ -35,6 +56,7 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	}
 	// populate variables
 	evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+	//posHit = aStep->GetTrack()->GetPosition();
 	xpos = aStep->GetTrack()->GetPosition().x();
 	ypos = aStep->GetTrack()->GetPosition().y();
 	zpos = aStep->GetTrack()->GetPosition().z();
@@ -56,7 +78,7 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	hit->PushInitialZMomentum(pZ0);
 	// initialize analysis manager and fill Ntuples
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
-	// Fill Ntuple columns with Voxel energy deposition information - add column for particle ID number
+	// Fill Ntuple columns with Voxel energy deposition information - add columns for particle ID number, momentum components
 	man->FillNtupleIColumn(2, 0, evt);
 	man->FillNtupleDColumn(2, 1, tedep);
 	man->FillNtupleDColumn(2, 2, xpos);
@@ -73,50 +95,51 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 /* ---------------------------------------------- */
 G4int NuLatVoxelSensitiveDetector::ParticleNameToIDNumber(G4Step* step)
 {
-	G4int particleIDNumber;
-	if(step->GetTrack()->GetDefinition()->GetParticleName()=="opticalphoton")
+	G4int num;
+	G4String name = step->GetTrack()->GetDefinition()->GetParticleName();
+	if(name == "opticalphoton")
 	{
-		particleIDNumber=100;
+		num = 100;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="e-")
+	else if(name == "e-")
 	{
-		particleIDNumber=2;
+		num = 2;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="e+")
+	else if(name == "e+")
 	{
-		particleIDNumber=3;
+		num = 3;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="neutron")
+	else if(name == "neutron")
 	{
-		particleIDNumber=4;
+		num = 4;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="proton")
+	else if(name == "proton")
 	{
-		particleIDNumber=5;
+		num = 5;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="mu+")
+	else if(name == "mu+")
 	{
-		particleIDNumber=6;
+		num = 6;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="mu-")
+	else if(name == "mu-")
 	{
-		particleIDNumber=7;
+		num = 7;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="alpha")
+	else if(name == "alpha")
 	{
-		particleIDNumber=8;
+		num = 8;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="Li7")
+	else if(name == "Li7")
 	{
-		particleIDNumber=9;
+		num = 9;
 	}
-	else if(step->GetTrack()->GetDefinition()->GetParticleName()=="gamma")
+	else if(name == "gamma")
 	{
-		particleIDNumber=1;
+		num = 1;
 	}
 	else
 	{
-		particleIDNumber=0;
+		num = 0;
 	}
-	return (particleIDNumber);
+	return num;
 }

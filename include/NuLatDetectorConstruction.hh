@@ -47,16 +47,16 @@ public:
 	virtual G4VPhysicalVolume* Construct();
 private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
-	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox, *solidAlDivOuter, *solidAlDivInner;
+	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox, *solidAlDivOuter, *solidAlDivInner, *solidAlDivCut;
 	// to do: reallocate single volume for acrylic pieces and use transformations to place duplicates
 	G4Box *solidAcrylicSidePlateX, *solidAcrylicSidePlateY, *solidAcrylicSidePlateZ;
 	// to do: reallocate volumes for single LG box and use transformations to place duplicates
 	//G4Box *solidLGBoxPlusX, *solidLGBoxPlusY, *solidLGBoxPlusZ, *solidLGBoxMinusX, *solidLGBoxMinusY, *solidLGBoxMinusZ;
-	G4Trd *solidLGTrd, *solidAcrylicPanel, *solidAlPanel;
+	G4Trd *solidLGTrd, *solidAcrylicPanel, *solidAlPanel, *solidAlDivPlate;
 	G4Tubs *solidPMT, *solidAlBottom, *solidAlBarrel, *solidAlFlange, *solidNaICrystal, *solidNaIPMT;
 	G4Cons *solidLGCone;
 	G4IntersectionSolid *solidLG;
-	G4SubtractionSolid *solidAlDiv;
+	G4SubtractionSolid *solidAlDiv, *solidAlDivBot, *solidAlDivTop;
 	G4LogicalVolume *logicWorld, *logicVCBox, *logicVoxel, *logicLGBox, *logicLG, *logicPMT, *fScoringVolumeNuLat;
 	G4LogicalVolume *logicAcrylicSidePlateX, *logicAcrylicSidePlateY, *logicAcrylicSidePlateZ, *logicAcrylicPanel, *logicAlPanel, *logicAlDiv;
 	//G4LogicalVolume *logicLGBoxPlusX, *logicLGBoxPlusY, *logicLGBoxPlusZ, *logicLGBoxMinusX, *logicLGBoxMinusY, *logicLGBoxMinusZ;
@@ -82,12 +82,22 @@ private:
 	//G4double aH = 1.00797*g/mole, aC = 12.01115*g/mole;
 	// conversion factor inches to mm
 	const G4double in = 25.4*mm;
+	// constants for dispersion coefficients and factors for NaI
+	const G4double a0NaI = 1.478;
+	const G4double a1NaI = 1.532;
+	const G4double b1NaI = 0.170;
+	const G4double a2NaI = 4.27;
+	const G4double b2NaI = 86.21;
 	// scintillation properties of NaI - see table in NuLatDetectorConstruction.cc, lines 175-201
 	const G4double scintYieldNaI = 40000./MeV;
 	const G4double stcNaI = 230.*ns;
+	// constants for Gaussian fit of NaI scintillation component
+	const G4double meanWlenNaI = 410.;
+	const G4double FWHMNaI = 110.;
 	// scintillation properties of PVT
 	const G4double scintYieldPVT = 10000./MeV;
-	const G4double stcPVT = 2.1*ns;
+	const G4double stcEJ200 = 2.1*ns;
+	const G4double srtEJ200 = 0.9*ns;
 	// densities of various materials
 	const G4double rhoAcrylic = 1.180*g/cm3;
 	const G4double rhoEJ200 = 1.023*g/cm3;
@@ -101,7 +111,7 @@ private:
 	G4double xVoxelSize, yVoxelSize, zVoxelSize;
 	G4double xVoxelSpace, yVoxelSpace, zVoxelSpace;
 	G4double lenPMT, lenLGTaper, lenLGSqu, lenLGwPMT, massfracLi6;
-	G4bool NaIdetector, Li6doped;
+	G4bool NaIdetector, Li6doped, debugMsg;
 	G4double xVCBoxSize, yVCBoxSize, zVCBoxSize, tAcrylicPlate;
 	//G4double rMuMetal, hMuMetal, tGlass, rPMTPhotoCath, tGlassMin;
 	// String for setting X, Y or Z location of NaI detector

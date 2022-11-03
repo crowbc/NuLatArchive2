@@ -57,7 +57,7 @@ NuLatDetectorConstruction::~NuLatDetectorConstruction()
 void NuLatDetectorConstruction::DefineMaterials()
 {
 	// Boolean to toggle debug messages
-	G4bool debugMsg = false;
+	debugMsg = false;
 	// Strings for debug messages
 	G4String wlenNMStr = "Wavelength (nm:) ";
 	G4String eStr = "; Energy (eV:) ";
@@ -67,15 +67,6 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// size_t variable for property array lengths
 	const size_t numEntries = 182;
 	G4double rindexNaI[numEntries];
-	// constants for dispersion coefficients and factors
-	const G4double a0NaI = 1.478;
-	const G4double a1NaI = 1.532;
-	const G4double b1NaI = 0.170;
-	const G4double a2NaI = 4.27;
-	const G4double b2NaI = 86.21;
-	// constants for Gaussian fit of NaI scintillation component
-	const G4double meanWlenNaI = 410.;
-	const G4double FWHMNaI = 110.;
 	// Photon energy range for energy dependent material responses
 	G4double photonEnergy[numEntries] = {
 		2.034*eV, 2.068*eV, 2.103*eV, 2.139*eV, 2.177*eV, 2.216*eV, 2.256*eV, 2.298*eV, 2.341*eV, 2.386*eV, //10
@@ -103,7 +94,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// note: maximum transmission at 425 nm wavelength confirmed. See photon_energy_wlens.ods for detailed matching of fc to wavelength
 	// note: number of entries is 61 from 380 to 500 nm in steps of 2 nm, or 121 in steps of 1 nm
 	// note: fcEJ200 table may need to be built piecewise (see graph file EJ-200_emspec.png)
-	G4double scPVT[numEntries] = {
+	G4double scEJ200[numEntries] = {
 		0.000,  0.000,  0.000,  0.000,  0.000,  0.010,  0.020,  0.035,  0.050,  0.060, //10
 		0.070,  0.085,  0.090,  0.095,  0.098,  0.100,  0.110,  0.120,  0.130,  0.140, //20
 		0.150,  0.160,  0.170,  0.180,  0.200,  0.220,  0.240,  0.250,  0.270,  0.290, //30  
@@ -134,7 +125,9 @@ void NuLatDetectorConstruction::DefineMaterials()
 	G4double rindexPVT[numEntries];
 	G4double aLenPVT[numEntries];
 	/*
-	Notes on PVT properties:	(note: PVT used in NuLat is Eljen EJ-200 organic plastic scintillator)
+	Notes on scintillation properties:
+	---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	PVT properties:	(note: PVT used in NuLat is Eljen EJ-200 organic plastic scintillator)
 	source:	Nuclear Inst. and Methods in Physics Research, A 954 (2020) 161448
 	doi:		https://doi.org/10.1016/j.nima.2018.10.126
 	Quoted light output, with citation to reference [12] below, is 10000/MeV
@@ -172,6 +165,57 @@ void NuLatDetectorConstruction::DefineMaterials()
 		validate the remaining entries for the scPVT table
 	notes:	425 nm is wavelength of maximum emission on scPVT table imported from Materials.hh (verified in photon_energy_wlens.ods)
 		Geant4 properties tables uses 1.032*g/cm3 as density of PVT. May need to define my own using this table
+	---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	NaI properties:
+	source:	IOP Publishing 1221 (2022) 012002
+	DOI:	doi:10.1088/1757-899X/1221/1/012002
+	_________________________________________________________________________________________________________________________________________________________________________________
+	Scintillation crystal	Elemental composition (wt.%)	Light yield (photons/MeV)	Decay time, τ (ns)	Radiation length (cm)	Density (g/cm 3 )	Ref.(s)
+	_________________________________________________________________________________________________________________________________________________________________________________
+	PWO (PbWO4)		45.5%Pb; 40.5%W 14.0% O		250				5-15			0.89			8.28			[7, 14, 15]
+	PbF2			84.5%Pb; 15.5%F			<1000				30, 6			0.93			7.77			[16, 17]
+	CsI			51.1%Cs; 48.8%I			16,800				10			1.86			4.51			[17, 18]
+	LYSO:Ce			57.5%Lu; 3.24%Y			30,000				40			1.14			7.11			[2, 5, 8, 15, 19]
+	(0.05 mol.%)		24.63%Si; 14.6%O
+				0.01% Ce
+	LuAG:Ce			61.6%Lu; 15.8%Al		25,000				820, 50			1.45			6.76			[5, 20]
+	(0.1 mol.%)		22.5%O; 0.02%Ce
+	BaF 2 :Y		76.29%Ba; 21.1%F		2,000				600, 0.5		2.03			4.89			[5, 9]
+	(5 mol.%)		2.6%Y
+	BGO			67.1 %Bi; 17.5%Ge		8200				300			1.12			7.13			[18, 20]
+	(Bi4Ge3O12)		15.4%O
+	NaI:Tl			15.27%Na; 84.31%I		40,000				230			2.59			3.67			[1, 20]
+	(0.3 mol.%)		0.41%Tl
+	_________________________________________________________________________________________________________________________________________________________________________________
+	References:
+	[1] Blasse G, 1994, Scintillator materials Chem. Mater. 6 1465-1475.
+	[20] Hu C, Li J, Yang F, Jiang B, Zhang L,and Zhu R-Y, 2020, LuAG ceramic scintillators for future HEP experiments
+		Nucl. Instrum. Methods Phys. Res. A 954 161723.
+	_________________________________________________________________________________________________________________________________________________________________________________
+	Notes on Hamamatsu PMT's:
+	From catalog on Photomultiplier Tubes and Assemblies for Scintillation Counting and High Energy Physics:
+	(1) Borosilicate high frequency cutoff: ~300 nm
+	(2) Quantum Efficiency: QE = S*1240/wlen*perCent, where S is radiant sensitivity given by: S = Photoelectric current/Radiant power of light (A/W)
+	note on QE: 1240 looks remarkably similar in dimensionality and magnitude to hc in eV*nm but there is a leftover factor of charge dimensionality
+	Table of Scintillator Properties in Hamamatsu catalog:
+	_______________________________________________________________________________________________________________________________________________________________________________
+	Table 1: Summary of scintillator characteristics
+	_______________________________________________________________________________________________________________________________________________________________________________
+				NaI(Tl)		BGO		CsI(Tl)		Pure CsI	BaF2		GSO: Ce		Plastic		LaBr3: Ce	LSO: Ce		YAP: Ce
+	Density (g/cm3)		3.67		7.13		4.51		4.51		4.88		6.71		1.03		5.29		7.35		5.55
+	L_rad (cm)		2.59		1.12		1.85		1.85		2.10		1.38		40		2.1		0.88		2.70
+	Refractive index	1.85		2.15		1.80		1.80		1.58		1.85		1.58		1.9		1.82		1.97
+	Hygroscopic		Yes		No		Slightly	Slightly	Slightly	No		No		Yes		No		No
+	Luminescence (nm)	410		480		530		310		220 / 325	430		400		380		420		380
+	Decay time (ns)		230		300		1000		10		0.9 / 630	30		2.0		16		40		30
+	Relative light output	100		15		45 to 50	<10		20		20		25		165		70		40
+	_______________________________________________________________________________________________________________________________________________________________________________
+	
+	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
+	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~110nm). There is a similar graph and table on p. 15
+	of the same catalog. The formula from this information is contained in note (1) below:
+	(3) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenNM[i]-410.0)*(wlenNM[i]-410.0)/(110.0*110.0));
+	
 	*/
 	G4double reflAl[numEntries];
 	G4double aLenAl[numEntries];
@@ -225,18 +269,16 @@ void NuLatDetectorConstruction::DefineMaterials()
 		aLenAcrylic[i] = 10.*m;// taken from Materials.hh - look for correct values
 		rindexPVT[i] = 1.58;
 		aLenPVT[i] = 380.*cm;
-		//aLenAl[i] = 10.*cm;// taken from Materials.hh - look for correct values
 		reflAl[i] = 0.95;// taken from Materials.hh - look for correct values
-		// NaI properties merged from other array
 		/************************************************************************************************************/
 		/* Reference for dispersion formula shown below: https://refractiveindex.info/?shelf=main&book=NaI&page=Li  */
 		/* dispersion formula as function of wavelength: n^2−1=0.478+1.532*λ^2/(λ^2−0.170^2)+4.27*λ^2/(λ^2−86.21^2) */
 		/* See also J. Phys. Chem. Ref. Data 5, 329-528 (1976) at https://aip.scitation.org/doi/10.1063/1.555536    */
 		/************************************************************************************************************/
-		rindexNaI[i]=sqrt(a0NaI+a1NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b1NaI*b1NaI)+a2NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b2NaI*b2NaI));
+		rindexNaI[i] = sqrt(a0NaI+a1NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b1NaI*b1NaI)+a2NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b2NaI*b2NaI));
 		// see table below
 		aLenNaI[i] = 2.59*cm;
-		// See Hamamatsu Catalog pp. 15 & 73, and note (1) below
+		// See Hamamatsu Catalog pp. 15 & 73, and note (3) above
 		scNaI[i] = exp(-2*(wlenNM[i]-meanWlenNaI)*(wlenNM[i]-meanWlenNaI)/(FWHMNaI*FWHMNaI));
 		//rindexBeCuPhotoCath[i] = 2.7;// taken from Materials.hh
 		//aLenBeCuPhotoCath[i] = 0.001*mm;// taken from Materials.hh
@@ -248,58 +290,6 @@ void NuLatDetectorConstruction::DefineMaterials()
 			G4cout << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
 		}/**/
 	}
-	/*
-	More data on NaI:
-	source:	IOP Publishing 1221 (2022) 012002
-	DOI:	doi:10.1088/1757-899X/1221/1/012002
-	_________________________________________________________________________________________________________________________________________________________________________________
-	Scintillation crystal	Elemental composition (wt.%)	Light yield (photons/MeV)	Decay time, τ (ns)	Radiation length (cm)	Density (g/cm 3 )	Ref.(s)
-	_________________________________________________________________________________________________________________________________________________________________________________
-	PWO (PbWO4)		45.5%Pb; 40.5%W 14.0% O		250				5-15			0.89			8.28			[7, 14, 15]
-	PbF2			84.5%Pb; 15.5%F			<1000				30, 6			0.93			7.77			[16, 17]
-	CsI			51.1%Cs; 48.8%I			16,800				10			1.86			4.51			[17, 18]
-	LYSO:Ce			57.5%Lu; 3.24%Y			30,000				40			1.14			7.11			[2, 5, 8, 15, 19]
-	(0.05 mol.%)		24.63%Si; 14.6%O
-				0.01% Ce
-	LuAG:Ce			61.6%Lu; 15.8%Al		25,000				820, 50			1.45			6.76			[5, 20]
-	(0.1 mol.%)		22.5%O; 0.02%Ce
-	BaF 2 :Y		76.29%Ba; 21.1%F		2,000				600, 0.5		2.03			4.89			[5, 9]
-	(5 mol.%)		2.6%Y
-	BGO			67.1 %Bi; 17.5%Ge		8200				300			1.12			7.13			[18, 20]
-	(Bi4Ge3O12)		15.4%O
-	NaI:Tl			15.27%Na; 84.31%I		40,000				230			2.59			3.67			[1, 20]
-	(0.3 mol.%)		0.41%Tl
-	_________________________________________________________________________________________________________________________________________________________________________________
-	References:
-	[1] Blasse G, 1994, Scintillator materials Chem. Mater. 6 1465-1475.
-	[20] Hu C, Li J, Yang F, Jiang B, Zhang L,and Zhu R-Y, 2020, LuAG ceramic scintillators for future HEP experiments
-		Nucl. Instrum. Methods Phys. Res. A 954 161723.
-	_________________________________________________________________________________________________________________________________________________________________________________
-	Notes on Hamamatsu PMT's:
-	From catalog on Photomultiplier Tubes and Assemblies for Scintillation Counting and High Energy Physics:
-	Borosilicate high frequency cutoff: ~300 nm
-	Quantum Efficiency: QE = S*1240/wlen*perCent, where S is radiant sensitivity given by: S = Photoelectric current/Radiant power of light (A/W)
-	note on QE: 1240 looks remarkably similar in dimensionality and magnitude to hc in eV*nm but there is a leftover factor of charge dimensionality
-	Table of Scintillator Properties in Hamamatsu catalog:
-	_______________________________________________________________________________________________________________________________________________________________________________
-	Table 1: Summary of scintillator characteristics
-	_______________________________________________________________________________________________________________________________________________________________________________
-				NaI(Tl)		BGO		CsI(Tl)		Pure CsI	BaF2		GSO: Ce		Plastic		LaBr3: Ce	LSO: Ce		YAP: Ce
-	Density (g/cm3)		3.67		7.13		4.51		4.51		4.88		6.71		1.03		5.29		7.35		5.55
-	L_rad (cm)		2.59		1.12		1.85		1.85		2.10		1.38		40		2.1		0.88		2.70
-	Refractive index	1.85		2.15		1.80		1.80		1.58		1.85		1.58		1.9		1.82		1.97
-	Hygroscopic		Yes		No		Slightly	Slightly	Slightly	No		No		Yes		No		No
-	Luminescence (nm)	410		480		530		310		220 / 325	430		400		380		420		380
-	Decay time (ns)		230		300		1000		10		0.9 / 630	30		2.0		16		40		30
-	Relative light output	100		15		45 to 50	<10		20		20		25		165		70		40
-	_______________________________________________________________________________________________________________________________________________________________________________
-	
-	Note from catalog: Spectral response range of most 2" phototubes is 300 to 650 nm. Two types, the R6041-406 and -506 have spectral ranges of 160 to 650 nm. (see table starting p. 22)
-	Hamamatsu catalog p. 73 shows peak around 410-420 nm, dropping to 0 around 310 nm and 510 nm (maybe Gaussian?, mean ~410nm, FWHM ~130nm). There is a similar graph and table on p. 15
-	of the same catalog. The formula from this information is contained in note (1) below:
-	(1) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenNM[i]-410.0)*(wlenNM[i]-410.0)/(110.0*110.0));
-	
-	*/
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
 	mptAir->AddProperty("RINDEX", photonEnergy, rindexAir, numEntries);
@@ -321,9 +311,10 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptPVT = new G4MaterialPropertiesTable();
 	mptPVT->AddProperty("RINDEX", photonEnergy, rindexPVT, numEntries);
 	mptPVT->AddProperty("ABSLENGTH", photonEnergy, aLenPVT, numEntries);
-	mptPVT->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scPVT, numEntries, true);
+	mptPVT->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scEJ200, numEntries, true);
 	mptPVT->AddConstProperty("SCINTILLATIONYIELD", scintYieldPVT);
-	mptPVT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcPVT);
+	mptPVT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcEJ200);
+	mptPVT->AddConstProperty("SCINTILLATIONRISETIME1", srtEJ200);
 	mptPVT->AddConstProperty("RESOLUTIONSCALE", 1.0);
 	mptPVT->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
 	//PVT->SetMaterialPropertiesTable(mptPVT);
@@ -433,14 +424,16 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	// make these orange just to stand out
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
-	// Aluminum dividers
+	// Aluminum dividers - do not use Jack's code for this! Overlaps abound!
+	/*solidAlDivPlate = new G4Trd("solidAlDivPlate", xVCBoxSize/2, xVCBoxSize/2, yVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/2-1*in);// change second (upper) x dimension to aluminum sidewall width/2
+	solidAlDivCut = new G4Box("solidAlDivCut", xVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/4-0.5*in);
 	solidAlDivOuter = new G4Box("solidAlDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
 	solidAlDivInner = new G4Box("solidAlDivInner", dx1/2, dy1/2, 6.5*in/2);
 	solidAlDiv = new G4SubtractionSolid("solidAlDiv", solidAlDivOuter, solidAlDivInner, 0, G4ThreeVector(0., 0., 0.));
-	logicAlDiv = new G4LogicalVolume(solidAlDiv, aluminum, "logicAlDiv");
+	logicAlDiv = new G4LogicalVolume(solidAlDiv, aluminum, "logicAlDiv");/**/
 	// make divider plates light gray
-	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
-	logicAlDiv->SetVisAttributes(attr);
+	/*attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
+	logicAlDiv->SetVisAttributes(attr);/**/
 	// make +z light guides
 	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
 	for (G4int i=0; i<xVoxels; i++)
@@ -450,7 +443,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			ypos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 			physLG = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
-			physAlDiv = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
+			//physAlDiv = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x light guides
@@ -462,7 +455,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(xRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-			physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xpos + 58.7*mm, ypos, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			//physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xpos + 58.7*mm, ypos, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y light guides
@@ -474,7 +467,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-			physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos + 58.7*mm, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			//physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos + 58.7*mm, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// Define PMT's
@@ -661,8 +654,8 @@ void NuLatDetectorConstruction::ConstructSDandField()
 	// Define PMT's as sensitive volumes
 	NuLatPMTSensitiveDetector *detPMT = new NuLatPMTSensitiveDetector("NuLatPMT");
 	logicPMT->SetSensitiveDetector(detPMT);
-	// Define Voxels as sensitive volumes - segmentation fault occurs when enabled (too much memory allocated to process hits)
-	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("NuLatVoxel");
+	// Define Voxels as sensitive volumes - segmentation fault occurs when enabled (debugger stops logging at line 32 of NuLatVoxelSensDet.cc)
+	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("NuLatVoxel", xVoxels, yVoxels, zVoxels);
 	logicVoxel->SetSensitiveDetector(detVoxel);/**/
 	// Define NaI PMT as sensitve volume
 	NuLatPMTSensitiveDetector *detNaIPMT = new NuLatPMTSensitiveDetector("NaIPMT");

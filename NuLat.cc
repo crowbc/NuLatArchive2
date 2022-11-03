@@ -70,7 +70,7 @@ int main(int argc, char** argv)
 	model->Set("gamma", "green");
 	model->Set("e+", "blue");
 	model->Set("e-", "red");
-	//model->Set("opticalphoton", G4Colour(0.0, 0.2, 1.0));
+	model->Set("opticalphoton", G4Colour(0.0, 0.2, 0.8));
 	// Register models and set trajectory models
 	visManager->RegisterModel(model);
 	visManager->SelectTrajectoryModel(model->Name());

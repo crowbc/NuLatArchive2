@@ -20,20 +20,27 @@ class NuLatVoxelSensitiveDetector : public G4VSensitiveDetector
 {
 public:
 	// Constructor and Destructor
-	NuLatVoxelSensitiveDetector(G4String);
+	NuLatVoxelSensitiveDetector(G4String name, G4int xVox, G4int yVox, G4int zVox);
 	~NuLatVoxelSensitiveDetector();
-	//virtual void Initialize(G4HCofThisEvent* HCE);
-	//virtual G4bool ProcessHits(G4Step*aStep,G4TouchableHistory*ROhist);
+	// Initialize the Sensitive Detector
+	virtual void Initialize(G4HCofThisEvent* HCE);
+	// Process Hits in the Sensitive Detector
+	virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist);
+	// Convert the Particle String to an integer ID number
 	virtual G4int ParticleNameToIDNumber(G4Step* step);
 private:
 	// ProcessHits()
-	virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
+	//virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
 	// Constant for calculating wavelength in nm from energy
 	const G4double HCNM = 1239.841939*eV;
+	// Voxel counts in each dimension
+	G4int xVoxels, yVoxels, zVoxels;
 	// Hit Collection object
 	NuLatVoxelHitsCollection *voxelHitCollection;
 	// ID variaible
 	G4int voxelHitCollectionID;
+	// Debug Message Boolean variable (set to true to enable messages)
+	G4bool debugMsg = false;
 };
 // end of conditional to define the class only once
 #endif
