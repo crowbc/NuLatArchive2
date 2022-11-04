@@ -20,8 +20,9 @@
 #include "G4Tubs.hh"
 #include "G4IntersectionSolid.hh"
 #include "G4SubtractionSolid.hh"
-// Header file for sensitive detector
+// Header files for sensitive detector
 #include "G4VSensitiveDetector.hh"
+#include "G4SDManager.hh"
 // Header files for surfaces
 #include "G4OpticalSurface.hh"
 #include "G4LogicalSkinSurface.hh"

@@ -99,7 +99,7 @@ private:
 	static std::vector<G4double>  initialZMomentum;
 	G4ThreeVector fPos;
 	G4RotationMatrix fRot;
-	const G4LogicalVolume* fPLogV;
+	const G4LogicalVolume *fPLogV;
 };
 typedef G4THitsCollection<NuLatVoxelHit> NuLatVoxelHitsCollection;
 extern G4ThreadLocal G4Allocator<NuLatVoxelHit>* NuLatVoxelHitAllocator;

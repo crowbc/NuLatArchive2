@@ -51,3 +51,5 @@
 /analysis/h1/getVector
 /analysis/h2/getVector
 /run/beamOn 1
+/analysis/h1/getVector
+/analysis/h2/getVector

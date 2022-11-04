@@ -568,4 +568,32 @@ CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4P2ToolsManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericAnalysisManager.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCofThisEvent.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Track.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDStructure.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDefStore.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDef.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TypeKey.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttValue.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/graphics_reps_defs.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh

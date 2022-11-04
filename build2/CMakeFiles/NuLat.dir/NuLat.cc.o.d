@@ -660,6 +660,10 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SensitiveVolumeList.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4CollectionNameVector.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSDFilter.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDStructure.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpticalSurface.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Physics2DVector.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Physics2DVector.icc \
@@ -734,18 +738,13 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericAnalysisManager.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc \
- /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCofThisEvent.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Track.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDStructure.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
@@ -757,6 +756,8 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatPhysics.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VModularPhysicsList.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicsConstructor.hh \

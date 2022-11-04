@@ -23,11 +23,11 @@ public:
 	NuLatVoxelSensitiveDetector(G4String name, G4int xVox, G4int yVox, G4int zVox);
 	~NuLatVoxelSensitiveDetector();
 	// Initialize the Sensitive Detector
-	virtual void Initialize(G4HCofThisEvent* HCE);
+	virtual void Initialize(G4HCofThisEvent* hce);
 	// Process Hits in the Sensitive Detector
 	virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist);
 	// Convert the Particle String to an integer ID number
-	virtual G4int ParticleNameToIDNumber(G4Step* step);
+	virtual G4int ParticleNameToIDNumber(G4String name);
 private:
 	// ProcessHits()
 	//virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);

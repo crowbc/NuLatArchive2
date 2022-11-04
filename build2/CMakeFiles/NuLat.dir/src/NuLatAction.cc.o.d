@@ -374,8 +374,11 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrajectoryContainer.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTrajectory.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserEventInformation.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatStepping.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCofThisEvent.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDStructure.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/geomdefs.hh \
@@ -444,18 +447,11 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserTrackInformation.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsModelCatalog.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Track.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatDetectorConstruction.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserDetectorConstruction.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistElementBuilder.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistMaterialBuilder.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ICRU90StoppingData.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Pow.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Exp.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PVPlacement.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VReadOutGeometry.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SensitiveVolumeList.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistory.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Transform3D.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.h \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.icc \
@@ -463,6 +459,49 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Vector3D.h \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Normal3D.h \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistoryPool.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistory.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4CollectionNameVector.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSDFilter.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDefStore.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDef.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TypeKey.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttValue.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/graphics_reps_defs.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatStepping.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
+ /home/jack/Documents/geant4/NuLat/include/NuLatDetectorConstruction.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserDetectorConstruction.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistManager.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistElementBuilder.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistMaterialBuilder.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ICRU90StoppingData.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Pow.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Exp.hh \
+ /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PVPlacement.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PVParameterised.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PVReplica.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Box.hh \
@@ -494,25 +533,9 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IntersectionSolid.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BooleanSolid.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4DisplacedSolid.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BooleanSolid.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SubtractionSolid.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VReadOutGeometry.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SensitiveVolumeList.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistory.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistoryPool.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistory.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4CollectionNameVector.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSDFilter.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpticalSurface.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Physics2DVector.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Physics2DVector.icc \
@@ -524,11 +547,6 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericMessenger.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AnyType.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AnyMethod.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/graphics_reps_defs.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatPMTsensDet.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh \
@@ -646,25 +664,8 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingMessenger.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserTrackingAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManagerKernel.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCofThisEvent.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TouchableHistory.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Track.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SDStructure.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HCtable.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDefStore.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDef.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TypeKey.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttValue.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh

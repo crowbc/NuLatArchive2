@@ -651,13 +651,18 @@ G4VPhysicalVolume* NuLatDetectorConstruction::Construct()
 // Sensitive Detector Function
 void NuLatDetectorConstruction::ConstructSDandField()
 {
+	// Get SDM pointer for creating new detectors
+	G4SDManager *SDman = G4SDManager::GetSDMpointer();
 	// Define PMT's as sensitive volumes
-	NuLatPMTSensitiveDetector *detPMT = new NuLatPMTSensitiveDetector("NuLatPMT");
+	NuLatPMTSensitiveDetector *detPMT = new NuLatPMTSensitiveDetector("/NuLatPMT", xVoxels, yVoxels, zVoxels);
+	SDman->AddNewDetector(detPMT);
 	logicPMT->SetSensitiveDetector(detPMT);
 	// Define Voxels as sensitive volumes - segmentation fault occurs when enabled (debugger stops logging at line 32 of NuLatVoxelSensDet.cc)
-	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("NuLatVoxel", xVoxels, yVoxels, zVoxels);
+	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("/NuLatVoxel", xVoxels, yVoxels, zVoxels);
+	SDman->AddNewDetector(detVoxel);
 	logicVoxel->SetSensitiveDetector(detVoxel);/**/
 	// Define NaI PMT as sensitve volume
-	NuLatPMTSensitiveDetector *detNaIPMT = new NuLatPMTSensitiveDetector("NaIPMT");
+	NuLatPMTSensitiveDetector *detNaIPMT = new NuLatPMTSensitiveDetector("/NaIPMT", xVoxels, yVoxels, zVoxels);// Need to handle this one appropriately - the voxel count parameters do not apply. Might need a new class
+	SDman->AddNewDetector(detNaIPMT);
 	logicNaIPMT->SetSensitiveDetector(detNaIPMT);
 }

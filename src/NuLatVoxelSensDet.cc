@@ -7,6 +7,8 @@ NuLatVoxelSensitiveDetector::NuLatVoxelSensitiveDetector(G4String name, G4int xV
 	xVoxels = xVox;
 	yVoxels = yVox;
 	zVoxels = zVox;
+	// Debug Message - can't see how it changes here. Maybe use SDM pointer?
+	G4cout << "Voxel SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
 }
 // Destructor
 NuLatVoxelSensitiveDetector::~NuLatVoxelSensitiveDetector()
@@ -33,11 +35,13 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	G4int evt, pID;
 	G4double tedep = aStep->GetTotalEnergyDeposit();
 	G4double xpos, ypos, zpos, time, pX0, pY0, pZ0;
-	G4String pName = aStep->GetTrack()->GetDefinition()->GetParticleName();
+	G4Track *track = aStep->GetTrack();
+	G4String pName = track->GetDefinition()->GetParticleName();
+	pID = ParticleNameToIDNumber(pName);
 	//G4ThreeVector posHit, momHit;
 	if (tedep == 0.)
 		return true;
-	if (pName == "opticalphoton")
+	if (pID == 100)
 		return true;
 	//G4TouchableHistory *touch = (G4TouchableHistory*)(aStep->GetPreStepPoint()->GetTouchable());
 	const G4VTouchable *touch = aStep->GetPreStepPoint()->GetTouchable();
@@ -61,7 +65,6 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	ypos = aStep->GetTrack()->GetPosition().y();
 	zpos = aStep->GetTrack()->GetPosition().z();
 	time = aStep->GetTrack()->GetGlobalTime();
-	pID = ParticleNameToIDNumber(aStep);
 	pX0 = aStep->GetTrack()->GetVertexMomentumDirection().theta();
 	pY0 = aStep->GetTrack()->GetVertexMomentumDirection().phi();
 	pZ0 = aStep->GetTrack()->GetVertexMomentumDirection().z();
@@ -78,14 +81,14 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	hit->PushInitialZMomentum(pZ0);
 	// initialize analysis manager and fill Ntuples
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
-	// Fill Ntuple columns with Voxel energy deposition information - add columns for particle ID number, momentum components
-	man->FillNtupleIColumn(2, 0, evt);
+	// Fill Ntuple columns with Voxel energy deposition information - add columns for particle ID number, momentum components - do in NuLatEvent.cc
+	/*man->FillNtupleIColumn(2, 0, evt);
 	man->FillNtupleDColumn(2, 1, tedep);
 	man->FillNtupleDColumn(2, 2, xpos);
 	man->FillNtupleDColumn(2, 3, ypos);
 	man->FillNtupleDColumn(2, 4, zpos);
 	man->FillNtupleIColumn(2, 5, copyNo);
-	man->AddNtupleRow(2);
+	man->AddNtupleRow(2);/**/
 	// Return value
 	return true;
 }
@@ -93,53 +96,39 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 /*  Convert a steps particle name to an ID number */
 /*  specific to the NuLat analysis                */
 /* ---------------------------------------------- */
-G4int NuLatVoxelSensitiveDetector::ParticleNameToIDNumber(G4Step* step)
+G4int NuLatVoxelSensitiveDetector::ParticleNameToIDNumber(G4String name)
 {
 	G4int num;
-	G4String name = step->GetTrack()->GetDefinition()->GetParticleName();
-	if(name == "opticalphoton")
-	{
-		num = 100;
+	if(name == "gamma"){
+		num=1;
 	}
-	else if(name == "e-")
-	{
-		num = 2;
+	else if(name == "e"){
+		num=2;
 	}
-	else if(name == "e+")
-	{
-		num = 3;
+	else if(name == "e+"){
+		num=3;
 	}
-	else if(name == "neutron")
-	{
-		num = 4;
+	else if(name == "neutron"){
+		num=4;
 	}
-	else if(name == "proton")
-	{
-		num = 5;
+	else if(name == "proton"){
+		num=5;
 	}
-	else if(name == "mu+")
-	{
-		num = 6;
+	else if(name == "mu+"){
+		num=6;
 	}
-	else if(name == "mu-")
-	{
-		num = 7;
+	else if(name == "mu-"){
+		num=7;
 	}
-	else if(name == "alpha")
-	{
-		num = 8;
+	else if(name == "alpha"){
+		num=8;
 	}
-	else if(name == "Li7")
-	{
-		num = 9;
+	else if(name == "Li7"){
+		num=9;
 	}
-	else if(name == "gamma")
-	{
-		num = 1;
+	else if(name == "opticalphoton"){
+		num=100;
 	}
-	else
-	{
-		num = 0;
-	}
+	else num=0;
 	return num;
 }
