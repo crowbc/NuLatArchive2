@@ -1,24 +1,24 @@
 // included user defined header file
-#include "NuLatPMTHit.hh"
+#include "NaIPMTHit.hh"
 // Allocator
-G4ThreadLocal G4Allocator<NuLatPMTHit>* NuLatPMTHitAllocator=0;
+G4ThreadLocal G4Allocator<NaIPMTHit>* NaIPMTHitAllocator=0;
 // Constructors
-NuLatPMTHit::NuLatPMTHit() : G4VHit(), fPMTID(-1), peHits(0), fPos(0), fPLogV(0)
+NaIPMTHit::NaIPMTHit() : G4VHit(), fPMTID(-1), peHits(0), fPos(0), fPLogV(0)
 {}
-vector<G4int> NuLatPMTHit::PMTHitParticleIDVec;
-vector<G4int> NuLatPMTHit::PMTPEVec;
-vector<G4int> NuLatPMTHit::PMTXPEVec;
-vector<G4int> NuLatPMTHit::PMTYPEVec;
-vector<G4int> NuLatPMTHit::PMTZPEVec;
-vector<G4double> NuLatPMTHit::PMTHitWlenVec;
-vector<G4double> NuLatPMTHit::PMTHitEnergyVec;
-vector<G4int> NuLatPMTHit::PMTXHitVec;
-vector<G4int> NuLatPMTHit::PMTYHitVec;
-vector<G4int> NuLatPMTHit::PMTZHitVec;
-vector<G4double> NuLatPMTHit::PMTHitTimeVec;
-NuLatPMTHit::NuLatPMTHit(G4int z) : G4VHit(), fPMTID(z), peHits(0), fPos(0), fPLogV(0)
+vector<G4int> NaIPMTHit::PMTHitParticleIDVec;
+vector<G4int> NaIPMTHit::PMTPEVec;
+vector<G4int> NaIPMTHit::PMTXPEVec;
+vector<G4int> NaIPMTHit::PMTYPEVec;
+vector<G4int> NaIPMTHit::PMTZPEVec;
+vector<G4double> NaIPMTHit::PMTHitWlenVec;
+vector<G4double> NaIPMTHit::PMTHitEnergyVec;
+vector<G4int> NaIPMTHit::PMTXHitVec;
+vector<G4int> NaIPMTHit::PMTYHitVec;
+vector<G4int> NaIPMTHit::PMTZHitVec;
+vector<G4double> NaIPMTHit::PMTHitTimeVec;
+NaIPMTHit::NaIPMTHit(G4int z) : G4VHit(), fPMTID(z), peHits(0), fPos(0), fPLogV(0)
 {}
-NuLatPMTHit::NuLatPMTHit(const NuLatPMTHit &right) : G4VHit()
+NaIPMTHit::NaIPMTHit(const NaIPMTHit &right) : G4VHit()
 {
 	fPMTID = right.fPMTID;
 	peHits = right.peHits;
@@ -27,10 +27,10 @@ NuLatPMTHit::NuLatPMTHit(const NuLatPMTHit &right) : G4VHit()
 	fPLogV = right.fPLogV;
 }
 // Destructor
-NuLatPMTHit::~NuLatPMTHit()
+NaIPMTHit::~NaIPMTHit()
 {}
 // Operators
-const NuLatPMTHit& NuLatPMTHit::operator=(const NuLatPMTHit &right)
+const NaIPMTHit& NaIPMTHit::operator=(const NaIPMTHit &right)
 {
 	fPMTID = right.fPMTID;
 	peHits = right.peHits;
@@ -39,12 +39,12 @@ const NuLatPMTHit& NuLatPMTHit::operator=(const NuLatPMTHit &right)
 	fPLogV = right.fPLogV;
 	return *this;
 }
-int NuLatPMTHit::operator==(const NuLatPMTHit &right) const
+int NaIPMTHit::operator==(const NaIPMTHit &right) const
 {
 	return (fPMTID==right.fPMTID);
 }
 // Draw() function
-void NuLatPMTHit::Draw()
+void NaIPMTHit::Draw()
 {
 	G4VVisManager *pVVisManager = G4VVisManager::GetConcreteInstance();
 	if(pVVisManager&&(peHits>0.))
@@ -64,10 +64,10 @@ void NuLatPMTHit::Draw()
 	}
 }
 // Functions for storage structures
-const std::map<G4String,G4AttDef>* NuLatPMTHit::GetAttDefs() const
+const std::map<G4String,G4AttDef>* NaIPMTHit::GetAttDefs() const
 {
 	G4bool isNew;
-	std::map<G4String,G4AttDef>* store = G4AttDefStore::GetInstance("NuLatPMTHit",isNew);
+	std::map<G4String,G4AttDef>* store = G4AttDefStore::GetInstance("NaIPMTHit",isNew);
 	if(isNew)
 	{
 		(*store)["HitType"] = G4AttDef("HitType", "Hit Type", "Physics", "", "G4String");
@@ -77,10 +77,10 @@ const std::map<G4String,G4AttDef>* NuLatPMTHit::GetAttDefs() const
 	}
 	return store;
 }
-std::vector<G4AttValue>* NuLatPMTHit::CreateAttValues() const
+std::vector<G4AttValue>* NaIPMTHit::CreateAttValues() const
 {
 	std::vector<G4AttValue>* values = new std::vector<G4AttValue>;
-	values->push_back(G4AttValue("HitType","NuLatPMTHit",""));
+	values->push_back(G4AttValue("HitType","NaIPMTHit",""));
 	values->push_back(G4AttValue("ID",G4UIcommand::ConvertToString(fPMTID),""));
 	values->push_back(G4AttValue("peHits",G4BestUnit(peHits,"peHits"),""));
 	values->push_back(G4AttValue("Pos",G4BestUnit(fPos,"Length"),""));
@@ -95,7 +95,7 @@ std::vector<G4AttValue>* NuLatPMTHit::CreateAttValues() const
 	return values;
 }
 // Print() function
-void NuLatPMTHit::Print()
+void NaIPMTHit::Print()
 {
 	// Print if feedback enabled
 	if(fbOn)
