@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jack/Documents/geant4/NuLat/NuLat.cc" "CMakeFiles/NuLat.dir/NuLat.cc.o" "gcc" "CMakeFiles/NuLat.dir/NuLat.cc.o.d"
+  "/home/jack/Documents/geant4/NuLat/src/NaIPMTHit.cc" "CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o.d"
+  "/home/jack/Documents/geant4/NuLat/src/NaIPMTsensDet.cc" "CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatAction.cc" "CMakeFiles/NuLat.dir/src/NuLatAction.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatAction.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatDetectorConstruction.cc" "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o.d"
   "/home/jack/Documents/geant4/NuLat/src/NuLatEvent.cc" "CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o" "gcc" "CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o.d"

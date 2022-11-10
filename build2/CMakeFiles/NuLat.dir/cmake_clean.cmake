@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/NuLat.dir/NuLat.cc.o"
   "CMakeFiles/NuLat.dir/NuLat.cc.o.d"
+  "CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o"
+  "CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o.d"
+  "CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o"
+  "CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o.d"
   "CMakeFiles/NuLat.dir/src/NuLatAction.cc.o"
   "CMakeFiles/NuLat.dir/src/NuLatAction.cc.o.d"
   "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o"
