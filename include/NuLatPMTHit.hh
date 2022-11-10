@@ -40,7 +40,7 @@ public:
 	// Methods for PMT ID
 	void SetPMTID(G4int z) { fPMTID = z; }
 	G4int GetPMTID() const { return fPMTID; }
-	// Energy depositions
+	// Hit Counter
 	void SetPEHits(G4int de) { peHits = de; }
 	void AddPEHits(G4int de) { peHits += de; }
 	G4double GetPEHits() const { return peHits; }

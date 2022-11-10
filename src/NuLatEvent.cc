@@ -70,8 +70,8 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 	Aman->FillNtupleDColumn(2, 2, fX);
 	Aman->FillNtupleDColumn(2, 3, fY);
 	Aman->FillNtupleDColumn(2, 4, fZ);
-	Aman->FillNtupleIColumn(2, 5, fID);
-	Aman->FillNtupleDColumn(2, 6, fT);
+	Aman->FillNtupleDColumn(2, 5, fT);
+	Aman->FillNtupleIColumn(2, 6, fID);
 	Aman->FillNtupleDColumn(2, 7, fPX0);
 	Aman->FillNtupleDColumn(2, 8, fPY0);
 	Aman->FillNtupleDColumn(2, 9, fPZ0);

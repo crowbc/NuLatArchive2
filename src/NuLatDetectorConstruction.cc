@@ -65,10 +65,10 @@ void NuLatDetectorConstruction::DefineMaterials()
 	G4String scStr = "; scintillation component: ";
 	G4NistManager *nist = G4NistManager::Instance();
 	// size_t variable for property array lengths
-	const size_t numEntries = 182;
-	G4double rindexNaI[numEntries];
+	const size_t nI = 182;
+	G4double rindexNaI[nI];
 	// Photon energy range for energy dependent material responses
-	G4double photonEnergy[numEntries] = {
+	G4double photonEnergy[nI] = {
 		2.034*eV, 2.068*eV, 2.103*eV, 2.139*eV, 2.177*eV, 2.216*eV, 2.256*eV, 2.298*eV, 2.341*eV, 2.386*eV, //10
 		2.433*eV, 2.481*eV, 2.487*eV, 2.496*eV, 2.506*eV, 2.516*eV, 2.524*eV, 2.531*eV, 2.539*eV, 2.547*eV, //20
 		2.554*eV, 2.561*eV, 2.569*eV, 2.577*eV, 2.586*eV, 2.595*eV, 2.605*eV, 2.614*eV, 2.622*eV, 2.630*eV, //30
@@ -88,13 +88,13 @@ void NuLatDetectorConstruction::DefineMaterials()
 		4.813*eV, 4.828*eV, 4.840*eV, 4.853*eV, 4.869*eV, 4.886*eV, 4.905*eV, 4.928*eV, 4.953*eV, 5.015*eV, //170
 		5.099*eV, 5.143*eV, 5.174*eV, 5.202*eV, 5.235*eV, 5.265*eV, 5.294*eV, 5.330*eV, 5.413*eV, 5.493*eV, //180
 		5.556*eV, 5.611*eV}; //182
-	G4double wlenNM[numEntries];
+	G4double wlenNM[nI];
 	// Fast scintillation properties, no reference and were here with the original file Materials.hh (find a reference for using this)
 	// Possible reference match: graph found on Eljen's website for EJ-200 iight curve
 	// note: maximum transmission at 425 nm wavelength confirmed. See photon_energy_wlens.ods for detailed matching of fc to wavelength
 	// note: number of entries is 61 from 380 to 500 nm in steps of 2 nm, or 121 in steps of 1 nm
 	// note: fcEJ200 table may need to be built piecewise (see graph file EJ-200_emspec.png)
-	G4double scEJ200[numEntries] = {
+	G4double scEJ200[nI] = {
 		0.000,  0.000,  0.000,  0.000,  0.000,  0.010,  0.020,  0.035,  0.050,  0.060, //10
 		0.070,  0.085,  0.090,  0.095,  0.098,  0.100,  0.110,  0.120,  0.130,  0.140, //20
 		0.150,  0.160,  0.170,  0.180,  0.200,  0.220,  0.240,  0.250,  0.270,  0.290, //30  
@@ -115,15 +115,15 @@ void NuLatDetectorConstruction::DefineMaterials()
 		0.000,  0.000,  0.000,  0.000,  0.000,  0.000,  0.000,  0.000,  0.000,  0.000, //180  
 		0.000,  0.000}; //182
 	// Arrays for material properties
-	G4double rindexAir[numEntries];
+	G4double rindexAir[nI];
 	// Comment in Materials.hh of original NuLat code for acrylic...
 	// 2012 J. Phys.: Conf. Ser. 356 012049 for acrylic optical properties - note: this reference is for films, not bulk material
-	G4double rindexAcrylic[numEntries];
-	G4double aLenAcrylic[numEntries];
-	G4double aLenNaI[numEntries];
-	G4double scNaI[numEntries];
-	G4double rindexPVT[numEntries];
-	G4double aLenPVT[numEntries];
+	G4double rindexAcrylic[nI];
+	G4double aLenAcrylic[nI];
+	G4double aLenNaI[nI];
+	G4double scNaI[nI];
+	G4double rindexPVT[nI];
+	G4double aLenPVT[nI];
 	/*
 	Notes on scintillation properties:
 	---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -217,12 +217,12 @@ void NuLatDetectorConstruction::DefineMaterials()
 	(3) test function for scNaI[i]: scNaI[i] = exp(-2*(wlenNM[i]-410.0)*(wlenNM[i]-410.0)/(110.0*110.0));
 	
 	*/
-	G4double reflAl[numEntries];
-	G4double aLenAl[numEntries];
-	/*G4double rindexBeCuPhotoCath[numEntries];
-	G4double aLenBeCuPhotoCath[numEntries];
-	G4double rindexBorosilicateGlass[numEntries];
-	G4double aLenBorosilicateGlass[numEntries];/**/
+	G4double reflAl[nI];
+	G4double aLenAl[nI];
+	/*G4double rindexBeCuPhotoCath[nI];
+	G4double aLenBeCuPhotoCath[nI];
+	G4double rindexBorosilicateGlass[nI];
+	G4double aLenBorosilicateGlass[nI];/**/
 	// Define Elements
 	H = nist->FindOrBuildElement("H");
 	//Be = nist->FindOrBuildElement("Be");
@@ -261,7 +261,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//BeCuPhotoCath->AddElement(Be, 1);
 	//BeCuPhotoCath->AddElement(Cu, 1);
 	// Set Material Properties
-	for (size_t i = 0; i<numEntries; i++){
+	for (size_t i = 0; i<nI; i++){
 		// Calculate wavelength (in nm) from photon energy
 		wlenNM[i] = HCNM/photonEnergy[i];// Energy is input directly above. Note: energy is displayed as a factor of 1E-06 too small in the G4cout statement!
 		rindexAir[i] = 1.;
@@ -286,18 +286,18 @@ void NuLatDetectorConstruction::DefineMaterials()
 		//aLenBorosilicateGlass[i] = 10.*m;// taken from Materials.hh
 		/*if(debugMsg)
 		{
-			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << "; refractive index, air: " << rindexAir[i];
+			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << ";
 			G4cout << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
 		}/**/
 	}
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
-	mptAir->AddProperty("RINDEX", photonEnergy, rindexAir, numEntries);
+	mptAir->AddProperty("RINDEX", photonEnergy, rindexAir, nI);
 	air->SetMaterialPropertiesTable(mptAir);
 	mptNaI = new G4MaterialPropertiesTable();
-	mptNaI->AddProperty("RINDEX", photonEnergy, rindexNaI, numEntries);
-	mptNaI->AddProperty("ABSLENGTH", photonEnergy, aLenNaI, numEntries);
-	mptNaI->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scNaI, numEntries);
+	mptNaI->AddProperty("RINDEX", photonEnergy, rindexNaI, nI);
+	mptNaI->AddProperty("ABSLENGTH", photonEnergy, aLenNaI, nI);
+	mptNaI->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scNaI, nI);
 	mptNaI->AddConstProperty("SCINTILLATIONYIELD", scintYieldNaI);
 	mptNaI->AddConstProperty("RESOLUTIONSCALE", 1.0);
 	mptNaI->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcNaI);
@@ -305,13 +305,13 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//NaI->SetMaterialPropertiesTable(mptNaI);
 	NaI_Tl->SetMaterialPropertiesTable(mptNaI);
 	mptAcrylic = new G4MaterialPropertiesTable();
-	mptAcrylic->AddProperty("RINDEX", photonEnergy, rindexAcrylic, numEntries);
-	mptAcrylic->AddProperty("ABSLENGTH", photonEnergy, aLenAcrylic, numEntries);
+	mptAcrylic->AddProperty("RINDEX", photonEnergy, rindexAcrylic, nI);
+	mptAcrylic->AddProperty("ABSLENGTH", photonEnergy, aLenAcrylic, nI);
 	acrylic->SetMaterialPropertiesTable(mptAcrylic);
 	mptPVT = new G4MaterialPropertiesTable();
-	mptPVT->AddProperty("RINDEX", photonEnergy, rindexPVT, numEntries);
-	mptPVT->AddProperty("ABSLENGTH", photonEnergy, aLenPVT, numEntries);
-	mptPVT->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scEJ200, numEntries, true);
+	mptPVT->AddProperty("RINDEX", photonEnergy, rindexPVT, nI);
+	mptPVT->AddProperty("ABSLENGTH", photonEnergy, aLenPVT, nI);
+	mptPVT->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scEJ200, nI, true);
 	mptPVT->AddConstProperty("SCINTILLATIONYIELD", scintYieldPVT);
 	mptPVT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcEJ200);
 	mptPVT->AddConstProperty("SCINTILLATIONRISETIME1", srtEJ200);
@@ -320,8 +320,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//PVT->SetMaterialPropertiesTable(mptPVT);
 	EJ200->SetMaterialPropertiesTable(mptPVT);
 	mptAl = new G4MaterialPropertiesTable();
-	//mptAl->AddProperty("ABSLENGTH", photonEnergy, aLenAl, numEntries);
-	mptAl->AddProperty("REFLECTIVITY", photonEnergy, reflAl, numEntries);
+	mptAl->AddProperty("REFLECTIVITY", photonEnergy, reflAl, nI);
 	aluminum->SetMaterialPropertiesTable(mptAl);
 	// optical surface properties
 	mirrorSurface = new G4OpticalSurface("mirrorSurface");
@@ -330,8 +329,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mirrorSurface->SetModel(unified);
 	mirrorSurface->SetMaterialPropertiesTable(mptAl);
 	//mptBeCuPhotoCath = new G4MaterialPropertiesTable();
-	//mptBeCuPhotoCath->AddProperty("RINDEX", photonEnergy, rindexBeCuPhotoCath, numEntries);
-	//mptBeCuPhotoCath->AddProperty("ABSLENGTH", photonEnergy, aLenBeCuPhotoCath, numEntries);
+	//mptBeCuPhotoCath->AddProperty("RINDEX", photonEnergy, rindexBeCuPhotoCath, nI);
+	//mptBeCuPhotoCath->AddProperty("ABSLENGTH", photonEnergy, aLenBeCuPhotoCath, nI);
 	//BeCuPhotoCath->SetMaterialPropertiesTable(mptBeCuPhotoCath);
 }
 // Voxelated Array Constructor
@@ -654,15 +653,17 @@ void NuLatDetectorConstruction::ConstructSDandField()
 	// Get SDM pointer for creating new detectors
 	G4SDManager *SDman = G4SDManager::GetSDMpointer();
 	// Define PMT's as sensitive volumes
-	NuLatPMTSensitiveDetector *detPMT = new NuLatPMTSensitiveDetector("/NuLatPMT", xVoxels, yVoxels, zVoxels);
+	detPMT = new NuLatPMTSensitiveDetector("/NuLatPMT", xVoxels, yVoxels, zVoxels);
 	SDman->AddNewDetector(detPMT);
 	logicPMT->SetSensitiveDetector(detPMT);
 	// Define Voxels as sensitive volumes - segmentation fault occurs when enabled (debugger stops logging at line 32 of NuLatVoxelSensDet.cc)
-	NuLatVoxelSensitiveDetector *detVoxel = new NuLatVoxelSensitiveDetector("/NuLatVoxel", xVoxels, yVoxels, zVoxels);
+	detVoxel = new NuLatVoxelSensitiveDetector("/NuLatVoxel", xVoxels, yVoxels, zVoxels);
 	SDman->AddNewDetector(detVoxel);
-	logicVoxel->SetSensitiveDetector(detVoxel);/**/
-	// Define NaI PMT as sensitve volume
-	NuLatPMTSensitiveDetector *detNaIPMT = new NuLatPMTSensitiveDetector("/NaIPMT", xVoxels, yVoxels, zVoxels);// Need to handle this one appropriately - the voxel count parameters do not apply. Might need a new class
-	SDman->AddNewDetector(detNaIPMT);
-	logicNaIPMT->SetSensitiveDetector(detNaIPMT);
+	logicVoxel->SetSensitiveDetector(detVoxel);
+	// Define NaI PMT as sensitve volume only if NaI detector is in simulation
+	if(NaIdetector){
+		detNaIPMT = new NaIPMTSensitiveDetector("/NaIPMT");
+		SDman->AddNewDetector(detNaIPMT);
+		logicNaIPMT->SetSensitiveDetector(detNaIPMT);
+	}
 }

@@ -8,7 +8,7 @@ NuLatVoxelSensitiveDetector::NuLatVoxelSensitiveDetector(G4String name, G4int xV
 	yVoxels = yVox;
 	zVoxels = zVox;
 	// Debug Message - can't see how it changes here. Maybe use SDM pointer?
-	G4cout << "Voxel SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
+	//G4cout << "Voxel SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
 }
 // Destructor
 NuLatVoxelSensitiveDetector::~NuLatVoxelSensitiveDetector()

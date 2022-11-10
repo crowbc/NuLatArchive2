@@ -1,39 +1,36 @@
 // Header for user defined library
-#include "NuLatPMTsensDet.hh"
+#include "NaIPMTsensDet.hh"
 // Constructor
-NuLatPMTSensitiveDetector::NuLatPMTSensitiveDetector(G4String name, G4int xVox, G4int yVox, G4int zVox) : G4VSensitiveDetector(name), PMTHitCollection(0), PMTHitCollectionID(-1)
+NaIPMTSensitiveDetector::NaIPMTSensitiveDetector(G4String name) : G4VSensitiveDetector(name), PMTHitCollection(0), PMTHitCollectionID(-1)
 {
-	collectionName.insert("NuLatPMTColl");
-	xVoxels = xVox;
-	yVoxels = yVox;
-	zVoxels = zVox;
-	numPMT = yVoxels*zVoxels + xVoxels*zVoxels + xVoxels*yVoxels;// ()*2 for fully instrumented
+	collectionName.insert("NaIPMTColl");
+	numPMT = 1;
 	// Debug message - can't see how it changes here. Maybe use SDM pointer?
 	//G4cout << "PMT SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
 }
 // Destructor
-NuLatPMTSensitiveDetector::~NuLatPMTSensitiveDetector()
+NaIPMTSensitiveDetector::~NaIPMTSensitiveDetector()
 {}
 // Initialze the Sensitive Detector
-void NuLatPMTSensitiveDetector::Initialize(G4HCofThisEvent* hce)
+void NaIPMTSensitiveDetector::Initialize(G4HCofThisEvent* hce)
 {
-	PMTHitCollection = new NuLatPMTHitsCollection(SensitiveDetectorName, collectionName[0]);
+	PMTHitCollection = new NaIPMTHitsCollection(SensitiveDetectorName, collectionName[0]);
 	if (PMTHitCollectionID<0)
 	{
 		PMTHitCollectionID = G4SDManager::GetSDMpointer()->GetCollectionID(PMTHitCollection);
 	}
 	hce->AddHitsCollection(PMTHitCollectionID, PMTHitCollection);
-	// fill NuLatPMTHits with zero energy deposition
+	// fill NaIPMTHits with zero energy deposition
 	for (G4int i = 0; i < numPMT; i++)
 	{
-		NuLatPMTHit* hit = new NuLatPMTHit(i);
+		NaIPMTHit* hit = new NaIPMTHit(i);
 		PMTHitCollection->insert(hit);
 	}
 }
 // Process Hits Function - not sure I can use this method if I'm looking at something other than gammas. It will work for the NaI coincidence tagging
-G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROHist)
+G4bool NaIPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROHist)
 {
-	debugMsg = false;// set to true for debug messages - note: can use Print() function in NuLatPMTHit.cc instead
+	debugMsg = false;// set to true for debug messages - note: can use Print() function in NaIPMTHit.cc instead
 	G4Track *track = aStep->GetTrack();
 	pName = track->GetDefinition()->GetParticleName();
 	pID = ParticleNameToIDNumber(pName);
@@ -60,11 +57,11 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		if(debugMsg){
 			G4cout << "Photon position: " << posPhoton << "; Photon wavelength: " << wlen << " nm" << G4endl;
 		}
-		// Get index of hit PMT
+		// Get volume of hit PMT
 		const G4VTouchable *touch = aStep->GetPreStepPoint()->GetTouchable();
 		fID = touch->GetCopyNumber();
 		// create hit container for hit PMT, then add the hit
-		/*NuLatPMTHit *hit = (*NuLatPMTHitsCollection)[fID];
+		/*NaIPMTHit *hit = (*NaIPMTHitsCollection)[fID];
 		hit->AddPEHits(1);/**/
 		// Debug Print if enabled -- relevant info should be in hit class
 		if(debugMsg)
@@ -88,10 +85,6 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		hit->PushPMTHitParticleID(pID);
 		hit->PushPMTHitEnergyVec(aStep->GetTotalEnergyDeposit());// not sure how useful this will be when PMT is not simulated properly
 		hit->PushPMTHitWlenVec(wlen);/**/
-		// these three aren't represented yet. can get from fID mapping. can get from PMT position too. can also use the index and dump these vectors
-		/*hit->PushPMTXHitVec();
-		hit->PushPMTYHitVec();
-		hit->PushPMTZHitVec();/**/
 		posDet = physVol->GetTranslation();
 		fX = posDet[0];
 		fY = posDet[1];
@@ -104,13 +97,13 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		G4AnalysisManager* Aman = G4AnalysisManager::Instance();
 		// Get event number
 		fEvt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
-		// Fill Ntuple columns with photon information - to do: move this function to event manager after storing hit information in vectors
+		// Fill Ntuple columns with photon truth information - to do: move this function to event manager after storing hit information in vectors
 		Aman->FillNtupleIColumn(0, 0, fEvt);
 		Aman->FillNtupleDColumn(0, 1, xpos);
 		Aman->FillNtupleDColumn(0, 2, ypos);
 		Aman->FillNtupleDColumn(0, 3, zpos);
 		Aman->FillNtupleDColumn(0, 4, wlen);
-		Aman->AddNtupleRow(0);
+		Aman->AddNtupleRow(3);
 		// Fill Ntuple columns with sensitive detector hit information
 		Aman->FillNtupleIColumn(1, 0, fEvt);
 		Aman->FillNtupleDColumn(1, 1, fX);
@@ -118,13 +111,13 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		Aman->FillNtupleDColumn(1, 3, fZ);
 		// to do: add column for time
 		Aman->FillNtupleIColumn(1, 5, fID);
-		Aman->AddNtupleRow(1);
+		Aman->AddNtupleRow(4);
 	}
 	// return value
 	return true;
 }
 // Particle Name to ID number converter
-G4int NuLatPMTSensitiveDetector::ParticleNameToIDNumber(G4String name)
+G4int NaIPMTSensitiveDetector::ParticleNameToIDNumber(G4String name)
 {
 	G4int num;
 	if(name == "gamma"){

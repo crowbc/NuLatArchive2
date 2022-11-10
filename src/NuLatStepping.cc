@@ -9,10 +9,10 @@ NuLatSteppingAction::NuLatSteppingAction(NuLatEventAction* eventAction)
 NuLatSteppingAction::~NuLatSteppingAction()
 {}
 // User Stepping Action
-void NuLatSteppingAction::UserSteppingAction(const G4Step *step)
+void NuLatSteppingAction::UserSteppingAction(const G4Step* aStep)
 {
 	// Get volume from step, use to find scoring volume
-	G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+	G4LogicalVolume *volume = aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
 	const NuLatDetectorConstruction *detCons = static_cast<const NuLatDetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
 	G4LogicalVolume *fScoringVolumeNuLat = detCons->GetScoringVolumeNuLat();
 	G4LogicalVolume *fScoringVolumeNaI = detCons->GetScoringVolumeNaI();
@@ -23,12 +23,12 @@ void NuLatSteppingAction::UserSteppingAction(const G4Step *step)
 	}
 	if(volume == fScoringVolumeNaI)
 	{
-		if (step->GetTrack()->GetDefinition()->GetParticleName()=="opticalphoton")
+		if (aStep->GetTrack()->GetDefinition()->GetParticleName()=="opticalphoton")
 		{
 			return;
 		}
 		// Only add edep after ignoring optical photons
-		G4double edep = step->GetTotalEnergyDeposit();
+		G4double edep = aStep->GetTotalEnergyDeposit();
 		fEventAction->AddEdepNaI(edep);
 	}
 	if(volume == fScoringVolumeNuLat)

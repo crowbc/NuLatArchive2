@@ -7,14 +7,14 @@ NaIPMTHit::NaIPMTHit() : G4VHit(), fPMTID(-1), peHits(0), fPos(0), fPLogV(0)
 {}
 vector<G4int> NaIPMTHit::PMTHitParticleIDVec;
 vector<G4int> NaIPMTHit::PMTPEVec;
-vector<G4int> NaIPMTHit::PMTXPEVec;
+/*vector<G4int> NaIPMTHit::PMTXPEVec;
 vector<G4int> NaIPMTHit::PMTYPEVec;
-vector<G4int> NaIPMTHit::PMTZPEVec;
+vector<G4int> NaIPMTHit::PMTZPEVec;*/
 vector<G4double> NaIPMTHit::PMTHitWlenVec;
 vector<G4double> NaIPMTHit::PMTHitEnergyVec;
-vector<G4int> NaIPMTHit::PMTXHitVec;
+/*vector<G4int> NaIPMTHit::PMTXHitVec;
 vector<G4int> NaIPMTHit::PMTYHitVec;
-vector<G4int> NaIPMTHit::PMTZHitVec;
+vector<G4int> NaIPMTHit::PMTZHitVec;*/
 vector<G4double> NaIPMTHit::PMTHitTimeVec;
 NaIPMTHit::NaIPMTHit(G4int z) : G4VHit(), fPMTID(z), peHits(0), fPos(0), fPLogV(0)
 {}

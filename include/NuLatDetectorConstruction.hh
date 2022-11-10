@@ -34,6 +34,7 @@
 // Header file for user defined libraries
 #include "NuLatPMTsensDet.hh"
 #include "NuLatVoxelSensDet.hh"
+#include "NaIPMTsensDet.hh"
 // Write the class
 class NuLatDetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -71,16 +72,12 @@ private:
 	G4LogicalSkinSurface *skinBarrel, *skinBottom, *skinSidePanel;
 	// Material declarations
 	G4Material *air, *PVT, *acrylic, *NaI, *EJ200, *aluminum/*, *vacuum, *muMetal, *BeCuPhotoCath, *borosilicateGlass/**/, *NaI_Tl;
-	G4Element *H/*, *Be*/, *C, *O, *Na/*, *Si, *Fe, *Ni, *Cu*/, *I, *Tl/**/;
+	G4Element *H/*, *Be/**/, *C, *O, *Na/*, *Si, *Fe, *Ni, *Cu/**/, *I, *Tl;
 	//G4Isotope *Li6;
-	G4MaterialPropertiesTable *mptNaI, *mptAir, *mptPVT, *mptAcrylic, *mptAl/*, *mptMuMetal, *mptBeCuPhotoCath*/;
+	G4MaterialPropertiesTable *mptNaI, *mptAir, *mptPVT, *mptAcrylic, *mptAl/*, *mptMuMetal, *mptBeCuPhotoCath/**/;
 	// physical constants for computing photon energies or wavelengths:
-	// divide by wavelength in microns to get energy in eV
-	//const G4double HCMUM = 1.239841939*eV;
 	// divide by wavelength in nm to get energy in eV, or divide by energy in eV to get wavelength in nm
 	const G4double HCNM = 1239.841939*eV;
-	// atomic weights
-	//G4double aH = 1.00797*g/mole, aC = 12.01115*g/mole;
 	// conversion factor inches to mm
 	const G4double in = 25.4*mm;
 	// constants for dispersion coefficients and factors for NaI
@@ -126,6 +123,10 @@ private:
 	//void BuildLGnoPMT();
 	void BuildNaIDetector();
 	virtual void ConstructSDandField();
+	// Pointers for SD's:
+	NuLatPMTSensitiveDetector *detPMT;
+	NuLatVoxelSensitiveDetector *detVoxel;
+	NaIPMTSensitiveDetector *detNaIPMT;
 	// Pointer to Generic Messenger Object
 	G4GenericMessenger *fMessenger;
 	// Pointer to Visual Attribute manager object

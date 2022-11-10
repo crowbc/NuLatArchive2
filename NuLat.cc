@@ -1,12 +1,22 @@
 /*
 	Nulat.cc
-	Version: 2.1.0 - start of version tracking
+	Version: 2.2.0 NaI Hit Tracking Update (09 Nov 2022)
+	### Added Hit Class for NaI PMT to track hits independently from NuLat PMTs
+	### Populated separate N-tuples for NaI PMT hits and truth data
+	### Constructed separate PMT sensitive detector in detector construction
+	### Note: NuLat and NaI PMT Hit classes are not fully implemented for simulating PMT hits
+	### Corrected N-tuple columns in event manager to be in same order as created in run manager
+	Change Log:
+	2.1.1 - Voxel Hit Tracking Patch (04 Nov 2022)
+	### Corrected Event Manager to properly initialize sensitive detector and hit tracking classes
+	### Moving N-tuple filling to Event Manager planned for patch 2.2.1
+	2.1.0 - start of version tracking (23 Sep 2022)
 	### Added Hit Scoring classes for NuLat PMT's and NuLat Voxels
 	### Added Sensitive detector classes for NuLat PMT's and NuLat Voxels
 	### Set Generator to use a Co-60 source as the default when the particle is defined as a geantino
 	### Added Gaussian model for NaI scintillation component centered on 410 nm with FWHM of 110 nm
 	Author: Brian Crow
-	Date: 23Sep2022
+	Date: 09Nov2022
 	This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
 */
 // Included C++ libraries
