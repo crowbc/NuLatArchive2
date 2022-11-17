@@ -1,4 +1,2 @@
-*.png
-*.root
-*.ods
 outputData/**
+gdb*.txt
