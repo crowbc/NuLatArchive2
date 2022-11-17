@@ -1,7 +1,0 @@
-# Macro file for testing
-#/gun/position 0 0 -15.875 cm
-/run/verbose 1
-/run/numberOfThreads 8
-/run/initialize
-/run/beamOn 100
-#
