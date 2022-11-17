@@ -5,7 +5,7 @@ G4ThreadLocal G4Allocator<NuLatPMTHit>* NuLatPMTHitAllocator=0;
 // Constructors
 NuLatPMTHit::NuLatPMTHit() : G4VHit(), fPMTID(-1), peHits(0), fPos(0), fPLogV(0)
 {}
-vector<G4int> NuLatPMTHit::PMTHitParticleIDVec;
+vector<G4int> NuLatPMTHit::PMTHitPIDVec;
 vector<G4int> NuLatPMTHit::PMTPEVec;
 vector<G4int> NuLatPMTHit::PMTXPEVec;
 vector<G4int> NuLatPMTHit::PMTYPEVec;

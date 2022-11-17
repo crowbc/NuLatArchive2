@@ -489,6 +489,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh \
+ /home/jack/Documents/geant4/NuLat/include/NaIPMTHit.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatStepping.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
@@ -669,5 +670,4 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTsensDet.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTHit.hh
+ /home/jack/Documents/geant4/NuLat/include/NaIPMTsensDet.hh

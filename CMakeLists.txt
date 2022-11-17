@@ -35,7 +35,6 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #
 add_executable(NuLat NuLat.cc ${sources} ${headers})
 target_link_libraries(NuLat ${Geant4_LIBRARIES})
-
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
 # build B5. This is so that we can run the executable directly because it
@@ -65,10 +64,8 @@ target_link_libraries(NuLat ${Geant4_LIBRARIES})
 #    COPYONLY
 #    )
 #endforeach()
-
-file(GLOB MACRO_FILES "*.mac")
+file(GLOB MACRO_FILES "/macros/*.mac")
 file(COPY ${MACRO_FILES} DESTINATION ${PROJECT_BINARY_DIR})
-
 #----------------------------------------------------------------------------
 # Add program to the project targets
 # (this avoids the need of typing the program name after make)

@@ -1,12 +1,17 @@
 /*
-	Nulat.cc
-	Version: 2.2.0 NaI Hit Tracking Update (09 Nov 2022)
+	File: Nulat.cc
+	Author: Brian Crow
+	Date: 14Nov2022
+	Description: This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
+	Version: 2.2.1 - macros update (14 Nov 2022)
+	### Moved macro location to macros subdirectory. The cmake command still copies these to the binary directory, so run in batch mode by typing the macro name after ./NuLat like before
+	Change Log:
+	2.2.0 NaI Hit Tracking Update (09 Nov 2022)
 	### Added Hit Class for NaI PMT to track hits independently from NuLat PMTs
 	### Populated separate N-tuples for NaI PMT hits and truth data
 	### Constructed separate PMT sensitive detector in detector construction
 	### Note: NuLat and NaI PMT Hit classes are not fully implemented for simulating PMT hits
 	### Corrected N-tuple columns in event manager to be in same order as created in run manager
-	Change Log:
 	2.1.1 - Voxel Hit Tracking Patch (04 Nov 2022)
 	### Corrected Event Manager to properly initialize sensitive detector and hit tracking classes
 	### Moving N-tuple filling to Event Manager planned for patch 2.2.1
@@ -15,13 +20,7 @@
 	### Added Sensitive detector classes for NuLat PMT's and NuLat Voxels
 	### Set Generator to use a Co-60 source as the default when the particle is defined as a geantino
 	### Added Gaussian model for NaI scintillation component centered on 410 nm with FWHM of 110 nm
-	Author: Brian Crow
-	Date: 09Nov2022
-	This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
 */
-// Included C++ libraries
-#include <iostream>
-#include <fstream>
 // Included Geant4 libriaries
 #include "G4RunManager.hh"
 #include "G4MTRunManager.hh"
@@ -34,6 +33,10 @@
 #include "NuLatDetectorConstruction.hh"
 #include "NuLatPhysics.hh"
 #include "NuLatAction.hh"
+// Included C++ libraries
+#include <iostream>
+#include <fstream>
+using namespace std;
 // main() function
 int main(int argc, char** argv)
 {
@@ -48,8 +51,6 @@ int main(int argc, char** argv)
 		runManager->SetUserInitialization(new NuLatActionInitialization());
 		// put "/run/numberOfThreads <N>" in macro file, where <N> is the number of cores to use in simulation
 		// put "/run/initialize" in macro file
-		// Debug Message
-		//G4cout << "Running in Multithreaded mode." << G4endl;
 	#else
 		// construct the default run manager
 		G4RunManager *runManager = new G4RunManager();
@@ -59,8 +60,6 @@ int main(int argc, char** argv)
 		runManager->SetUserInitialization(new NuLatActionInitialization());
 		// initialize G4 kernel if Geant4 environment is defined in single thread mode
 		runManager->Initialize();
-		// Debug Message
-		//G4cout << "Running in Single Thread mode." << G4endl;
 	#endif
 	// strings for initializing macros
 	G4String macCmd = "/control/execute ";

@@ -3,7 +3,9 @@
 
 CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/stdc-predef.h \
-  /usr/include/c++/11/iostream \
+  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/utility \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -16,45 +18,17 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/iosfwd \
-  /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
-  /usr/include/c++/11/bits/postypes.h \
-  /usr/include/c++/11/cwchar \
-  /usr/include/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception.h \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/exception_defines.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/bits/hash_bytes.h \
-  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/type_traits \
-  /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/initializer_list \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/bits/cpp_type_traits.h \
   /usr/include/c++/11/ext/type_traits.h \
   /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/concept_check.h \
@@ -63,147 +37,74 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/bits/predefined_ops.h \
-  /usr/include/c++/11/cstdint \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
-  /usr/include/stdint.h \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /usr/include/c++/11/bits/localefwd.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
-  /usr/include/c++/11/clocale \
-  /usr/include/locale.h \
-  /usr/include/x86_64-linux-gnu/bits/locale.h \
-  /usr/include/c++/11/cctype \
-  /usr/include/ctype.h \
+  /usr/include/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/c++/11/bits/ios_base.h \
-  /usr/include/c++/11/ext/atomicity.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
-  /usr/include/pthread.h \
-  /usr/include/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
-  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
-  /usr/include/time.h \
-  /usr/include/x86_64-linux-gnu/bits/time.h \
-  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/bits/locale_classes.h \
-  /usr/include/c++/11/string \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
-  /usr/include/c++/11/bits/ostream_insert.h \
-  /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/backward/binders.h \
-  /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/bits/basic_string.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
-  /usr/include/c++/11/bits/stl_construct.h \
-  /usr/include/c++/11/string_view \
-  /usr/include/c++/11/bits/functional_hash.h \
-  /usr/include/c++/11/bits/string_view.tcc \
-  /usr/include/c++/11/ext/string_conversions.h \
-  /usr/include/c++/11/cstdlib \
-  /usr/include/stdlib.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/include/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/c++/11/bits/std_abs.h \
-  /usr/include/c++/11/cstdio \
-  /usr/include/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/c++/11/cerrno \
-  /usr/include/errno.h \
-  /usr/include/x86_64-linux-gnu/bits/errno.h \
-  /usr/include/linux/errno.h \
-  /usr/include/x86_64-linux-gnu/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
-  /usr/include/c++/11/bits/charconv.h \
-  /usr/include/c++/11/bits/basic_string.tcc \
-  /usr/include/c++/11/bits/locale_classes.tcc \
-  /usr/include/c++/11/system_error \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
-  /usr/include/c++/11/stdexcept \
-  /usr/include/c++/11/streambuf \
-  /usr/include/c++/11/bits/streambuf.tcc \
-  /usr/include/c++/11/bits/basic_ios.h \
-  /usr/include/c++/11/bits/locale_facets.h \
-  /usr/include/c++/11/cwctype \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
-  /usr/include/c++/11/bits/streambuf_iterator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
-  /usr/include/c++/11/bits/locale_facets.tcc \
-  /usr/include/c++/11/bits/basic_ios.tcc \
-  /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
-  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
   /usr/include/c++/11/bits/stl_heap.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/uniform_int_dist.h \
   /usr/include/c++/11/pstl/glue_algorithm_defs.h \
   /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/tuple \
   /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/hash_bytes.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/bits/hashtable.h \
   /usr/include/c++/11/bits/hashtable_policy.h \
@@ -251,10 +152,104 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/include/c++/11/sstream \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/iosfwd \
+  /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/bits/postypes.h \
+  /usr/include/c++/11/cwchar \
+  /usr/include/wchar.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/c++/11/exception \
+  /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/cstdint \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/11/bits/localefwd.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
+  /usr/include/c++/11/clocale \
+  /usr/include/locale.h \
+  /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/11/cctype \
+  /usr/include/ctype.h \
+  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/c++/11/bits/locale_classes.h \
+  /usr/include/c++/11/string \
+  /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/cxxabi_forced.h \
+  /usr/include/c++/11/bits/basic_string.h \
+  /usr/include/c++/11/string_view \
+  /usr/include/c++/11/bits/string_view.tcc \
+  /usr/include/c++/11/ext/string_conversions.h \
+  /usr/include/c++/11/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/c++/11/cerrno \
+  /usr/include/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/11/bits/charconv.h \
+  /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/system_error \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+  /usr/include/c++/11/stdexcept \
+  /usr/include/c++/11/streambuf \
+  /usr/include/c++/11/bits/streambuf.tcc \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/c++/11/bits/streambuf_iterator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/sstream.tcc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tls.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ios.hh \
+  /usr/include/c++/11/iostream \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.hh \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
@@ -282,6 +277,7 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
   /usr/include/libintl.h \
+  /usr/include/c++/11/bits/codecvt.h \
   /usr/include/c++/11/bits/locale_facets_nonio.tcc \
   /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/bits/unique_ptr.h \
@@ -409,6 +405,10 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4MaterialPropertyVector.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsFreeVector.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsVector.hh \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsVectorType.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsVector.icc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IonisParamMat.hh \
@@ -2487,6 +2487,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: ../src/NuLatAction.cc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
   ../include/NuLatPMTHit.hh \
+  ../include/NaIPMTHit.hh \
   ../include/NuLatStepping.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh \
@@ -2668,8 +2669,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: ../src/NuLatAction.cc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackingManager.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh \
   ../include/NuLatVoxelSensDet.hh \
-  ../include/NaIPMTsensDet.hh \
-  ../include/NaIPMTHit.hh
+  ../include/NaIPMTsensDet.hh
 
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: ../src/NuLatDetectorConstruction.cc \
   /usr/include/stdc-predef.h \
@@ -3915,7 +3915,8 @@ CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: ../src/NuLatEvent.cc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
   /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
-  ../include/NuLatPMTHit.hh
+  ../include/NuLatPMTHit.hh \
+  ../include/NaIPMTHit.hh
 
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o: ../src/NuLatGenerator.cc \
   /usr/include/stdc-predef.h \
@@ -8448,119 +8449,19 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/string.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/DualRand.h:
-
-/usr/include/c++/11/tr1/riemann_zeta.tcc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSDFilter.hh:
-
-/usr/include/c++/11/tr1/legendre_function.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/h2:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/trkgdefs.hh:
-
-/usr/include/c++/11/tr1/beta_function.tcc:
-
-../include/NuLatVoxelHit.hh:
-
-/usr/include/c++/11/limits:
-
-/usr/include/c++/11/bits/specfun.h:
-
-/usr/include/c++/11/bits/stl_list.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BinScheme.hh:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
-/usr/include/c++/11/bits/postypes.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/rundefs.hh:
-
-/usr/include/c++/11/bits/vector.tcc:
-
-/usr/include/c++/11/bits/stl_bvector.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/c++/11/bits/stl_uninitialized.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4H2ToolsManager.hh:
-
-/usr/include/c++/11/bits/erase_if.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HitFilterFactories.hh:
-
-/usr/include/stdint.h:
-
-/usr/include/c++/11/bits/ptr_traits.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THnManager.icc:
-
-/usr/include/c++/11/bits/enable_special_members.h:
-
-/usr/include/c++/11/bits/basic_ios.tcc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VCSGface.hh:
-
-/usr/include/c++/11/bits/hashtable_policy.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBreitWigner.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Ions.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VParticleChange.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Types.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Vector3D.hh:
-
-/usr/include/c++/11/backward/binders.h:
-
-/usr/include/c++/11/bits/hashtable.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/pwdefs.hh:
-
-/usr/include/c++/11/bits/uses_allocator.h:
-
-/usr/include/c++/11/bits/stl_heap.h:
-
-/usr/include/c++/11/bits/std_abs.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.hh:
-
-/usr/include/c++/11/pstl/execution_defs.h:
-
-/usr/include/c++/11/bits/stl_relops.h:
-
-/usr/include/limits.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoissonQ.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VExceptionHandler.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SteppingManager.hh:
-
 /usr/include/c++/11/bits/istream.tcc:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Event.hh:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackVector.hh:
 
-/usr/include/c++/11/istream:
+/usr/include/c++/11/ostream:
+
+/usr/include/c++/11/bits/basic_ios.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THnManager.icc:
+
+/usr/include/c++/11/bits/enable_special_members.h:
 
 /usr/include/c++/11/bits/locale_facets.tcc:
 
@@ -8568,29 +8469,13 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/c++/11/bits/this_thread_sleep.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/BasicVector3D.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
-
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Voxelizer.hh:
 
 /usr/include/c++/11/cwctype:
 
-/usr/include/c++/11/tr1/poly_hermite.tcc:
-
-/usr/include/c++/11/bits/locale_facets.h:
-
-/usr/include/c++/11/bits/exception.h:
-
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Normal3D.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUIshell.hh:
-
-/usr/include/c++/11/tr1/bessel_function.tcc:
 
 /usr/include/c++/11/stdexcept:
 
@@ -8600,49 +8485,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/c++/11/ios:
 
-/usr/include/c++/11/bits/stl_vector.h:
-
-/usr/include/c++/11/cstddef:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/c++/11/bits/node_handle.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ClassificationOfNewTrack.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIdirectory.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Point3D.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ReplicaNavigation.icc:
-
 /usr/include/c++/11/bits/basic_string.tcc:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Transform3D.hh:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGamma.icc:
-
-/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/c++/11/tr1/ell_integral.tcc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Polycone.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Torus.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleChange.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/h1d:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 
@@ -8662,79 +8507,109 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/stdio.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SurfaceProperty.hh:
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BlockingList.icc:
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
-/usr/include/c++/11/cstdio:
+/usr/include/c++/11/bits/ostream_insert.h:
 
-/usr/include/c++/11/iostream:
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THnManager.hh:
 
-/usr/include/c++/11/fenv.h:
+/usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
-/usr/include/c++/11/bits/uniform_int_dist.h:
+/usr/include/c++/11/functional:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Profiler.hh:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/h2:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpenGLStoredXm.hh:
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSDFilter.hh:
 
-/usr/include/c++/11/bits/stl_algo.h:
+/usr/include/c++/11/tr1/legendre_function.tcc:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSolid.icc:
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VAnalysisManager.hh:
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
-/usr/include/c++/11/bits/locale_classes.tcc:
+/usr/include/c++/11/bits/stl_bvector.h:
 
-/usr/include/c++/11/ext/aligned_buffer.h:
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VFilter.hh:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc:
 
-/usr/include/x86_64-linux-gnu/sys/types.h:
+/usr/include/time.h:
 
-/usr/include/c++/11/future:
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GraphicsSystemList.hh:
+/usr/include/x86_64-linux-gnu/bits/sched.h:
 
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+/usr/include/c++/11/ext/alloc_traits.h:
 
-/usr/include/stdlib.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistoryPool.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Geantino.hh:
+/usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
 
-/usr/include/c++/11/bits/functional_hash.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tls.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Pow.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.icc:
-
-/usr/include/c++/11/bits/streambuf.tcc:
-
-/usr/include/c++/11/bits/stl_iterator_base_funcs.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SensitiveVolumeList.hh:
-
-/usr/include/endian.h:
-
-/usr/include/c++/11/bits/cpp_type_traits.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VH3Manager.hh:
-
-/usr/include/c++/11/bits/std_thread.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.hh:
 
 /usr/include/c++/11/locale:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGamma.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/JamesRandom.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/trkdefs.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SmartVoxelHeader.icc:
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.icc:
+
+../src/NuLatVoxelSensDet.cc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NtupleBookingManager.icc:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4HitFilterFactories.hh:
+
+/usr/include/stdint.h:
+
+/usr/include/c++/11/bits/ptr_traits.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4H2ToolsManager.hh:
+
+/usr/include/c++/11/bits/erase_if.h:
+
+/usr/include/c++/11/cstdint:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Polycone.hh:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/c++/11/bits/nested_exception.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Fcn.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SmartTrackStack.hh:
+
+/usr/include/c++/11/exception:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+../include/NuLatDetectorConstruction.hh:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BaseAnalysisManager.hh:
+
+/usr/include/c++/11/debug/assertions.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4StepPoint.hh:
 
 ../src/NuLatPhysics.cc:
 
@@ -8742,7 +8617,401 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AuxiliaryNavServices.hh:
 
+/usr/include/c++/11/istream:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/DualRand.h:
+
+/usr/include/c++/11/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/11/bits/locale_facets.h:
+
+/usr/include/c++/11/bits/exception.h:
+
+/usr/include/c++/11/tr1/poly_hermite.tcc:
+
+/usr/include/c++/11/bits/localefwd.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistManager.hh:
+
+/usr/include/c++/11/tr1/hypergeometric.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/h1d:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
+
+/usr/include/c++/11/tr1/ell_integral.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Polycone.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Torus.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleChange.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/trkgdefs.hh:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUIshell.hh:
+
+/usr/include/c++/11/tr1/bessel_function.tcc:
+
+/usr/include/c++/11/bits/locale_classes.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GRSSolid.hh:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+../include/NuLatVoxelHit.hh:
+
+/usr/include/c++/11/limits:
+
+/usr/include/c++/11/bits/specfun.h:
+
+/usr/include/c++/11/bits/stl_list.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BinScheme.hh:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/11/bits/postypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGamma.icc:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/11/bits/node_handle.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ClassificationOfNewTrack.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIdirectory.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Point3D.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ReplicaNavigation.icc:
+
+/usr/include/c++/11/bits/ios_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SurfaceProperty.hh:
+
+/usr/include/c++/11/cstdio:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BlockingList.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Vector3D.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/c++/11/tr1/modified_bessel_func.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.icc:
+
+/usr/include/c++/11/bits/stl_vector.h:
+
+/usr/include/c++/11/cstddef:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/c++/11/bits/predefined_ops.h:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VFilter.hh:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VAnalysisManager.hh:
+
+/usr/include/c++/11/bits/locale_classes.tcc:
+
+/usr/include/c++/11/ext/aligned_buffer.h:
+
+/usr/include/c++/11/future:
+
+/usr/include/signal.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Visible.hh:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GraphicsSystemList.hh:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/c++/11/regex:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Element.hh:
+
+/usr/include/pthread.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SensitiveVolumeList.hh:
+
+/usr/include/endian.h:
+
+/usr/include/c++/11/bits/cpp_type_traits.h:
+
+/usr/include/c++/11/bits/streambuf.tcc:
+
+/usr/include/c++/11/bits/stl_iterator_base_funcs.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VH3Manager.hh:
+
+/usr/include/c++/11/bits/std_thread.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/ctype.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Navigator.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4CSGSolid.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleTableIterator.hh:
+
+/usr/include/c++/11/climits:
+
+/usr/include/c++/11/new:
+
+/usr/include/c++/11/bits/sstream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalSkinSurface.hh:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
+
+/usr/include/c++/11/bits/list.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/BasicVector3D.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tls.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Pow.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.icc:
+
+/usr/include/c++/11/bits/stl_uninitialized.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+../src/NuLatGenerator.cc:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGaussQ.h:
+
+/usr/include/c++/11/debug/debug.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
+
+/usr/include/c++/11/tr1/gamma.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SandiaTable.hh:
+
 /usr/include/c++/11/bits/concept_check.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/c++/11/bits/codecvt.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoissonQ.icc:
+
+/usr/include/stdlib.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.icc:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpenGLStoredXm.hh:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SmartVoxelHeader.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/JamesRandom.h:
+
+/usr/include/c++/11/tr1/special_function_util.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GRSSolid.icc:
+
+/usr/include/c++/11/bits/stl_algo.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSolid.icc:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpenGLImmediateX.hh:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/c++/11/ext/numeric_traits.h:
+
+/usr/include/c++/11/bits/unordered_map.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ios.hh:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/c++/11/bits/std_abs.h:
+
+/usr/include/c++/11/bits/stl_heap.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevel.hh:
+
+/usr/include/c++/11/string_view:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleDefinition.icc:
+
+../NuLat.cc:
+
+/usr/include/strings.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VoxelNavigation.hh:
+
+/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/pwdefs.hh:
+
+/usr/include/c++/11/bits/range_access.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VReadOutGeometry.hh:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsListHelper.hh:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGauss.h:
+
+/usr/include/c++/11/bits/vector.tcc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/rundefs.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserActionInitialization.hh:
+
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/c++/11/complex:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/11/type_traits:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Utility/defs.h:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/Random.icc:
+
+/usr/include/c++/11/bits/allocator.h:
+
+/usr/include/c++/11/cmath:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGeneral.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4H1ToolsManager.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/p1d:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoisson.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
+
+/usr/include/limits.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleChangeForDecay.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Tubs.icc:
+
+/usr/include/c++/11/system_error:
+
+/usr/include/features-time64.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBreitWigner.icc:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GMocrenFile.hh:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
+
+/usr/include/c++/11/bits/move.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicalVolumeModel.hh:
+
+/usr/include/c++/11/bits/hash_bytes.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ToolsSGQtGLES.hh:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/c++/11/tuple:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/MTwistEngine.h:
+
+/usr/include/c++/11/streambuf:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
@@ -8756,27 +9025,21 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VSolid.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalSkinSurface.hh:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
 
-/usr/include/c++/11/bits/list.tcc:
+/usr/include/c++/11/bits/stl_algobase.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UserSteppingAction.hh:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.hh:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh:
 
-/usr/include/c++/11/bits/string_view.tcc:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandomEngine.icc:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicalVolumeModel.hh:
+/usr/include/c++/11/bits/stl_iterator_base_types.h:
 
-/usr/include/c++/11/bits/hash_bytes.h:
-
-/usr/include/c++/11/bits/move.h:
-
-/usr/include/c++/11/typeinfo:
-
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+/usr/include/c++/11/cstdlib:
 
 /usr/include/c++/11/bits/exception_defines.h:
 
@@ -8786,11 +9049,107 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Log.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THnManager.hh:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/p1:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.icc:
 
-/usr/include/c++/11/list:
+/usr/include/c++/11/bits/basic_string.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/c++/11/bits/shared_ptr_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.icc:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.h:
+
+/usr/include/c++/11/ext/type_traits.h:
+
+/usr/include/c++/11/iostream:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/usr/include/c++/11/fenv.h:
+
+/usr/include/c++/11/bits/uniform_int_dist.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Profiler.hh:
+
+/usr/include/wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/c++/11/ext/atomicity.h:
+
+/usr/include/c++/11/bits/stl_function.h:
+
+/usr/include/c++/11/bits/memoryfwd.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/Randomize.hh:
+
+/usr/include/c++/11/bits/std_mutex.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GlobalConfig.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VCSGface.hh:
+
+/usr/include/c++/11/bits/hashtable_policy.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBreitWigner.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Ions.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VParticleChange.icc:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/c++/11/bits/cxxabi_forced.h:
+
+/usr/include/c++/11/bits/algorithmfwd.h:
+
+/usr/include/c++/11/pstl/execution_defs.h:
+
+/usr/include/c++/11/bits/invoke.h:
+
+/usr/include/c++/11/ext/new_allocator.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4MaterialPropertiesTable.hh:
+
+/usr/include/c++/11/typeinfo:
+
+/usr/include/c++/11/tr1/exp_integral.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+
+/usr/include/c++/11/bits/stl_construct.h:
+
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/c++/11/algorithm:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Vector3D.hh:
+
+/usr/include/c++/11/backward/binders.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Types.hh:
+
+/usr/include/c++/11/bits/uses_allocator.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Geantino.hh:
+
+/usr/include/c++/11/bits/functional_hash.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
@@ -8802,363 +9161,23 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleChange.icc:
 
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4CSGSolid.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleTableIterator.hh:
-
-/usr/include/c++/11/tr1/poly_laguerre.tcc:
-
-/usr/include/c++/11/cstdlib:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandomEngine.icc:
-
-/usr/include/c++/11/bits/stl_iterator_base_types.h:
-
-/usr/include/c++/11/bits/stl_tempbuf.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
-/usr/include/c++/11/bits/nested_exception.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Fcn.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SmartTrackStack.hh:
-
-/usr/include/c++/11/bits/stl_algobase.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-../src/NuLatGenerator.cc:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGaussQ.h:
-
-/usr/include/c++/11/ostream:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ios.hh:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
-/usr/include/c++/11/complex:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
-
-/usr/include/c++/11/bits/ostream_insert.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/11/bits/std_mutex.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GlobalConfig.hh:
-
-/usr/include/c++/11/bits/algorithmfwd.h:
-
-/usr/include/c++/11/bits/cxxabi_forced.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4BaseAnalysisManager.hh:
-
-/usr/include/c++/11/debug/assertions.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4StepPoint.hh:
-
-/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/c++/11/bits/codecvt.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoissonQ.icc:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigthread.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh:
-
-/usr/include/c++/11/chrono:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTouchable.icc:
+/usr/include/c++/11/list:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GPILSelection.hh:
 
-/usr/include/stdc-predef.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTouchable.icc:
 
-/usr/include/c++/11/functional:
-
-../src/NuLatVoxelSensDet.cc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NtupleBookingManager.icc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
-
-/usr/include/linux/errno.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ToolsSGQtGLES.hh:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/11/bits/allocator.h:
-
-/usr/include/c++/11/cmath:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGeneral.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Utility/defs.h:
-
-/usr/include/c++/11/pstl/pstl_config.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/Random.icc:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/11/type_traits:
-
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
-
-../include/NuLatDetectorConstruction.hh:
-
-/usr/include/x86_64-linux-gnu/bits/timex.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4OpenGLImmediateX.hh:
-
-/usr/include/features.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/c++/11/ext/numeric_traits.h:
-
-/usr/include/c++/11/ext/type_traits.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/c++/11/bits/stl_function.h:
-
-/usr/include/c++/11/bits/memoryfwd.h:
-
-/usr/include/c++/11/regex:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Element.hh:
-
-/usr/include/c++/11/string_view:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleDefinition.icc:
-
-../NuLat.cc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPrimaryGenerator.hh:
-
-/usr/include/c++/11/bits/stringfwd.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ParticleChangeForDecay.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Tubs.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBreitWigner.icc:
-
-/usr/include/c++/11/system_error:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-/usr/include/features-time64.h:
-
-/usr/include/c++/11/debug/debug.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
-
-/usr/include/c++/11/tr1/gamma.tcc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SandiaTable.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GRSSolid.icc:
-
-/usr/include/c++/11/tr1/special_function_util.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Polycone.hh:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
-/usr/include/c++/11/cstdint:
-
-/usr/include/c++/11/bits/invoke.h:
-
-/usr/include/c++/11/exception:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserActionInitialization.hh:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/ctype.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Navigator.hh:
-
-/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
-
-/usr/include/c++/11/tuple:
-
-/usr/include/c++/11/streambuf:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/MTwistEngine.h:
-
-/usr/include/c++/11/bits/sstream.tcc:
-
-/usr/include/c++/11/new:
-
-/usr/include/c++/11/climits:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VoxelNavigation.hh:
-
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsListHelper.hh:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGauss.h:
-
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/wchar.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.icc:
-
-/usr/include/signal.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Visible.hh:
-
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/c++/11/bits/predefined_ops.h:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
-
-/usr/include/c++/11/ext/alloc_traits.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationHistoryPool.hh:
-
-/usr/include/c++/11/bits/unordered_map.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GMocrenFile.hh:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
-/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VReadOutGeometry.hh:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/c++/11/bits/range_access.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
-/usr/include/c++/11/unordered_map:
+/usr/include/c++/11/bits/string_view.tcc:
 
 /usr/include/c++/11/cctype:
 
 /usr/include/c++/11/iomanip:
 
-/usr/include/x86_64-linux-gnu/sys/select.h:
+/usr/include/c++/11/unordered_map:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/Randomize.hh:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPrimaryGenerator.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NistManager.hh:
-
-/usr/include/c++/11/tr1/hypergeometric.tcc:
-
-/usr/include/c++/11/bits/localefwd.h:
-
-/usr/include/locale.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/trkdefs.hh:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AffineTransform.icc:
-
-/usr/include/c++/11/tr1/modified_bessel_func.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
-/usr/include/c++/11/bits/ios_base.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
-
-/usr/include/pthread.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GenericFileManager.icc:
-
-/usr/include/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/c++/11/ext/atomicity.h:
-
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4H1ToolsManager.hh:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/p1d:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoisson.h:
-
-/usr/include/c++/11/bits/std_function.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Vector3D.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/c++/11/ext/new_allocator.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4MaterialPropertiesTable.hh:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/c++/11/bits/locale_classes.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GRSSolid.hh:
+/usr/include/c++/11/bits/stringfwd.h:
 
 /usr/include/math.h:
 
@@ -9172,47 +9191,17 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NormalNavigation.icc:
 
-/usr/include/c++/11/algorithm:
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.icc:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RunManager.hh:
 
-/usr/include/x86_64-linux-gnu/bits/endian.h:
+/usr/include/c++/11/chrono:
 
-/usr/include/c++/11/bits/cxxabi_init_exception.h:
+/usr/include/c++/11/bits/hashtable.h:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tools/histo/p1:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4NavigationLevelRep.icc:
-
-/usr/include/c++/11/bits/basic_string.h:
-
-/usr/include/linux/limits.h:
-
-/usr/include/c++/11/bits/shared_ptr_base.h:
-
-/usr/include/c++/11/fstream:
-
-/usr/include/c++/11/tr1/exp_integral.tcc:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
-
-/usr/include/c++/11/bits/stl_construct.h:
-
-/usr/include/c++/11/bits/shared_ptr.h:
-
-/usr/include/strings.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.icc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EventManager.hh:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.icc:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
@@ -9226,9 +9215,17 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
 
-/usr/include/c++/11/vector:
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VExceptionHandler.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandPoissonQ.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SteppingManager.hh:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/templates.hh:
+
+/usr/include/c++/11/vector:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ExceptionSeverity.hh:
 
@@ -9464,17 +9461,17 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisExecutive.icc:
 
-/usr/include/errno.h:
-
 /usr/include/c++/11/bits/alloc_traits.h:
+
+/usr/include/errno.h:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationZ.icc:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/Rotation.icc:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Units/PhysicalConstants.h:
-
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Units/PhysicalConstants.h:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ProcessManager.hh:
 
@@ -9510,10 +9507,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTouchable.hh:
 
-/usr/include/c++/11/bits/fstream.tcc:
-
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IonisParamMat.hh:
-
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VUserTrackInformation.hh:
 
 /usr/include/c++/11/bits/basic_ios.h:
@@ -9528,9 +9521,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IonisParamElm.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.hh:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.hh:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IsotopeVector.hh:
 
@@ -9562,6 +9555,14 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsVector.hh:
 
+/usr/include/c++/11/fstream:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4IonisParamMat.hh:
+
+/usr/include/c++/11/bits/fstream.tcc:
+
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandGeneral.h:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4PhysicsVector.icc:
@@ -9592,9 +9593,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh:
 
-/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBit.icc:
-
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh:
+
+/opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Random/RandBit.icc:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Step.hh:
 
@@ -9614,9 +9615,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TrackFastVector.hh:
 
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
 /usr/include/c++/11/bits/stl_iterator.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VTrajectory.hh:
 

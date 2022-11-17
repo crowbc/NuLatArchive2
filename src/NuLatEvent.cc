@@ -57,7 +57,7 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 	{
 		NuLatPMTHit *hit = (*PMTHC)[i];
 		// Get the number of photoelectrons registering a hit
-		G4int peHits = hit->GetPEHits();
+		G4double peHits = hit->GetPEHits();
 		// To do:
 		// (1) handle x, y and z index for hit location based on i
 		// (2) populate local vectors with values from the hits collection

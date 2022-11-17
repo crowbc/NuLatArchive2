@@ -5,7 +5,7 @@ G4ThreadLocal G4Allocator<NaIPMTHit>* NaIPMTHitAllocator=0;
 // Constructors
 NaIPMTHit::NaIPMTHit() : G4VHit(), fPMTID(-1), peHits(0), fPos(0), fPLogV(0)
 {}
-vector<G4int> NaIPMTHit::PMTHitParticleIDVec;
+vector<G4int> NaIPMTHit::PMTHitPIDVec;
 vector<G4int> NaIPMTHit::PMTPEVec;
 /*vector<G4int> NaIPMTHit::PMTXPEVec;
 vector<G4int> NaIPMTHit::PMTYPEVec;

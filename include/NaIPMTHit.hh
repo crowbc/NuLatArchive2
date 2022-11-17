@@ -55,21 +55,21 @@ public:
 	void SetLogV(G4LogicalVolume* vol) { fPLogV = vol; }
 	const G4LogicalVolume* GetLogV() const { return fPLogV; }
 	// Data being saved in containers when hit occurs
-	void PushPMTHitParticleID(G4int ID) { PMTHitParticleIDVec.push_back(ID); }
+	void PushPMTHitPID(G4int ID) { PMTHitPIDVec.push_back(ID); }
 	void PushPMTHitEnergyVec(G4double energy) { PMTHitEnergyVec.push_back(energy); }
 	void PushPMTHitWlenVec(G4double wavelen) { PMTHitWlenVec.push_back(wavelen); }
 	/*void PushPMTXHitVec(G4int X) { PMTXHitVec.push_back(X); }
 	void PushPMTYHitVec(G4int Y) { PMTYHitVec.push_back(Y); }
 	void PushPMTZHitVec(G4int Z) { PMTZHitVec.push_back(Z); }*/
 	void PushPMTHitTimeVec(G4double time) { PMTHitTimeVec.push_back(time); }
-	std::vector<G4int> GetPMTHitParticleIDVec() { return PMTHitParticleIDVec; }
+	std::vector<G4int> GetPMTHitPIDVec() { return PMTHitPIDVec; }
 	std::vector<G4double> GetPMTHitEnergyVec() { return PMTHitEnergyVec; }
 	std::vector<G4double> GetPMTHitWlenVec() { return PMTHitWlenVec; }
 	/*std::vector<G4int> GetPMTXHitVec() { return PMTXHitVec; }
 	std::vector<G4int> GetPMTYHitVec() { return PMTYHitVec; }
 	std::vector<G4int> GetPMTZHitVec() { return PMTZHitVec; }*/
 	std::vector<G4double> GetPMTHitTimeVec() { return PMTHitTimeVec; }
-	void ClearPMTHitParticleID() { PMTHitParticleIDVec.clear(); }
+	void ClearPMTHitPID() { PMTHitPIDVec.clear(); }
 	void ClearPMTHitEnergyVec() { PMTHitEnergyVec.clear(); }
 	void ClearPMTHitWlenVec() { PMTHitWlenVec.clear(); }
 	/*void ClearPMTXHitVec() { PMTXHitVec.clear(); }
@@ -83,7 +83,7 @@ private:
 	// variable to toggle feedback
 	G4bool fbOn = false;
 	// data containers
-	static std::vector<G4int> PMTHitParticleIDVec;
+	static std::vector<G4int> PMTHitPIDVec;
 	static std::vector<G4int> PMTPEVec;
 	/*static std::vector<G4int> PMTXPEVec;
 	static std::vector<G4int> PMTYPEVec;
