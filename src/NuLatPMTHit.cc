@@ -12,9 +12,9 @@ vector<G4int> NuLatPMTHit::PMTYPEVec;
 vector<G4int> NuLatPMTHit::PMTZPEVec;
 vector<G4double> NuLatPMTHit::PMTHitWlenVec;
 vector<G4double> NuLatPMTHit::PMTHitEnergyVec;
-vector<G4int> NuLatPMTHit::PMTXHitVec;
-vector<G4int> NuLatPMTHit::PMTYHitVec;
-vector<G4int> NuLatPMTHit::PMTZHitVec;
+vector<G4double> NuLatPMTHit::xPosPMTHitVec;
+vector<G4double> NuLatPMTHit::yPosPMTHitVec;
+vector<G4double> NuLatPMTHit::zPosPMTHitVec;
 vector<G4double> NuLatPMTHit::PMTHitTimeVec;
 NuLatPMTHit::NuLatPMTHit(G4int z) : G4VHit(), fPMTID(z), peHits(0), fPos(0), fPLogV(0)
 {}

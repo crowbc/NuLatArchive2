@@ -98,19 +98,19 @@ G4bool NaIPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R
 		// Get event number
 		fEvt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
 		// Fill Ntuple columns with photon truth information - to do: move this function to event manager after storing hit information in vectors
-		Aman->FillNtupleIColumn(0, 0, fEvt);
-		Aman->FillNtupleDColumn(0, 1, xpos);
-		Aman->FillNtupleDColumn(0, 2, ypos);
-		Aman->FillNtupleDColumn(0, 3, zpos);
-		Aman->FillNtupleDColumn(0, 4, wlen);
+		Aman->FillNtupleIColumn(3, 0, fEvt);
+		Aman->FillNtupleDColumn(3, 1, xpos);
+		Aman->FillNtupleDColumn(3, 2, ypos);
+		Aman->FillNtupleDColumn(3, 3, zpos);
+		Aman->FillNtupleDColumn(3, 4, wlen);
 		Aman->AddNtupleRow(3);
 		// Fill Ntuple columns with sensitive detector hit information
-		Aman->FillNtupleIColumn(1, 0, fEvt);
-		Aman->FillNtupleDColumn(1, 1, fX);
-		Aman->FillNtupleDColumn(1, 2, fY);
-		Aman->FillNtupleDColumn(1, 3, fZ);
-		// to do: add column for time
-		Aman->FillNtupleIColumn(1, 5, fID);
+		Aman->FillNtupleIColumn(4, 0, fEvt);
+		Aman->FillNtupleIColumn(4, 1, fID);
+		Aman->FillNtupleDColumn(4, 2, fX);
+		Aman->FillNtupleDColumn(4, 3, fY);
+		Aman->FillNtupleDColumn(4, 4, fZ);
+		Aman->FillNtupleDColumn(4, 5, fT);
 		Aman->AddNtupleRow(4);
 	}
 	// return value

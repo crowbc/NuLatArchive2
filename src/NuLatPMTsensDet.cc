@@ -113,11 +113,11 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		Aman->AddNtupleRow(0);
 		// Fill Ntuple columns with sensitive detector hit information
 		Aman->FillNtupleIColumn(1, 0, fEvt);
-		Aman->FillNtupleDColumn(1, 1, fX);
-		Aman->FillNtupleDColumn(1, 2, fY);
-		Aman->FillNtupleDColumn(1, 3, fZ);
-		// to do: add column for time
-		Aman->FillNtupleIColumn(1, 5, fID);
+		Aman->FillNtupleIColumn(1, 1, fID);
+		Aman->FillNtupleDColumn(1, 2, fX);
+		Aman->FillNtupleDColumn(1, 3, fY);
+		Aman->FillNtupleDColumn(1, 4, fZ);
+		Aman->FillNtupleDColumn(1, 5, fT);
 		Aman->AddNtupleRow(1);
 	}
 	// return value

@@ -33,12 +33,12 @@ private:
 	//virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
 	// Constant for calculating wavelength in nm from energy
 	const G4double HCNM = 1239.841939*eV;
-	// Voxel counts in each dimension
-	G4int xVoxels, yVoxels, zVoxels;
+	// Voxel counts in each dimension and total
+	G4int xVoxels, yVoxels, zVoxels, nVox;
 	// Hit Collection object
-	NuLatVoxelHitsCollection *voxelHitCollection;
-	// ID variaible
-	G4int voxelHitCollectionID;
+	NuLatVoxelHitsCollection *voxHitColl;
+	// ID variaibles
+	G4int voxHitCollID;
 	// Debug Message Boolean variable (set to true to enable messages)
 	G4bool debugMsg = false;
 };

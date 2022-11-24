@@ -53,50 +53,50 @@ public:
 	void SetLogV(G4LogicalVolume* vol) { fPLogV = vol; }
 	const G4LogicalVolume* GetLogV() const { return fPLogV; }
 	// functions for storing data in structures when a hit occurs
-	void PushEDepParticleTypeIDNumber(G4int ID) { eDepParticleTypeIDNumber.push_back(ID); }
-	void PushEDep(G4double de) { eDepEDep.push_back(de); }
-	void PushEDepXPosition(G4double X) { eDepXPosition.push_back(X); }
-	void PushEDepYPosition(G4double Y) { eDepYPosition.push_back(Y); }
-	void PushEDepZPosition(G4double Z) { eDepZPosition.push_back(Z); }
-	void PushEDepTime(G4double time) { eDepTime.push_back(time); }
-	void PushInitialXMomentum(G4double pX) { initialXMomentum.push_back(pX); }
-	void PushInitialYMomentum(G4double pY) { initialYMomentum.push_back(pY); }
-	void PushInitialZMomentum(G4double pZ) { initialZMomentum.push_back(pZ); }
+	void PushVoxEDepPIDVec(G4int ID) { voxEDepPIDVec.push_back(ID); }
+	void PushEDep(G4double de) { voxEDepVec.push_back(de); }
+	void PushxPosVoxEDepVec(G4double X) { xPosVoxEDepVec.push_back(X); }
+	void PushyPosVoxEDepVec(G4double Y) { yPosVoxEDepVec.push_back(Y); }
+	void PushzPosVoxEDepVec(G4double Z) { zPosVoxEDepVec.push_back(Z); }
+	void PushtimeVoxEDepVec(G4double time) { timeVoxEDepVec.push_back(time); }
+	void PushpX0VoxEDepVec(G4double pX) { pX0VoxEDepVec.push_back(pX); }
+	void PushpY0VoxEDepVec(G4double pY) { pY0VoxEDepVec.push_back(pY); }
+	void PushpZ0VoxEDepVec(G4double pZ) { pZ0VoxEDepVec.push_back(pZ); }
 	// functions for fetching data structures
-	std::vector<G4int> GetEDepParticleTypeIDNumberVector() { return  eDepParticleTypeIDNumber; }
-	std::vector<G4double> GetEDepVector() { return  eDepEDep; }
-	std::vector<G4double> GetEDepXPositionVector() { return  eDepXPosition; }
-	std::vector<G4double> GetEDepYPositionVector() { return  eDepYPosition; }
-	std::vector<G4double> GetEDepZPositionVector() { return  eDepZPosition; }
-	std::vector<G4double> GetEDepTimeVector() { return  eDepTime; }
-	std::vector<G4double> GetInitialXMomentumVector() { return  initialXMomentum; }
-	std::vector<G4double> GetInitialYMomentumVector() { return  initialYMomentum; }
-	std::vector<G4double> GetInitialZMomentumVector() { return  initialZMomentum; }
+	std::vector<G4int> GetVoxEDepPIDVec() { return  voxEDepPIDVec; }
+	std::vector<G4double> GetEDepVector() { return  voxEDepVec; }
+	std::vector<G4double> GetxPosVoxEDepVec() { return  xPosVoxEDepVec; }
+	std::vector<G4double> GetyPosVoxEDepVec() { return  yPosVoxEDepVec; }
+	std::vector<G4double> GetzPosVoxEDepVec() { return  zPosVoxEDepVec; }
+	std::vector<G4double> GettimeVoxEDepVec() { return  timeVoxEDepVec; }
+	std::vector<G4double> GetpX0VoxEDepVec() { return  pX0VoxEDepVec; }
+	std::vector<G4double> GetpY0VoxEDepVec() { return  pY0VoxEDepVec; }
+	std::vector<G4double> GetpZ0VoxEDepVec() { return  pZ0VoxEDepVec; }
 	// functions for clearing data storage structures
-	void ClearEDepParticleTypeIDNumberVector() { eDepParticleTypeIDNumber.clear(); }
-	void ClearEDepVector() { eDepEDep.clear(); }
-	void ClearEDepXPositionVector() { eDepXPosition.clear(); }
-	void ClearEDepYPositionVector() { eDepYPosition.clear(); }
-	void ClearEDepZPositionVector() { eDepZPosition.clear(); }
-	void ClearEDepTimeVector() { eDepTime.clear(); }
-	void ClearInitialXMomentumVector() { initialXMomentum.clear(); }
-	void ClearInitialYMomentumVector() { initialYMomentum.clear(); }
-	void ClearInitialZMomentumVector() { initialZMomentum.clear(); }
+	void ClearvoxEDepPIDVec() { voxEDepPIDVec.clear(); }
+	void ClearEDepVec() { voxEDepVec.clear(); }
+	void ClearxPosVoxEDepVec() { xPosVoxEDepVec.clear(); }
+	void ClearyPosVoxEDepVec() { yPosVoxEDepVec.clear(); }
+	void ClearzPosVoxEDepVec() { zPosVoxEDepVec.clear(); }
+	void CleartimeVoxEDepVec() { timeVoxEDepVec.clear(); }
+	void ClearpX0VoxEDepVec() { pX0VoxEDepVec.clear(); }
+	void ClearpY0VoxEDepVec() { pY0VoxEDepVec.clear(); }
+	void ClearpZ0VoxEDepVec() { pZ0VoxEDepVec.clear(); }
 private:
 	// variable declarations
 	G4int fCellID;
 	G4double eDep;
 	G4bool fbOn = false;
 	// storage structures
-	static std::vector<G4int>  eDepParticleTypeIDNumber;
-	static std::vector<G4double>  eDepEDep;
-	static std::vector<G4double>  eDepXPosition;
-	static std::vector<G4double>  eDepYPosition;
-	static std::vector<G4double>  eDepZPosition;
-	static std::vector<G4double>  eDepTime;
-	static std::vector<G4double>  initialXMomentum;
-	static std::vector<G4double>  initialYMomentum;
-	static std::vector<G4double>  initialZMomentum;
+	static std::vector<G4int>  voxEDepPIDVec;
+	static std::vector<G4double>  voxEDepVec;
+	static std::vector<G4double>  xPosVoxEDepVec;
+	static std::vector<G4double>  yPosVoxEDepVec;
+	static std::vector<G4double>  zPosVoxEDepVec;
+	static std::vector<G4double>  timeVoxEDepVec;
+	static std::vector<G4double>  pX0VoxEDepVec;
+	static std::vector<G4double>  pY0VoxEDepVec;
+	static std::vector<G4double>  pZ0VoxEDepVec;
 	G4ThreeVector fPos;
 	G4RotationMatrix fRot;
 	const G4LogicalVolume *fPLogV;

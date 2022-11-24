@@ -11,6 +11,10 @@
 #include "NuLatRun.hh"
 #include "NuLatVoxelHit.hh"
 #include "NuLatPMTHit.hh"
+#include "NaIPMTHit.hh"
+// C++ header files
+#include <vector>
+using namespace std;
 // define the class
 class NuLatEventAction : public G4UserEventAction
 {
@@ -29,8 +33,9 @@ private:
 	G4double fEdepNuLat, fEdepNaI;
 	// variables to store hit voxel coordinates, time and momentum components
 	G4double fX, fY, fZ, fT, fPX0, fPY0, fPZ0;
-	// variables to store PMT and Voxel hit collection ID, event ID, Voxel Hit ID, PMT Hit ID, index of hit voxel, and particle ID, and to set voxel count in x, y and z and number of PMTs
-	G4int fPCHCID, fECHCID, fEvent, fVHit, fPHit, fID, fPID, xVoxels, yVoxels, zVoxels, nPMT;
+	// variables to store NuLat PMT, Voxel and NaI PMT hit collection ID; event ID, Voxel Hit ID, PMT Hit ID, index of hit voxel, particle ID, and track ID
+	// ... and to set voxel count in x, y, z and total, and number of PMTs
+	G4int fPCHCID, fECHCID, fSIHCID, fEvent, fVHit, fPHit, fID, fPID, fTrkID, xVoxels, yVoxels, zVoxels, nPMT, nVox, nNaIPMT;
 };
 // end of conditional to define class only once
 #endif

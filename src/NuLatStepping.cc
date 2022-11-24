@@ -33,7 +33,7 @@ void NuLatSteppingAction::UserSteppingAction(const G4Step* aStep)
 	}
 	if(volume == fScoringVolumeNuLat)
 	{
-		// To do: do scoring and location for NuLat Voxels
-		return;// remove return statement. put in conditional to return if volume is neither
+		// Nothing to do. Scoring done in NuLatSensDet.cc
+		return;
 	}
 }

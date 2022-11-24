@@ -58,11 +58,13 @@ void NuLatDetectorConstruction::DefineMaterials()
 {
 	// Boolean to toggle debug messages
 	debugMsg = false;
-	// Strings for debug messages
-	G4String wlenNMStr = "Wavelength (nm:) ";
-	G4String eStr = "; Energy (eV:) ";
-	G4String rindexNaIStr = "; refractive index, NaI: ";
-	G4String scStr = "; scintillation component: ";
+	if(debugMsg){
+		// Strings for debug messages
+		G4String wlenNMStr = "Wavelength (nm:) ";
+		G4String eStr = "; Energy (eV:) ";
+		G4String rindexNaIStr = "; refractive index, NaI: ";
+		G4String scStr = "; scintillation component, NaI: ";
+	}
 	G4NistManager *nist = G4NistManager::Instance();
 	// size_t variable for property array lengths
 	const size_t nI = 182;
@@ -337,7 +339,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 void NuLatDetectorConstruction::BuildVCBox()
 {
 	// Define position variables
-	G4double xpos, ypos, zpos;
+	G4double xPos, yPos, zPos;
 	// Define Visual Attributes object for adjusting coloring and visibility of various components
 	attr = new G4VisAttributes(G4Colour(0.9,0.0,0.0,0.05));
 	// Define Calorimeter
@@ -357,14 +359,14 @@ void NuLatDetectorConstruction::BuildVCBox()
 	// for loop to create 5X5X5 array of Voxel Physical Volumes
 	for(G4int k=0; k<zVoxels; k++)
 	{
-		zpos = (k+1.)*zVoxelSpace+(k+0.5)*zVoxelSize-zVCBoxSize/2;
+		zPos = (k+1.)*zVoxelSpace+(k+0.5)*zVoxelSize-zVCBoxSize/2;
 		for(G4int j=0; j<yVoxels; j++)
 		{
-			ypos = (j+1.)*yVoxelSpace+(j+0.5)*yVoxelSize-yVCBoxSize/2;
+			yPos = (j+1.)*yVoxelSpace+(j+0.5)*yVoxelSize-yVCBoxSize/2;
 			for(G4int i=0; i<xVoxels; i++)
 			{
-				xpos = (i+1.)*xVoxelSpace+(i+0.5)*xVoxelSize-xVCBoxSize/2;
-				physVoxel = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos), logicVoxel, "physVoxel", logicVCBox, false, i+j*xVoxels+k*xVoxels*yVoxels, true);
+				xPos = (i+1.)*xVoxelSpace+(i+0.5)*xVoxelSize-xVCBoxSize/2;
+				physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicVCBox, false, i+j*xVoxels+k*xVoxels*yVoxels, true);
 			}
 		}
 	}
@@ -377,21 +379,21 @@ void NuLatDetectorConstruction::BuildAcrylicBox()
 	solidAcrylicSidePlateX = new G4Box("solidAcrylicSidePlateX", tAcrylicPlate, yVCBoxSize/2, zVCBoxSize/2);
 	logicAcrylicSidePlateX = new G4LogicalVolume(solidAcrylicSidePlateX, acrylic, "logicAcrylicSidePlateX");
 	logicAcrylicSidePlateX->SetVisAttributes(attr);
-	G4double xpos = xVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusX = new G4PVPlacement(0, G4ThreeVector(xpos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlatePlusX", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusX = new G4PVPlacement(0, G4ThreeVector(-xpos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlateMinusX", logicWorld, false, 0, true);
+	G4double xPos = xVCBoxSize/2+tAcrylicPlate;
+	physAcrylicSidePlatePlusX = new G4PVPlacement(0, G4ThreeVector(xPos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlatePlusX", logicWorld, false, 0, true);
+	physAcrylicSidePlateMinusX = new G4PVPlacement(0, G4ThreeVector(-xPos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlateMinusX", logicWorld, false, 0, true);
 	solidAcrylicSidePlateY = new G4Box("solidAcrylicSidePlateY", xVCBoxSize/2, 2.5*mm, zVCBoxSize/2);
 	logicAcrylicSidePlateY = new G4LogicalVolume(solidAcrylicSidePlateY, acrylic, "logicAcrylicSidePlateY");
 	logicAcrylicSidePlateY->SetVisAttributes(attr);
-	G4double ypos = yVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusY = new G4PVPlacement(0, G4ThreeVector(0., ypos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlatePlusY", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusY = new G4PVPlacement(0, G4ThreeVector(0., -ypos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlateMinusY", logicWorld, false, 0, true);
+	G4double yPos = yVCBoxSize/2+tAcrylicPlate;
+	physAcrylicSidePlatePlusY = new G4PVPlacement(0, G4ThreeVector(0., yPos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlatePlusY", logicWorld, false, 0, true);
+	physAcrylicSidePlateMinusY = new G4PVPlacement(0, G4ThreeVector(0., -yPos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlateMinusY", logicWorld, false, 0, true);
 	solidAcrylicSidePlateZ = new G4Box("solidAcrylicSidePlateZ", xVCBoxSize/2, yVCBoxSize/2, 2.5*mm);
 	logicAcrylicSidePlateZ = new G4LogicalVolume(solidAcrylicSidePlateZ, acrylic, "logicAcrylicSidePlateZ");
 	logicAcrylicSidePlateZ->SetVisAttributes(attr);
-	G4double zpos = zVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zpos), logicAcrylicSidePlateZ, "physAcrylicSidePlatePlusZ", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zpos), logicAcrylicSidePlateZ, "physAcrylicSidePlateMinusZ", logicWorld, false, 0, true);
+	G4double zPos = zVCBoxSize/2+tAcrylicPlate;
+	physAcrylicSidePlatePlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zPos), logicAcrylicSidePlateZ, "physAcrylicSidePlatePlusZ", logicWorld, false, 0, true);
+	physAcrylicSidePlateMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zPos), logicAcrylicSidePlateZ, "physAcrylicSidePlateMinusZ", logicWorld, false, 0, true);
 }
 //  Light Guide with PMT constructor
 void NuLatDetectorConstruction::BuildLGandPMT()
@@ -402,7 +404,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	G4double dy1 = yVoxelSize+yVoxelSpace-0.05*in;
 	G4double dy2 = 46.*mm;
 	G4double dz = lenLGTaper;
-	G4double xpos, ypos, zpos;
+	G4double xPos, yPos, zPos;
 	// Declace rotation angle
 	G4double phi = 90*deg;
 	// Declare vectors to construct rotation matrices
@@ -434,39 +436,39 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	/*attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
 	logicAlDiv->SetVisAttributes(attr);/**/
 	// make +z light guides
-	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
+	zPos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
-		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
+		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
 		for(G4int j=0; j<yVoxels; j++)
 		{
-			ypos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-			physLG = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
-			//physAlDiv = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
+			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
+			physLG = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
+			//physAlDiv = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x light guides
-	xpos = xVCBoxSize/2+2*tAcrylicPlate+dz/2;
+	xPos = xVCBoxSize/2+2*tAcrylicPlate+dz/2;
 	for (G4int i=0; i<yVoxels; i++)
 	{
-		ypos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
+		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 		for(G4int j=0; j<zVoxels; j++)
 		{
-			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physLG = new G4PVPlacement(xRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-			//physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xpos + 58.7*mm, ypos, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
+			physLG = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			//physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xPos + 58.7*mm, yPos, zPos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y light guides
-	ypos = -yVCBoxSize/2-2*tAcrylicPlate-dz/2;
+	yPos = -yVCBoxSize/2-2*tAcrylicPlate-dz/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
-		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
+		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
 		for(G4int j=0; j<zVoxels; j++)
 		{
-			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physLG = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos, zpos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-			//physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos + 58.7*mm, zpos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
+			physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			//physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos + 58.7*mm, zPos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// Define PMT's
@@ -476,36 +478,36 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
 	// make +z PMT's
-	zpos = zVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
+	zPos = zVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
-		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
+		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
 		for(G4int j=0; j<yVoxels; j++)
 		{
-			ypos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-			physPMT = new G4PVPlacement(0, G4ThreeVector(xpos, ypos, zpos), logicPMT, "physPMT", logicWorld, false, i*yVoxels+j, true);
+			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
+			physPMT = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x PMT's
-	xpos = xVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
+	xPos = xVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
 	for (G4int i=0; i<yVoxels; i++)
 	{
-		ypos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
+		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 		for(G4int j=0; j<zVoxels; j++)
 		{
-			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physPMT = new G4PVPlacement(xRot, G4ThreeVector(xpos, ypos, zpos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
+			physPMT = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y PMT's
-	ypos = -yVCBoxSize/2-2*tAcrylicPlate-dz-lenPMT/2;
+	yPos = -yVCBoxSize/2-2*tAcrylicPlate-dz-lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
-		xpos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
+		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
 		for(G4int j=0; j<zVoxels; j++)
 		{
-			zpos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physPMT = new G4PVPlacement(yRot, G4ThreeVector(xpos, ypos, zpos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
+			physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// to do: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary) 
@@ -522,35 +524,35 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	logicLGBoxPlusX = new G4LogicalVolume(solidLGBoxPlusX, air, "logicLGBoxPlusX");
 	// make LGBox mother volume invisible (do for all)
 	logicLGBoxPlusX->SetVisAttributes(attr);// let this one show for testing
-	G4double xpos = xVCBoxSize/2+lenLGwPMT/2+0.01*in;
-	physLGBoxPlusX = new G4PVPlacement(0, G4ThreeVector(xpos, 0., 0.), logicLGBoxPlusX, "physLGBoxPlusX", logicWorld, false, 0, true);
+	G4double xPos = xVCBoxSize/2+lenLGwPMT/2+0.01*in;
+	physLGBoxPlusX = new G4PVPlacement(0, G4ThreeVector(xPos, 0., 0.), logicLGBoxPlusX, "physLGBoxPlusX", logicWorld, false, 0, true);
 	// Define mother volume for +y LG bank - no PMT's
 	solidLGBoxPlusY = new G4Box("solidLGBoxPlusY", xVCBoxSize/2, lenLGwPMT/2, zVCBoxSize/2);
 	logicLGBoxPlusY = new G4LogicalVolume(solidLGBoxPlusY, air, "logicLGBoxPlusY");
 	logicLGBoxPlusY->SetVisAttributes(attr);
-	G4double ypos = yVCBoxSize/2+lenLGwPMT/2+0.01*in;
-	physLGBoxPlusY = new G4PVPlacement(0, G4ThreeVector(0., ypos, 0.), logicLGBoxPlusY, "physLGBoxPlusY", logicWorld, false, 0, true);
+	G4double yPos = yVCBoxSize/2+lenLGwPMT/2+0.01*in;
+	physLGBoxPlusY = new G4PVPlacement(0, G4ThreeVector(0., yPos, 0.), logicLGBoxPlusY, "physLGBoxPlusY", logicWorld, false, 0, true);
 	// Define mother volume for +z LG and PMT bank
 	solidLGBoxPlusZ = new G4Box("solidLGBoxPlusZ", xVCBoxSize/2, yVCBoxSize/2, lenLGwPMT/2);
 	logicLGBoxPlusZ = new G4LogicalVolume(solidLGBoxPlusZ, air, "logicLGBoxPlusZ");
 	logicLGBoxPlusZ->SetVisAttributes(attr);
-	G4double zpos = zVCBoxSize/2+lenLGwPMT/2+0.01*in;
-	physLGBoxPlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zpos), logicLGBoxPlusZ, "physLGBoxPlusZ", logicWorld, false, 0, true);
+	G4double zPos = zVCBoxSize/2+lenLGwPMT/2+0.01*in;
+	physLGBoxPlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zPos), logicLGBoxPlusZ, "physLGBoxPlusZ", logicWorld, false, 0, true);
 	// Define mother volume for -x LG bank - no PMT's
 	solidLGBoxMinusX = new G4Box("solidLGBoxMinusX", lenLGwPMT/2, yVCBoxSize/2, zVCBoxSize/2);
 	logicLGBoxMinusX = new G4LogicalVolume(solidLGBoxMinusX, air, "logicLGBoxMinusX");
 	logicLGBoxMinusX->SetVisAttributes(attr);
-	physLGBoxMinusX = new G4PVPlacement(0, G4ThreeVector(-xpos, 0., 0.), logicLGBoxMinusX, "physLGBoxMinusX", logicWorld, false, 0, true);
+	physLGBoxMinusX = new G4PVPlacement(0, G4ThreeVector(-xPos, 0., 0.), logicLGBoxMinusX, "physLGBoxMinusX", logicWorld, false, 0, true);
 	// Define mother volume for -y LG and PMT bank
 	solidLGBoxMinusY = new G4Box("solidLGBoxMinusY", xVCBoxSize/2, lenLGwPMT/2, zVCBoxSize/2);
 	logicLGBoxMinusY = new G4LogicalVolume(solidLGBoxMinusY, air, "logicLGBoxMinusY");
 	logicLGBoxMinusY->SetVisAttributes(attr);
-	physLGBoxMinusY = new G4PVPlacement(0, G4ThreeVector(0., -ypos, 0.), logicLGBoxMinusY, "physLGBoxMinusY", logicWorld, false, 0, true);
+	physLGBoxMinusY = new G4PVPlacement(0, G4ThreeVector(0., -yPos, 0.), logicLGBoxMinusY, "physLGBoxMinusY", logicWorld, false, 0, true);
 	// Define mother volume for -z LG bank - no PMT's
 	solidLGBoxMinusZ = new G4Box("solidLGBoxMinusZ", xVCBoxSize/2, yVCBoxSize/2, lenLGwPMT/2);
 	logicLGBoxMinusZ = new G4LogicalVolume(solidLGBoxMinusZ, air, "logicLGBoxMinusZ");
 	logicLGBoxMinusZ->SetVisAttributes(attr);
-	physLGBoxMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zpos), logicLGBoxMinusZ, "physLGBoxMinusZ", logicWorld, false, 0, true);
+	physLGBoxMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zPos), logicLGBoxMinusZ, "physLGBoxMinusZ", logicWorld, false, 0, true);
 	// Call function to build LG's and PMT's
 	BuildLGandPMT();
 }*/
@@ -568,7 +570,7 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	G4double tSensDet = 200.*mm;
 	G4double hCrystal = hBarrel + tFlange;
 	G4double tSourcePuck = 10.0*mm;
-	G4double zOffset = zVCBoxSize/2 + tAcrylicPlate + tSourcePuck;
+	G4double zOffset = zVCBoxSize/2 + tAcrylicPlate + tSourcePuck + lenPMT;// added lenPMT to account for aluminum dividers on sides. Not perfectly accurate
 	G4double z0 = zOffset + tAl/2;
 	G4double z1 = zOffset + tAl + hBarrel/2;
 	G4double z2 = zOffset + tAl + hCrystal/2;

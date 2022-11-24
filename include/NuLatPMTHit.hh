@@ -58,23 +58,23 @@ public:
 	void PushPMTHitPID(G4int ID) { PMTHitPIDVec.push_back(ID); }
 	void PushPMTHitEnergyVec(G4double energy) { PMTHitEnergyVec.push_back(energy); }
 	void PushPMTHitWlenVec(G4double wavelen) { PMTHitWlenVec.push_back(wavelen); }
-	void PushPMTXHitVec(G4int X) { PMTXHitVec.push_back(X); }
-	void PushPMTYHitVec(G4int Y) { PMTYHitVec.push_back(Y); }
-	void PushPMTZHitVec(G4int Z) { PMTZHitVec.push_back(Z); }
+	void PushxPosPMTHitVec(G4double X) { xPosPMTHitVec.push_back(X); }
+	void PushyPosPMTHitVec(G4double Y) { yPosPMTHitVec.push_back(Y); }
+	void PushzPosPMTHitVec(G4double Z) { zPosPMTHitVec.push_back(Z); }
 	void PushPMTHitTimeVec(G4double time) { PMTHitTimeVec.push_back(time); }
 	std::vector<G4int> GetPMTHitPIDVec() { return PMTHitPIDVec; }
 	std::vector<G4double> GetPMTHitEnergyVec() { return PMTHitEnergyVec; }
 	std::vector<G4double> GetPMTHitWlenVec() { return PMTHitWlenVec; }
-	std::vector<G4int> GetPMTXHitVec() { return PMTXHitVec; }
-	std::vector<G4int> GetPMTYHitVec() { return PMTYHitVec; }
-	std::vector<G4int> GetPMTZHitVec() { return PMTZHitVec; }
+	std::vector<G4double> GetxPosPMTHitVec() { return xPosPMTHitVec; }
+	std::vector<G4double> GetyPosPMTHitVec() { return yPosPMTHitVec; }
+	std::vector<G4double> GetzPosPMTHitVec() { return zPosPMTHitVec; }
 	std::vector<G4double> GetPMTHitTimeVec() { return PMTHitTimeVec; }
 	void ClearPMTHitPID() { PMTHitPIDVec.clear(); }
 	void ClearPMTHitEnergyVec() { PMTHitEnergyVec.clear(); }
 	void ClearPMTHitWlenVec() { PMTHitWlenVec.clear(); }
-	void ClearPMTXHitVec() { PMTXHitVec.clear(); }
-	void ClearPMTYHitVec() { PMTYHitVec.clear(); }
-	void ClearPMTZHitVec() { PMTZHitVec.clear(); }
+	void ClearxPosPMTHitVec() { xPosPMTHitVec.clear(); }
+	void ClearyPosPMTHitVec() { yPosPMTHitVec.clear(); }
+	void ClearzPosPMTHitVec() { zPosPMTHitVec.clear(); }
 	void ClearPMTHitTimeVec() { PMTHitTimeVec.clear(); }
 private:
 	// variables used to identify hit information
@@ -90,9 +90,9 @@ private:
 	static std::vector<G4int> PMTZPEVec;
 	static std::vector<G4double> PMTHitWlenVec;
 	static std::vector<G4double> PMTHitEnergyVec;
-	static std::vector<G4int> PMTXHitVec;
-	static std::vector<G4int> PMTYHitVec;
-	static std::vector<G4int> PMTZHitVec;
+	static std::vector<G4double> xPosPMTHitVec;
+	static std::vector<G4double> yPosPMTHitVec;
+	static std::vector<G4double> zPosPMTHitVec;
 	static std::vector<G4double> PMTHitTimeVec;
 	// location and volume objects
 	G4ThreeVector fPos;

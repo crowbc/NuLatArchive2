@@ -1,7 +1,7 @@
 // user defined header file for class
 #include "NuLatEvent.hh"
 // Constructor
-NuLatEventAction::NuLatEventAction(NuLatRunAction* aRun) : G4UserEventAction(), fPCHCID(-1), fECHCID(-1)
+NuLatEventAction::NuLatEventAction(NuLatRunAction* aRun) : G4UserEventAction(), fPCHCID(-1), fECHCID(-1), fSIHCID(-1)
 {
 	// initialize with 0 energy
 	fEdepNuLat=0.;
@@ -11,6 +11,8 @@ NuLatEventAction::NuLatEventAction(NuLatRunAction* aRun) : G4UserEventAction(), 
 	yVoxels = 5;
 	zVoxels = 5;
 	nPMT = yVoxels*zVoxels + xVoxels*zVoxels + xVoxels*yVoxels;// ()*2 for fully instrumented detector
+	nVox = xVoxels*yVoxels*zVoxels;
+	nNaIPMT = 1;
 }
 // Destructor
 NuLatEventAction::~NuLatEventAction()
@@ -23,9 +25,10 @@ void NuLatEventAction::BeginOfEventAction(const G4Event* anEvent)
 	fEdepNaI=0.;
 	// Get event number, print event number for every 1000th event
 	fEvent = anEvent->GetEventID();
+	G4int rNum;// = anEvent->command to get the run->GetRunID();
 	if(fEvent%1000 == 0)
 	{
-		if (fEvent == 0) G4cout << "Beginning of Run..." << G4endl << G4endl;
+		if (fEvent == 0) G4cout << "Beginning of run... "/*# " << rNum*/ << G4endl << G4endl;
 		G4cout << "Beginning of event # " << fEvent << G4endl;
 	}
 	if (fECHCID==-1)
@@ -37,6 +40,11 @@ void NuLatEventAction::BeginOfEventAction(const G4Event* anEvent)
 	{
 		G4SDManager *SDman = G4SDManager::GetSDMpointer();
 		fPCHCID = SDman->GetCollectionID("NuLatPMT/NuLatPMTColl");
+	}
+	if (fSIHCID==-1)
+	{
+		G4SDManager *SDman = G4SDManager::GetSDMpointer();
+		fSIHCID = SDman->GetCollectionID("NaIPMT/NaIPMTColl");
 	}
 }
 // End of Event Action
@@ -51,34 +59,60 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 	fPHit = 0;
 	// Get Voxel and PMT Hit collections from hce
 	NuLatVoxelHitsCollection *VoxHC = static_cast<NuLatVoxelHitsCollection*>(hce->GetHC(fECHCID));
+	// Fill NuLat scoring N-tuple
+	Aman->FillNtupleIColumn(2, 0, fEvent);
+	// Populate Voxel Hit containers and write to N tuple
+	for(G4int i = 0; i < nVox; i++)
+	{
+		// Deprecated method - hit scoring is done directly in NuLatVoxelSensDet.cc and output Ntuples are written there
+		NuLatVoxelHit *hit = (*VoxHC)[i];
+		// Clear vectors to handle memory leaks
+		hit->ClearvoxEDepPIDVec();
+		hit->ClearEDepVec();
+		hit->ClearxPosVoxEDepVec();
+		hit->ClearyPosVoxEDepVec();
+		hit->ClearzPosVoxEDepVec();
+		hit->ClearpX0VoxEDepVec();
+		hit->ClearpY0VoxEDepVec();
+		hit->ClearpZ0VoxEDepVec();/**/
+	}
+	// finish NuLat Scoring
+	Aman->AddNtupleRow(2);
 	NuLatPMTHitsCollection *PMTHC = static_cast<NuLatPMTHitsCollection*>(hce->GetHC(fPCHCID));
 	// Populate PMT Hit containers - to do: write a function for this
 	for(G4int i = 0; i < nPMT; i++)
 	{
+		// Deprecated method - hit scoring is done directly in NuLatPMTsensDet.cc and output Ntuples are written there
 		NuLatPMTHit *hit = (*PMTHC)[i];
 		// Get the number of photoelectrons registering a hit
 		G4double peHits = hit->GetPEHits();
 		// To do:
-		// (1) handle x, y and z index for hit location based on i
-		// (2) populate local vectors with values from the hits collection
-		// (3) fPHit = peHits?
+		// Clear vectors to handle memory leaks
+		hit->ClearPMTHitPID();
+		hit->ClearPMTHitEnergyVec();
+		hit->ClearPMTHitWlenVec();
+		hit->ClearxPosPMTHitVec();
+		hit->ClearyPosPMTHitVec();
+		hit->ClearzPosPMTHitVec();
+		hit->ClearPMTHitTimeVec();/**/
 	}
-	// Fill Hit MC Truth N-tuple
-	Aman->FillNtupleIColumn(2, 0, fEvent);
-	// NuLat Scoring
-	Aman->FillNtupleDColumn(2, 1, fEdepNuLat);
-	Aman->FillNtupleDColumn(2, 2, fX);
-	Aman->FillNtupleDColumn(2, 3, fY);
-	Aman->FillNtupleDColumn(2, 4, fZ);
-	Aman->FillNtupleDColumn(2, 5, fT);
-	Aman->FillNtupleIColumn(2, 6, fID);
-	Aman->FillNtupleDColumn(2, 7, fPX0);
-	Aman->FillNtupleDColumn(2, 8, fPY0);
-	Aman->FillNtupleDColumn(2, 9, fPZ0);
-	// Particle ID
-	Aman->FillNtupleIColumn(2, 10, fPID);
-	// NaI Scoring
-	Aman->FillNtupleDColumn(2, 11, fEdepNaI);
-	Aman->AddNtupleRow(2);
+	NaIPMTHitsCollection *NaIPMTHC = static_cast<NaIPMTHitsCollection*>(hce->GetHC(fSIHCID));
+	// Populate PMT Hit containers - to do: write a function for this
+	for(G4int i = 0; i < nNaIPMT; i++)
+	{
+		// Deprecated method - hit scoring is done directly in NuLatStepping.cc and output Ntuples are written there
+		NaIPMTHit *hit = (*NaIPMTHC)[i];
+		// Get the number of photoelectrons registering a hit
+		G4double peHits = hit->GetPEHits();
+		// Clear the vectors to handle memory leaks
+		hit->ClearPMTHitPID();
+		hit->ClearPMTHitEnergyVec();
+		hit->ClearPMTHitWlenVec();
+		hit->ClearPMTHitTimeVec();/**/
+	}
+	// Fill NaI Scoring N tuple
+	Aman->FillNtupleIColumn(5, 0, fEvent);
+	Aman->FillNtupleDColumn(5, 1, fEdepNaI);
+	Aman->AddNtupleRow(5);
 	// to do: clear Hit Vectors after end of event output files are written
 }

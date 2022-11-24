@@ -6,15 +6,15 @@ G4ThreadLocal G4Allocator<NuLatVoxelHit>* NuLatVoxelHitAllocator=0;
 NuLatVoxelHit::NuLatVoxelHit(): G4VHit(), fCellID(-1), eDep(0), fPos(0), fPLogV(0)
 {}
 // data structures
-vector<G4int> NuLatVoxelHit::eDepParticleTypeIDNumber;
-vector<G4double>  NuLatVoxelHit::eDepEDep;
-vector<G4double>  NuLatVoxelHit::eDepXPosition;
-vector<G4double>  NuLatVoxelHit::eDepYPosition;
-vector<G4double>  NuLatVoxelHit::eDepZPosition;
-vector<G4double>  NuLatVoxelHit::eDepTime;
-vector<G4double>  NuLatVoxelHit::initialXMomentum;
-vector<G4double>  NuLatVoxelHit::initialYMomentum;
-vector<G4double>  NuLatVoxelHit::initialZMomentum;
+vector<G4int> NuLatVoxelHit::voxEDepPIDVec;
+vector<G4double>  NuLatVoxelHit::voxEDepVec;
+vector<G4double>  NuLatVoxelHit::xPosVoxEDepVec;
+vector<G4double>  NuLatVoxelHit::yPosVoxEDepVec;
+vector<G4double>  NuLatVoxelHit::zPosVoxEDepVec;
+vector<G4double>  NuLatVoxelHit::timeVoxEDepVec;
+vector<G4double>  NuLatVoxelHit::pX0VoxEDepVec;
+vector<G4double>  NuLatVoxelHit::pY0VoxEDepVec;
+vector<G4double>  NuLatVoxelHit::pZ0VoxEDepVec;
 // Constructor with parameter
 NuLatVoxelHit::NuLatVoxelHit(G4int z): G4VHit(), fCellID(z), eDep(0), fPos(0), fPLogV(0)
 {}
@@ -96,7 +96,7 @@ std::vector<G4AttValue>* NuLatVoxelHit::CreateAttValues() const
 // Print() method
 void NuLatVoxelHit::Print()
 {
-	// only print if feedback enabled
+	// only print if feedback enabled. Otherwise print to log file (to do: write fstream output for log file.)
 	if(fbOn)
 	{
 		G4cout << "  Cell[" << fCellID << "] " << eDep/MeV << " (MeV)" << G4endl;

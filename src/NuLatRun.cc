@@ -6,67 +6,73 @@ NuLatRunAction::NuLatRunAction()
 	// initialize analysis manager
 	G4AnalysisManager *Aman = G4AnalysisManager::Instance();
 	// create N tuple for photon truth information in NuLat PMT hits
-	Aman->CreateNtuple("NuLat PMT Truth", "NuLat PMT Truth");
-	Aman->CreateNtupleIColumn("fEvent");
-	Aman->CreateNtupleDColumn("fX");
-	Aman->CreateNtupleDColumn("fY");
-	Aman->CreateNtupleDColumn("fZ");
-	Aman->CreateNtupleDColumn("fWlen");
+	Aman->CreateNtuple("NuLat_PMT_Truth", "NuLat_PMT_Truth");// Ntuple 0
+	Aman->CreateNtupleIColumn("fEvent");// col 0
+	Aman->CreateNtupleDColumn("fX");// col 1
+	Aman->CreateNtupleDColumn("fY");// col 2
+	Aman->CreateNtupleDColumn("fZ");// c0l 3
+	Aman->CreateNtupleDColumn("fWlen");// col 4
 	Aman->FinishNtuple(0);
 	// create N tuple for PMT hit information
-	Aman->CreateNtuple("NuLat PMT Hits", "NuLat PMT Hits");
-	Aman->CreateNtupleIColumn("fEvent");
+	Aman->CreateNtuple("NuLat_PMT_Hits", "NuLat_PMT_Hits");// Ntuple 1
+	Aman->CreateNtupleIColumn("fEvent");// col 0
+	// PMT ID
+	Aman->CreateNtupleIColumn("fID");// col 1
 	// PMT coords
-	Aman->CreateNtupleDColumn("fX");
-	Aman->CreateNtupleDColumn("fY");
-	Aman->CreateNtupleDColumn("fZ");
+	Aman->CreateNtupleDColumn("fX");// col 2
+	Aman->CreateNtupleDColumn("fY");// col 3
+	Aman->CreateNtupleDColumn("fZ");// col 4
 	// time of hit
-	Aman->CreateNtupleDColumn("fT");
-	// PMT ID - to do: add N-Tuple for NaI Hits
-	Aman->CreateNtupleIColumn("fID");
+	Aman->CreateNtupleDColumn("fT");// col 5
 	// To do: Needs number of hits?
 	Aman->FinishNtuple(1);
 	// create N tuple for energy deposition tracking (MC truth)
-	Aman->CreateNtuple("Scoring", "Scoring");
-	Aman->CreateNtupleIColumn("fEvent");
-	Aman->CreateNtupleDColumn("fEdepNuLat");
-	// Voxel coords
-	Aman->CreateNtupleDColumn("fX");
-	Aman->CreateNtupleDColumn("fY");
-	Aman->CreateNtupleDColumn("fZ");
-	// time of hit
-	Aman->CreateNtupleDColumn("fT");
+	Aman->CreateNtuple("NuLat_Scoring", "NuLat_Scoring");// Ntuple 2
+	Aman->CreateNtupleIColumn("fEvent");// col 0
+	// columns for particle ID and track ID
+	Aman->CreateNtupleIColumn("fPID");// col 1
+	Aman->CreateNtupleIColumn("fTrkID");// col 2
 	// Voxel ID - can use to validate whether or not coordinates are true
-	Aman->CreateNtupleIColumn("fID");
+	Aman->CreateNtupleIColumn("fID");// col 3
+	// scoring value for energy deposition
+	Aman->CreateNtupleDColumn("fEdepNuLat");// col 4
+	// Voxel coords
+	Aman->CreateNtupleDColumn("fX");// col 5
+	Aman->CreateNtupleDColumn("fY");// col 6
+	Aman->CreateNtupleDColumn("fZ");// col 7
+	// time of hit
+	Aman->CreateNtupleDColumn("fT");// col 8
 	// columns for momentum components
-	Aman->CreateNtupleDColumn("fPX0");
-	Aman->CreateNtupleDColumn("fPY0");
-	Aman->CreateNtupleDColumn("fPZ0");
-	// column for particle ID
-	Aman->CreateNtupleIColumn("fPID");
-	// column for NaI scoring
-	Aman->CreateNtupleDColumn("fEdepNaI");
+	Aman->CreateNtupleDColumn("fPX0");// col 9
+	Aman->CreateNtupleDColumn("fPY0");// col 10
+	Aman->CreateNtupleDColumn("fPZ0");// col 11
 	Aman->FinishNtuple(2);
 	// create N tuple for photon truth information in NaI PMT hits
-	Aman->CreateNtuple("NaI PMT Truth", "NaI PMT Truth");
-	Aman->CreateNtupleIColumn("fEvent");
-	Aman->CreateNtupleDColumn("fX");
-	Aman->CreateNtupleDColumn("fY");
-	Aman->CreateNtupleDColumn("fZ");
-	Aman->CreateNtupleDColumn("fWlen");
+	Aman->CreateNtuple("NaI_PMT_Truth", "NaI_PMT_Truth");// Ntuple 3
+	Aman->CreateNtupleIColumn("fEvent");// col 0
+	Aman->CreateNtupleDColumn("fX");// col 1
+	Aman->CreateNtupleDColumn("fY");// col 2
+	Aman->CreateNtupleDColumn("fZ");// col 3
+	Aman->CreateNtupleDColumn("fWlen");// col 4
 	Aman->FinishNtuple(3);
 	// create N tuple for NaI hits
-	Aman->CreateNtuple("NaI PMT Hits", "NaI PMT Hits");
-	Aman->CreateNtupleIColumn("fEvent");
-	// PMT coords
-	Aman->CreateNtupleDColumn("fX");
-	Aman->CreateNtupleDColumn("fY");
-	Aman->CreateNtupleDColumn("fZ");
-	// time of hit
-	Aman->CreateNtupleDColumn("fT");
+	Aman->CreateNtuple("NaI_PMT_Hits", "NaI_PMT_Hits");// Ntuple 4
+	Aman->CreateNtupleIColumn("fEvent");// col 0
 	// PMT ID for NaI
-	Aman->CreateNtupleIColumn("fID");
+	Aman->CreateNtupleIColumn("fID");// col 1 - should be identically 0
+	// PMT coords
+	Aman->CreateNtupleDColumn("fX");// col 2
+	Aman->CreateNtupleDColumn("fY");// col 3
+	Aman->CreateNtupleDColumn("fZ");// col 4
+	// time of hit
+	Aman->CreateNtupleDColumn("fT");// col 5
 	Aman->FinishNtuple(4);
+	// Create N Tuple for NaI scoring
+	Aman->CreateNtuple("NaI_Scoring", "NaI_Scoring");// Ntuple 5 - simple scoring; just tracks total energy depositiion
+	Aman->CreateNtupleIColumn("fEvent");// col 0
+	// column for NaI scoring
+	Aman->CreateNtupleDColumn("fEdepNaI");// col 1
+	Aman->FinishNtuple(5);
 }
 // Destructor
 NuLatRunAction::~NuLatRunAction()

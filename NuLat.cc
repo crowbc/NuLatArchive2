@@ -1,25 +1,15 @@
 /*
 	File: Nulat.cc
 	Author: Brian Crow
-	Date: 14Nov2022
+	Date: 23Nov2022
 	Description: This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
-	Version: 2.2.1 - macros update (14 Nov 2022)
-	### Moved macro location to macros subdirectory. The cmake command still copies these to the binary directory, so run in batch mode by typing the macro name after ./NuLat like before
-	Change Log:
-	2.2.0 NaI Hit Tracking Update (09 Nov 2022)
-	### Added Hit Class for NaI PMT to track hits independently from NuLat PMTs
-	### Populated separate N-tuples for NaI PMT hits and truth data
-	### Constructed separate PMT sensitive detector in detector construction
-	### Note: NuLat and NaI PMT Hit classes are not fully implemented for simulating PMT hits
-	### Corrected N-tuple columns in event manager to be in same order as created in run manager
-	2.1.1 - Voxel Hit Tracking Patch (04 Nov 2022)
-	### Corrected Event Manager to properly initialize sensitive detector and hit tracking classes
-	### Moving N-tuple filling to Event Manager planned for patch 2.2.1
-	2.1.0 - start of version tracking (23 Sep 2022)
-	### Added Hit Scoring classes for NuLat PMT's and NuLat Voxels
-	### Added Sensitive detector classes for NuLat PMT's and NuLat Voxels
-	### Set Generator to use a Co-60 source as the default when the particle is defined as a geantino
-	### Added Gaussian model for NaI scintillation component centered on 410 nm with FWHM of 110 nm
+	Version: 2.2.2 secondary tracks patch (23 Nov 2022)
+	Added secondary track ID to scoring Ntuple. Moved scoring Ntuple for NuLat detector to NuLatSensDet.cc. Kept scoring Ntuple for NaI in NuLatEvent.cc 
+	Changed the structure of N tuples to separate PMT, scoring, NuLat and NaI information. See NuLatRun.cc for structure changes.
+	Added statements to NuLatEvent.cc to clear Hit vectors in order to fix memory leaks. Later update to remove some unused vectors
+	Moved NaI housing farther in -z direction in NuLatDetectorConstruction. cc. This is to account for space occupied by aluminum divider plates outside the acrylic box.
+	Moved source location in NuLatGenerator.cc to compensate for moving NaI detector.
+	See README.md for change log of previous updates and patches.
 */
 // Included Geant4 libriaries
 #include "G4RunManager.hh"

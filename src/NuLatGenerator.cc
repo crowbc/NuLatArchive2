@@ -18,7 +18,7 @@ NuLatPrimaryGenerator::NuLatPrimaryGenerator()
 		particle = G4IonTable::GetIonTable()->GetIon(Z, A, energy);
 	}
 	// Place source in center of -z face, and set momentum direction straight into detector
-	G4ThreeVector pos(0.,0.,-6.25*in-7.5*mm);
+	G4ThreeVector pos(0.,0.,-6.25*in-207.5*mm);
 	G4ThreeVector mom(0.,0.,-1.);
 	// set particle gun properties
 	G4double eCo60Lo = 1.173*MeV;

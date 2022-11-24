@@ -131,8 +131,6 @@ private:
 	G4GenericMessenger *fMessenger;
 	// Pointer to Visual Attribute manager object
 	G4VisAttributes *attr;
-	// If needed, make vector pointer to attr
-	//std::vector<G4VisAttributes*> NuLatAttr;
 };
 // end of conditional for defining class only once
 #endif
