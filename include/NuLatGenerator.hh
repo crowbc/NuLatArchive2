@@ -8,6 +8,7 @@
 #include "G4ParticleTable.hh"
 #include "G4Geantino.hh"
 #include "G4IonTable.hh"
+#include "G4RunManager.hh"
 
 class NuLatPrimaryGenerator : public G4VUserPrimaryGeneratorAction
 {
@@ -21,9 +22,14 @@ private:
 	G4ParticleGun* fParticleGun;
 	// useful constants
 	const G4double in = 25.4*mm;
+	// constant for cone geometry
+	const G4double gamma = 20.*deg;
 	// variables for particle properties
 	G4double charge, energy;
 	G4int Z, A;
+	// variables for cone geometry - alpha = 2*sin^(-1)(d*sin(gamma)/5.25*in), beta = 90*deg-alpha/2
+	G4double alpha, beta, theta, phi;
+	G4double d = 1*in;
 };
 
 #endif

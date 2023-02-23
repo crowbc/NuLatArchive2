@@ -8,17 +8,23 @@ The first build is just the basic 5x5x5 NuLat geometry with the acrylic side fac
 The second build added the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels. A sensitive air volume to simulate the NaI detector PMT was added and the scoring volume was set to the NaI detector, which is a single volume. The NuLat voxels will be re-configured as sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
+2.2.2 MC Track Info Update (22 FEB 2023)
+	test commit for updated token
+
 2.2.1 - macros update (17 Nov 2022)
 	Moved macro location to macros subdirectory. The cmake command still copies these to the binary directory, so run in batch mode by typing the macro name after ./NuLat like before
 	Corrected issue in event manager that was causing segmentation fault when calling the GetPEHits() function from NuLatPMTHit.cc
+	
 2.2.0 NaI Hit Tracking Update (09 Nov 2022)
 	Added Hit Class for NaI PMT to track hits independently from NuLat PMTs
 	Populated separate N-tuples for NaI PMT hits and truth data
 	Constructed separate PMT sensitive detector in detector construction (Note: NuLat and NaI PMT Hit classes are not fully implemented for simulating PMT hits)
 	Corrected N-tuple columns in event manager to be in same order as created in run manager
+	
 2.1.1 - Voxel Hit Tracking Patch (04 Nov 2022)
 	Corrected Event Manager to properly initialize sensitive detector and hit tracking classes
 	Moving N-tuple filling to Event Manager planned for patch 2.2.1
+	
 2.1.0 - start of version tracking (23 Sep 2022)
 	Added Hit Scoring classes for NuLat PMT's and NuLat Voxels
 	Added Sensitive detector classes for NuLat PMT's and NuLat Voxels

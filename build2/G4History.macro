@@ -32,6 +32,6 @@
 /vis/viewer/set/autoRefresh true
 /vis/viewer/refresh
 /vis/verbose warnings
-/run/beamOn 100
+/run/beamOn 10
 /analysis/h1/getVector
 /analysis/h2/getVector

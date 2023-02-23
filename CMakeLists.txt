@@ -37,25 +37,8 @@ add_executable(NuLat NuLat.cc ${sources} ${headers})
 target_link_libraries(NuLat ${Geant4_LIBRARIES})
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
-# build B5. This is so that we can run the executable directly because it
+# build NuLat. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory. (use the GLOB method)
-#
-#set(_SCRIPTS
-#  /Macros/draw.mac
-#  /Macros/drawSlice.mac
-#  /Macros/gui.mac
-#  /Macros/icons.mac
-#  /Macros/init.mac
-#  /Macros/init_vis.mac
-#  /Macros/run1.mac
-#  /Macros/run2.mac
-#  /Macros/run3.mac
-#  /Macros/run5.mac
-#  /Macros/run.png
-#  /Macros/scoring.mac
-#  /Macros/vis.mac
-#
-#  )
 #
 #foreach(_script ${_SCRIPTS})
 #  configure_file(

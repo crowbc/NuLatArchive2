@@ -1,0 +1,6 @@
+# x position starts 71.675 mm. let r = 71.675 mm and rotate by pi/4 each iteration. finish at pi/2. call run10k.mac from each iteration
+# z position fixed at -391.65 mm
+# place the following line in the macro calling this one:
+# /control/loop rotSrc90deg.mac phi 0 1.570796327 0.785398163
+/gun/position 71.675*cos{phi} 71.675*sin{phi} -391.65 mm
+/control/execute run10k.mac
