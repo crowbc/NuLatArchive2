@@ -8,8 +8,8 @@ The first build is just the basic 5x5x5 NuLat geometry with the acrylic side fac
 The second build added the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels. A sensitive air volume to simulate the NaI detector PMT was added and the scoring volume was set to the NaI detector, which is a single volume. The NuLat voxels will be re-configured as sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
-2.2.2 MC Track Info Update (22 FEB 2023)
-	test commit for updated token
+2.2.2 MC Track Info Update (23 FEB 2023)
+	test commit for updated token. Changed source to monochromatic 1.173 MeV gamma and randomized initial direction in a cone pointed into the detector and away from the NaI detector.
 
 2.2.1 - macros update (17 Nov 2022)
 	Moved macro location to macros subdirectory. The cmake command still copies these to the binary directory, so run in batch mode by typing the macro name after ./NuLat like before
