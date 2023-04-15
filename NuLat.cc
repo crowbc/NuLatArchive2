@@ -3,12 +3,7 @@
 	Author: Brian Crow
 	Date: 23Nov2022
 	Description: This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
-	Version: 2.2.2 secondary tracks patch (23 Nov 2022)
-	Added secondary track ID to scoring Ntuple. Moved scoring Ntuple for NuLat detector to NuLatSensDet.cc. Kept scoring Ntuple for NaI in NuLatEvent.cc 
-	Changed the structure of N tuples to separate PMT, scoring, NuLat and NaI information. See NuLatRun.cc for structure changes.
-	Added statements to NuLatEvent.cc to clear Hit vectors in order to fix memory leaks. Later update to remove some unused vectors
-	Moved NaI housing farther in -z direction in NuLatDetectorConstruction. cc. This is to account for space occupied by aluminum divider plates outside the acrylic box.
-	Moved source location in NuLatGenerator.cc to compensate for moving NaI detector.
+	Version: 2.2.3 secondary tracks patch (23 Mar 2023)
 	See README.md for change log of previous updates and patches.
 */
 // Included Geant4 libriaries

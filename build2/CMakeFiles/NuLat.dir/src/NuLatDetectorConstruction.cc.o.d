@@ -651,6 +651,4 @@ CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTsensDet.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTHit.hh
+ /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh

@@ -25,11 +25,10 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	xWorld = 2*xVCBoxSize;// set to needed size
 	yWorld = 2*yVCBoxSize;// set to needed size
 	zWorld = 2*zVCBoxSize;// set to needed size
-	NaIdetector = true;
+	NaIdetector = false;
 	Li6doped = false;// Doping of cubes not implemented
 	// Li-6 dopant fractional mass (default was 0.5% in old simulation code)
 	massfracLi6 = 0.5*perCent;
-	NaILoc = "Z";// Set default location to bottom face
 	// Acrylic side plate thickness
 	tAcrylicPlate = 0.125*in;
 	// Define the messenger and declare properties
@@ -43,10 +42,8 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	//fMessenger->DeclareProperty("xVoxelSpace", xVoxelSpace, "Gap between voxels in the x-dimension");
 	//fMessenger->DeclareProperty("yVoxelSpace", yVoxelSpace, "Gap between voxels in the y-dimension");
 	//fMessenger->DeclareProperty("zVoxelSpace", zVoxelSpace, "Gap between voxels in the z-dimension");
-	fMessenger->DeclareProperty("NaIdetector", NaIdetector, "Toggle NaI detector installed on -z Face of NuLat detector (On by default)");
 	//fMessenger->DeclareProperty("Li6doped", Li6doped, "Toggle Li-6 doping in PVT voxels (Off by default)");// uncomment when implemented
 	//fMessenger->DeclareProperty("massfracLi6", massfracLi6, "Mass fraction of Li-6 doping in PVT (0.5*perCent by default)");// uncomment when implemented
-	//fMessenger->DeclareProperty("NaILoc", NaILoc, "Locate NaI detector at the center of this (uninstrumented) face (set to X, Y or Z: default is Z face)");
 	// Define Detector Construction Materials
 	DefineMaterials();
 }
@@ -62,8 +59,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 		// Strings for debug messages
 		G4String wlenNMStr = "Wavelength (nm:) ";
 		G4String eStr = "; Energy (eV:) ";
-		G4String rindexNaIStr = "; refractive index, NaI: ";
-		G4String scStr = "; scintillation component, NaI: ";
+		/*G4String rindexNaIStr = "; refractive index, NaI: ";
+		//G4String scStr = "; scintillation component, NaI: ";/**/
 	}
 	G4NistManager *nist = G4NistManager::Instance();
 	// size_t variable for property array lengths
@@ -122,8 +119,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// 2012 J. Phys.: Conf. Ser. 356 012049 for acrylic optical properties - note: this reference is for films, not bulk material
 	G4double rindexAcrylic[nI];
 	G4double aLenAcrylic[nI];
-	G4double aLenNaI[nI];
-	G4double scNaI[nI];
+	/*G4double aLenNaI[nI];
+	G4double scNaI[nI];/**/
 	G4double rindexPVT[nI];
 	G4double aLenPVT[nI];
 	/*
@@ -221,6 +218,8 @@ void NuLatDetectorConstruction::DefineMaterials()
 	*/
 	G4double reflAl[nI];
 	G4double aLenAl[nI];
+	G4double reflSS[nI];
+	G4double aLenSS[nI];
 	/*G4double rindexBeCuPhotoCath[nI];
 	G4double aLenBeCuPhotoCath[nI];
 	G4double rindexBorosilicateGlass[nI];
@@ -230,12 +229,13 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//Be = nist->FindOrBuildElement("Be");
 	C = nist->FindOrBuildElement("C");
 	O = nist->FindOrBuildElement("O");
-	Na = nist->FindOrBuildElement("Na");
-	/*Si = nist->FindOrBuildElement("Si");
+	//Na = nist->FindOrBuildElement("Na");
+	//Si = nist->FindOrBuildElement("Si");
+	Cr = nist->FindOrBuildElement("Cr");
 	Fe = nist->FindOrBuildElement("Fe");
-	Ni = nist->FindOrBuildElement("Ni");
-	Cu = nist->FindOrBuildElement("Cu");/**/
-	I = nist->FindOrBuildElement("I");
+	Ni = nist->FindOrBuildElement("Ni");/**/
+	//Cu = nist->FindOrBuildElement("Cu");
+	//I = nist->FindOrBuildElement("I");
 	// use for 3*1E-03 molar doping of NaI (see table below)
 	Tl = nist->FindOrBuildElement("Tl");
 	// See also Chapter 6 of Tsoulfanidis, Nicholas, and Sheldon Landsberger. Measurement and Detection of Radiation. CRC Press LLC, 2010.
@@ -244,17 +244,19 @@ void NuLatDetectorConstruction::DefineMaterials()
 	//vacuum = nist->FindOrBuildMaterial("G4_GALACTIC");
 	//PVT = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
 	EJ200 = new G4Material("EJ200", rhoEJ200, 2);
-	EJ200->AddElement(C, 10);
-	EJ200->AddElement(H, 8);
+	EJ200->AddElement(C, Cfrac_EJ200*100*perCent);
+	EJ200->AddElement(H, Hfrac_EJ200*100*perCent);
 	aluminum = nist->FindOrBuildMaterial("G4_Al");
+	stainless = nist->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+	// NaI for coincidence detector - deprecated
 	//NaI = nist->FindOrBuildMaterial("G4_SODIUM_IODIDE");
 	//NaI = new G4Material("NaI", rhoNaI, 2);
 	//NaI->AddElement(Na, 1);
 	//NaI->AddElement(I, 1);
-	NaI_Tl = new G4Material("NaI_Tl", rhoNaI_Tl, 3);
+	/*NaI_Tl = new G4Material("NaI_Tl", rhoNaI_Tl, 3);
 	NaI_Tl->AddElement(Na, 15.27*perCent);
 	NaI_Tl->AddElement(I, 84.31*perCent);
-	NaI_Tl->AddElement(Tl, 0.41*perCent);// see table below
+	NaI_Tl->AddElement(Tl, 0.41*perCent);// see table below/**/
 	acrylic = new G4Material("acrylic", rhoAcrylic, 3);
 	acrylic->AddElement(O, 2);
 	acrylic->AddElement(C, 5);
@@ -271,32 +273,34 @@ void NuLatDetectorConstruction::DefineMaterials()
 		aLenAcrylic[i] = 10.*m;// taken from Materials.hh - look for correct values
 		rindexPVT[i] = 1.58;
 		aLenPVT[i] = 380.*cm;
-		reflAl[i] = 0.95;// taken from Materials.hh - look for correct values
+		reflAl[i] = 0.95;// taken from Materials.hh - look for correct values (approximately true for polished Al in the wavelengths we're concerned with)
+		reflSS[i] = 1.0;// look for correct values for ~ 300 - 600 nm range
 		/************************************************************************************************************/
 		/* Reference for dispersion formula shown below: https://refractiveindex.info/?shelf=main&book=NaI&page=Li  */
 		/* dispersion formula as function of wavelength: n^2−1=0.478+1.532*λ^2/(λ^2−0.170^2)+4.27*λ^2/(λ^2−86.21^2) */
 		/* See also J. Phys. Chem. Ref. Data 5, 329-528 (1976) at https://aip.scitation.org/doi/10.1063/1.555536    */
 		/************************************************************************************************************/
-		rindexNaI[i] = sqrt(a0NaI+a1NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b1NaI*b1NaI)+a2NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b2NaI*b2NaI));
+		//rindexNaI[i] = sqrt(a0NaI+a1NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b1NaI*b1NaI)+a2NaI*wlenNM[i]*wlenNM[i]*1E-06/(wlenNM[i]*wlenNM[i]*1E-06-b2NaI*b2NaI));
 		// see table below
-		aLenNaI[i] = 2.59*cm;
+		//aLenNaI[i] = 2.59*cm;
 		// See Hamamatsu Catalog pp. 15 & 73, and note (3) above
-		scNaI[i] = exp(-2*(wlenNM[i]-meanWlenNaI)*(wlenNM[i]-meanWlenNaI)/(FWHMNaI*FWHMNaI));
+		//scNaI[i] = exp(-2*(wlenNM[i]-meanWlenNaI)*(wlenNM[i]-meanWlenNaI)/(FWHMNaI*FWHMNaI));
 		//rindexBeCuPhotoCath[i] = 2.7;// taken from Materials.hh
 		//aLenBeCuPhotoCath[i] = 0.001*mm;// taken from Materials.hh
 		//rindexBorosilicateGlass[i] = 1.55;// taken from Materials.hh - look for dispersion formula
 		//aLenBorosilicateGlass[i] = 10.*m;// taken from Materials.hh
 		/*if(debugMsg)
 		{
-			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << ";
-			G4cout << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
+			G4cout << wlenNMStr << wlenNM[i] << eStr << photonEnergy[i]*1E06 << G4endl;
+			//G4cout << rindexNaIStr << rindexNaI[i] << scStr << scNaI[i] << G4endl;
 		}/**/
 	}
 	// Declare material properties tables and populate with values. Assign tables to materials
 	mptAir = new G4MaterialPropertiesTable();
 	mptAir->AddProperty("RINDEX", photonEnergy, rindexAir, nI);
 	air->SetMaterialPropertiesTable(mptAir);
-	mptNaI = new G4MaterialPropertiesTable();
+	// NaI for coincidence detector - deprecated
+	/*mptNaI = new G4MaterialPropertiesTable();
 	mptNaI->AddProperty("RINDEX", photonEnergy, rindexNaI, nI);
 	mptNaI->AddProperty("ABSLENGTH", photonEnergy, aLenNaI, nI);
 	mptNaI->AddProperty("SCINTILLATIONCOMPONENT1", photonEnergy, scNaI, nI);
@@ -305,7 +309,7 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptNaI->AddConstProperty("SCINTILLATIONTIMECONSTANT1", stcNaI);
 	mptNaI->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
 	//NaI->SetMaterialPropertiesTable(mptNaI);
-	NaI_Tl->SetMaterialPropertiesTable(mptNaI);
+	NaI_Tl->SetMaterialPropertiesTable(mptNaI);/**/
 	mptAcrylic = new G4MaterialPropertiesTable();
 	mptAcrylic->AddProperty("RINDEX", photonEnergy, rindexAcrylic, nI);
 	mptAcrylic->AddProperty("ABSLENGTH", photonEnergy, aLenAcrylic, nI);
@@ -324,6 +328,9 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptAl = new G4MaterialPropertiesTable();
 	mptAl->AddProperty("REFLECTIVITY", photonEnergy, reflAl, nI);
 	aluminum->SetMaterialPropertiesTable(mptAl);
+	mptSS = new G4MaterialPropertiesTable();
+	mptSS->AddProperty("REFLECTIVITY", photonEnergy, reflSS, nI);
+	stainless->SetMaterialPropertiesTable(mptSS);
 	// optical surface properties
 	mirrorSurface = new G4OpticalSurface("mirrorSurface");
 	mirrorSurface->SetType(dielectric_metal);
@@ -425,16 +432,16 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	// make these orange just to stand out
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
-	// Aluminum dividers - do not use Jack's code for this! Overlaps abound!
-	/*solidAlDivPlate = new G4Trd("solidAlDivPlate", xVCBoxSize/2, xVCBoxSize/2, yVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/2-1*in);// change second (upper) x dimension to aluminum sidewall width/2
-	solidAlDivCut = new G4Box("solidAlDivCut", xVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/4-0.5*in);
-	solidAlDivOuter = new G4Box("solidAlDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
-	solidAlDivInner = new G4Box("solidAlDivInner", dx1/2, dy1/2, 6.5*in/2);
-	solidAlDiv = new G4SubtractionSolid("solidAlDiv", solidAlDivOuter, solidAlDivInner, 0, G4ThreeVector(0., 0., 0.));
-	logicAlDiv = new G4LogicalVolume(solidAlDiv, aluminum, "logicAlDiv");/**/
+	// Stainless steel dividers - do not use Jack's code for this! Overlaps abound!
+	/*solidSSDivPlate = new G4Trd("solidSSDivPlate", xVCBoxSize/2, xVCBoxSize/2, yVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/2-1*in);// change second (upper) x dimension to aluminum sidewall width/2
+	solidSSDivCut = new G4Box("solidSSDivCut", xVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/4-0.5*in);
+	solidSSDivOuter = new G4Box("solidSSDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
+	solidSSDivInner = new G4Box("solidSSDivInner", dx1/2, dy1/2, 6.5*in/2);
+	solidSSDiv = new G4SubtractionSolid("solidSSDiv", solidSSDivOuter, solidSSDivInner, 0, G4ThreeVector(0., 0., 0.));
+	logicSSDiv = new G4LogicalVolume(solidSSDiv, stainless, "logicSSDiv");/**/
 	// make divider plates light gray
 	/*attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
-	logicAlDiv->SetVisAttributes(attr);/**/
+	logicSSDiv->SetVisAttributes(attr);/**/
 	// make +z light guides
 	zPos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
 	for (G4int i=0; i<xVoxels; i++)
@@ -444,7 +451,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 			physLG = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
-			//physAlDiv = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos + 58.7*mm), logicAlDiv, "physAlDiv", logicWorld, false, i*yVoxels+j, true);
+			//physSSDiv = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos + 58.7*mm), logicSSDiv, "physSSDiv", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x light guides
@@ -456,7 +463,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-			//physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xPos + 58.7*mm, yPos, zPos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			//physSSDiv = new G4PVPlacement(xRot, G4ThreeVector(xPos + 58.7*mm, yPos, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y light guides
@@ -468,7 +475,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-			//physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos + 58.7*mm, zPos), logicAlDiv, "physAlDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			//physSSDiv = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos + 58.7*mm, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// Define PMT's
@@ -556,9 +563,8 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	// Call function to build LG's and PMT's
 	BuildLGandPMT();
 }*/
-// Aluminum baffle constructor (disregard. Add in LG with PMT and LG no PMT constructors)
-// NaI constructor - set scoring volume here, set location here using NaILoc
-void NuLatDetectorConstruction::BuildNaIDetector()
+// NaI constructor - set scoring volume here, set location here using NaILoc - deprecated
+/*void NuLatDetectorConstruction::BuildNaIDetector()
 {
 	// Declare and define parameters for NaI detector
 	G4double r1 = 5.25*in/2;
@@ -611,22 +617,22 @@ void NuLatDetectorConstruction::BuildNaIDetector()
 	physNaIPMT = new G4PVPlacement(0, G4ThreeVector(0.,0.,-z4), logicNaIPMT, "physNaIPMT", logicWorld, false, 0, true);
 	// Set NaI crystal as scoring volume
 	fScoringVolumeNaI = logicNaICrystal;
-}
+}*/
 // Detector Construct() function
 G4VPhysicalVolume* NuLatDetectorConstruction::Construct()
 {
 	// Define Visual Attributes object for adjusting coloring and visibility of various components - set to false to make components invisible
 	attr = new G4VisAttributes(false);
-	// World Volume - min size 1m on a side where NaI is installed
-	if(xWorld<0.5*m && (NaILoc=="X" || NaILoc=="x"))
+	// World Volume - min size 1m
+	if(xWorld<0.5*m)
 	{
 		xWorld = 0.5*m;
 	}
-	if(yWorld<0.5*m && (NaILoc=="Y" || NaILoc=="y"))
+	if(yWorld<0.5*m)
 	{
 		yWorld = 0.5*m;
 	}
-	if(zWorld<0.5*m && (NaILoc=="Z" || NaILoc=="z"))
+	if(zWorld<0.5*m)
 	{
 		zWorld = 0.5*m;
 	}
@@ -641,11 +647,6 @@ G4VPhysicalVolume* NuLatDetectorConstruction::Construct()
 	BuildAcrylicBox();
 	// Light Guide and PMT's
 	BuildLGandPMT();
-	// NaI detector
-	if(NaIdetector)
-	{
-		BuildNaIDetector();
-	}
 	// return value
 	return physWorld;
 }
@@ -662,10 +663,4 @@ void NuLatDetectorConstruction::ConstructSDandField()
 	detVoxel = new NuLatVoxelSensitiveDetector("/NuLatVoxel", xVoxels, yVoxels, zVoxels);
 	SDman->AddNewDetector(detVoxel);
 	logicVoxel->SetSensitiveDetector(detVoxel);
-	// Define NaI PMT as sensitve volume only if NaI detector is in simulation
-	if(NaIdetector){
-		detNaIPMT = new NaIPMTSensitiveDetector("/NaIPMT");
-		SDman->AddNewDetector(detNaIPMT);
-		logicNaIPMT->SetSensitiveDetector(detNaIPMT);
-	}
 }

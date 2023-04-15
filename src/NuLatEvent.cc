@@ -1,18 +1,16 @@
 // user defined header file for class
 #include "NuLatEvent.hh"
 // Constructor
-NuLatEventAction::NuLatEventAction(NuLatRunAction* aRun) : G4UserEventAction(), fPCHCID(-1), fECHCID(-1), fSIHCID(-1)
+NuLatEventAction::NuLatEventAction(NuLatRunAction* aRun) : G4UserEventAction(), fPCHCID(-1), fECHCID(-1)
 {
 	// initialize with 0 energy
 	fEdepNuLat=0.;
-	fEdepNaI=0.;
 	// assume 5x5x5 array. Set a way to pass these from detector construction
 	xVoxels = 5;
 	yVoxels = 5;
 	zVoxels = 5;
 	nPMT = yVoxels*zVoxels + xVoxels*zVoxels + xVoxels*yVoxels;// ()*2 for fully instrumented detector
 	nVox = xVoxels*yVoxels*zVoxels;
-	nNaIPMT = 1;
 }
 // Destructor
 NuLatEventAction::~NuLatEventAction()
@@ -22,7 +20,6 @@ void NuLatEventAction::BeginOfEventAction(const G4Event* anEvent)
 {
 	// Set energy to 0 at beginning of every event
 	fEdepNuLat=0.;
-	fEdepNaI=0.;
 	// Get event number, print event number for every 1000th event
 	fEvent = anEvent->GetEventID();
 	G4int rNum;// = anEvent->command to get the run->GetRunID();
@@ -40,11 +37,6 @@ void NuLatEventAction::BeginOfEventAction(const G4Event* anEvent)
 	{
 		G4SDManager *SDman = G4SDManager::GetSDMpointer();
 		fPCHCID = SDman->GetCollectionID("NuLatPMT/NuLatPMTColl");
-	}
-	if (fSIHCID==-1)
-	{
-		G4SDManager *SDman = G4SDManager::GetSDMpointer();
-		fSIHCID = SDman->GetCollectionID("NaIPMT/NaIPMTColl");
 	}
 }
 // End of Event Action
@@ -96,23 +88,5 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 		hit->ClearzPosPMTHitVec();
 		hit->ClearPMTHitTimeVec();/**/
 	}
-	NaIPMTHitsCollection *NaIPMTHC = static_cast<NaIPMTHitsCollection*>(hce->GetHC(fSIHCID));
-	// Populate PMT Hit containers - to do: write a function for this
-	for(G4int i = 0; i < nNaIPMT; i++)
-	{
-		// Deprecated method - hit scoring is done directly in NuLatStepping.cc and output Ntuples are written there
-		NaIPMTHit *hit = (*NaIPMTHC)[i];
-		// Get the number of photoelectrons registering a hit
-		G4double peHits = hit->GetPEHits();
-		// Clear the vectors to handle memory leaks
-		hit->ClearPMTHitPID();
-		hit->ClearPMTHitEnergyVec();
-		hit->ClearPMTHitWlenVec();
-		hit->ClearPMTHitTimeVec();/**/
-	}
-	// Fill NaI Scoring N tuple
-	Aman->FillNtupleIColumn(5, 0, fEvent);
-	Aman->FillNtupleDColumn(5, 1, fEdepNaI);
-	Aman->AddNtupleRow(5);
-	// to do: clear Hit Vectors after end of event output files are written
+	// to do: ...
 }

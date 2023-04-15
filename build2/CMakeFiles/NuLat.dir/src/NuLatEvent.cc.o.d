@@ -476,5 +476,4 @@ CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
- /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTHit.hh
+ /home/jack/Documents/geant4/NuLat/include/NuLatPMTHit.hh

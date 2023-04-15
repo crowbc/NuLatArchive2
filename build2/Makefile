@@ -211,54 +211,6 @@ NuLat.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/NuLat.cc.s
 .PHONY : NuLat.cc.s
 
-src/NaIPMTHit.o: src/NaIPMTHit.cc.o
-.PHONY : src/NaIPMTHit.o
-
-# target to build an object file
-src/NaIPMTHit.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o
-.PHONY : src/NaIPMTHit.cc.o
-
-src/NaIPMTHit.i: src/NaIPMTHit.cc.i
-.PHONY : src/NaIPMTHit.i
-
-# target to preprocess a source file
-src/NaIPMTHit.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.i
-.PHONY : src/NaIPMTHit.cc.i
-
-src/NaIPMTHit.s: src/NaIPMTHit.cc.s
-.PHONY : src/NaIPMTHit.s
-
-# target to generate assembly for a file
-src/NaIPMTHit.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.s
-.PHONY : src/NaIPMTHit.cc.s
-
-src/NaIPMTsensDet.o: src/NaIPMTsensDet.cc.o
-.PHONY : src/NaIPMTsensDet.o
-
-# target to build an object file
-src/NaIPMTsensDet.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o
-.PHONY : src/NaIPMTsensDet.cc.o
-
-src/NaIPMTsensDet.i: src/NaIPMTsensDet.cc.i
-.PHONY : src/NaIPMTsensDet.i
-
-# target to preprocess a source file
-src/NaIPMTsensDet.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.i
-.PHONY : src/NaIPMTsensDet.cc.i
-
-src/NaIPMTsensDet.s: src/NaIPMTsensDet.cc.s
-.PHONY : src/NaIPMTsensDet.s
-
-# target to generate assembly for a file
-src/NaIPMTsensDet.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NuLat.dir/build.make CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.s
-.PHONY : src/NaIPMTsensDet.cc.s
-
 src/NuLatAction.o: src/NuLatAction.cc.o
 .PHONY : src/NuLatAction.o
 
@@ -540,12 +492,6 @@ help:
 	@echo "... NuLat.o"
 	@echo "... NuLat.i"
 	@echo "... NuLat.s"
-	@echo "... src/NaIPMTHit.o"
-	@echo "... src/NaIPMTHit.i"
-	@echo "... src/NaIPMTHit.s"
-	@echo "... src/NaIPMTsensDet.o"
-	@echo "... src/NaIPMTsensDet.i"
-	@echo "... src/NaIPMTsensDet.s"
 	@echo "... src/NuLatAction.o"
 	@echo "... src/NuLatAction.i"
 	@echo "... src/NuLatAction.s"

@@ -83,38 +83,10 @@ CMakeFiles/NuLat.dir/NuLat.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NuLat.dir/NuLat.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jack/Documents/geant4/NuLat/NuLat.cc -o CMakeFiles/NuLat.dir/NuLat.cc.s
 
-CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o: CMakeFiles/NuLat.dir/flags.make
-CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o: ../src/NaIPMTHit.cc
-CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o -MF CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o.d -o CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o -c /home/jack/Documents/geant4/NuLat/src/NaIPMTHit.cc
-
-CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jack/Documents/geant4/NuLat/src/NaIPMTHit.cc > CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.i
-
-CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jack/Documents/geant4/NuLat/src/NaIPMTHit.cc -o CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.s
-
-CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o: CMakeFiles/NuLat.dir/flags.make
-CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o: ../src/NaIPMTsensDet.cc
-CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o -MF CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o.d -o CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o -c /home/jack/Documents/geant4/NuLat/src/NaIPMTsensDet.cc
-
-CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jack/Documents/geant4/NuLat/src/NaIPMTsensDet.cc > CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.i
-
-CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jack/Documents/geant4/NuLat/src/NaIPMTsensDet.cc -o CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.s
-
 CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: ../src/NuLatAction.cc
 CMakeFiles/NuLat.dir/src/NuLatAction.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatAction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatAction.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatAction.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatAction.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatAction.cc
 
 CMakeFiles/NuLat.dir/src/NuLatAction.cc.i: cmake_force
@@ -128,7 +100,7 @@ CMakeFiles/NuLat.dir/src/NuLatAction.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: ../src/NuLatDetectorConstruction.cc
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatDetectorConstruction.cc
 
 CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.i: cmake_force
@@ -142,7 +114,7 @@ CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: ../src/NuLatEvent.cc
 CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatEvent.cc
 
 CMakeFiles/NuLat.dir/src/NuLatEvent.cc.i: cmake_force
@@ -156,7 +128,7 @@ CMakeFiles/NuLat.dir/src/NuLatEvent.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o: ../src/NuLatGenerator.cc
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatGenerator.cc
 
 CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.i: cmake_force
@@ -170,7 +142,7 @@ CMakeFiles/NuLat.dir/src/NuLatGenerator.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o: ../src/NuLatPMTHit.cc
 CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatPMTHit.cc
 
 CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.i: cmake_force
@@ -184,7 +156,7 @@ CMakeFiles/NuLat.dir/src/NuLatPMTHit.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o: ../src/NuLatPMTsensDet.cc
 CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatPMTsensDet.cc
 
 CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.i: cmake_force
@@ -198,7 +170,7 @@ CMakeFiles/NuLat.dir/src/NuLatPMTsensDet.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o: ../src/NuLatPhysics.cc
 CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatPhysics.cc
 
 CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.i: cmake_force
@@ -212,7 +184,7 @@ CMakeFiles/NuLat.dir/src/NuLatPhysics.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatRun.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatRun.cc.o: ../src/NuLatRun.cc
 CMakeFiles/NuLat.dir/src/NuLatRun.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatRun.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatRun.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatRun.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatRun.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatRun.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatRun.cc
 
 CMakeFiles/NuLat.dir/src/NuLatRun.cc.i: cmake_force
@@ -226,7 +198,7 @@ CMakeFiles/NuLat.dir/src/NuLatRun.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o: ../src/NuLatStepping.cc
 CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatStepping.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatStepping.cc
 
 CMakeFiles/NuLat.dir/src/NuLatStepping.cc.i: cmake_force
@@ -240,7 +212,7 @@ CMakeFiles/NuLat.dir/src/NuLatStepping.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: ../src/NuLatVoxelHit.cc
 CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatVoxelHit.cc
 
 CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.i: cmake_force
@@ -254,7 +226,7 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.s: cmake_force
 CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: CMakeFiles/NuLat.dir/flags.make
 CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc
 CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: CMakeFiles/NuLat.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o -MF CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o.d -o CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o -c /home/jack/Documents/geant4/NuLat/src/NuLatVoxelSensDet.cc
 
 CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.i: cmake_force
@@ -268,8 +240,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.s: cmake_force
 # Object files for target NuLat
 NuLat_OBJECTS = \
 "CMakeFiles/NuLat.dir/NuLat.cc.o" \
-"CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o" \
-"CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o" \
 "CMakeFiles/NuLat.dir/src/NuLatAction.cc.o" \
 "CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o" \
 "CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o" \
@@ -286,8 +256,6 @@ NuLat_OBJECTS = \
 NuLat_EXTERNAL_OBJECTS =
 
 NuLat: CMakeFiles/NuLat.dir/NuLat.cc.o
-NuLat: CMakeFiles/NuLat.dir/src/NaIPMTHit.cc.o
-NuLat: CMakeFiles/NuLat.dir/src/NaIPMTsensDet.cc.o
 NuLat: CMakeFiles/NuLat.dir/src/NuLatAction.cc.o
 NuLat: CMakeFiles/NuLat.dir/src/NuLatDetectorConstruction.cc.o
 NuLat: CMakeFiles/NuLat.dir/src/NuLatEvent.cc.o
@@ -349,7 +317,7 @@ NuLat: /opt/applications/geant4/geant4-v11.0.2-installMT/lib/libG4global.so
 NuLat: /opt/applications/geant4/geant4-v11.0.2-installMT/lib/libG4clhep.so
 NuLat: /opt/applications/geant4/geant4-v11.0.2-installMT/lib/libG4ptl.so.2.3.3
 NuLat: CMakeFiles/NuLat.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable NuLat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jack/Documents/geant4/NuLat/build2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable NuLat"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NuLat.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

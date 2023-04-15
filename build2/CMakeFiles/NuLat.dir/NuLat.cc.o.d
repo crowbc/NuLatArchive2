@@ -757,8 +757,6 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatVoxelSensDet.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTsensDet.hh \
- /home/jack/Documents/geant4/NuLat/include/NaIPMTHit.hh \
  /home/jack/Documents/geant4/NuLat/include/NuLatPhysics.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VModularPhysicsList.hh \
  /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicsConstructor.hh \

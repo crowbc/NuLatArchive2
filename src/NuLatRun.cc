@@ -47,32 +47,7 @@ NuLatRunAction::NuLatRunAction()
 	Aman->CreateNtupleDColumn("fPY0");// col 10
 	Aman->CreateNtupleDColumn("fPZ0");// col 11
 	Aman->FinishNtuple(2);
-	// create N tuple for photon truth information in NaI PMT hits
-	Aman->CreateNtuple("NaI_PMT_Truth", "NaI_PMT_Truth");// Ntuple 3
-	Aman->CreateNtupleIColumn("fEvent");// col 0
-	Aman->CreateNtupleDColumn("fX");// col 1
-	Aman->CreateNtupleDColumn("fY");// col 2
-	Aman->CreateNtupleDColumn("fZ");// col 3
-	Aman->CreateNtupleDColumn("fWlen");// col 4
-	Aman->FinishNtuple(3);
-	// create N tuple for NaI hits
-	Aman->CreateNtuple("NaI_PMT_Hits", "NaI_PMT_Hits");// Ntuple 4
-	Aman->CreateNtupleIColumn("fEvent");// col 0
-	// PMT ID for NaI
-	Aman->CreateNtupleIColumn("fID");// col 1 - should be identically 0
-	// PMT coords
-	Aman->CreateNtupleDColumn("fX");// col 2
-	Aman->CreateNtupleDColumn("fY");// col 3
-	Aman->CreateNtupleDColumn("fZ");// col 4
-	// time of hit
-	Aman->CreateNtupleDColumn("fT");// col 5
-	Aman->FinishNtuple(4);
-	// Create N Tuple for NaI scoring
-	Aman->CreateNtuple("NaI_Scoring", "NaI_Scoring");// Ntuple 5 - simple scoring; just tracks total energy depositiion
-	Aman->CreateNtupleIColumn("fEvent");// col 0
-	// column for NaI scoring
-	Aman->CreateNtupleDColumn("fEdepNaI");// col 1
-	Aman->FinishNtuple(5);
+	// to do: get track info stored in Ntuple
 }
 // Destructor
 NuLatRunAction::~NuLatRunAction()
