@@ -1,6 +1,5 @@
 // User Defined Header File
 #include "NuLatPhysics.hh"
-
 // Constructor
 NuLatPhysicsList::NuLatPhysicsList()
 {
@@ -9,8 +8,6 @@ NuLatPhysicsList::NuLatPhysicsList()
 	RegisterPhysics(new G4DecayPhysics());
 	RegisterPhysics(new G4RadioactiveDecayPhysics());
 }
-
-
 // Destructor
 NuLatPhysicsList::~NuLatPhysicsList()
 {}

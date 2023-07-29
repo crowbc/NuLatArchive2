@@ -43,9 +43,9 @@ void NuLatEventAction::BeginOfEventAction(const G4Event* anEvent)
 void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 {
 	// Initialize analysis manager and fill N tuple with energy depositions
-	G4AnalysisManager *Aman = G4AnalysisManager::Instance();// to do: fill all N-tuples with event manager, not SD
+	G4AnalysisManager *Aman = G4AnalysisManager::Instance();// TODO: fill all N-tuples with event manager, not SD
 	// Get hit collection of the event
-	G4HCofThisEvent *hce = anEvent->GetHCofThisEvent();// to do: get particle ID from hits (not primaries - at least not yet)
+	G4HCofThisEvent *hce = anEvent->GetHCofThisEvent();// TODO: get particle ID from hits (not primaries - at least not yet)
 	// Zero Hit counters
 	fVHit = 0;
 	fPHit = 0;
@@ -71,14 +71,14 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 	// finish NuLat Scoring
 	Aman->AddNtupleRow(2);
 	NuLatPMTHitsCollection *PMTHC = static_cast<NuLatPMTHitsCollection*>(hce->GetHC(fPCHCID));
-	// Populate PMT Hit containers - to do: write a function for this
+	// Populate PMT Hit containers - TODO: write a function for this
 	for(G4int i = 0; i < nPMT; i++)
 	{
 		// Deprecated method - hit scoring is done directly in NuLatPMTsensDet.cc and output Ntuples are written there
 		NuLatPMTHit *hit = (*PMTHC)[i];
 		// Get the number of photoelectrons registering a hit
 		G4double peHits = hit->GetPEHits();
-		// To do:
+		// TODO:
 		// Clear vectors to handle memory leaks
 		hit->ClearPMTHitPID();
 		hit->ClearPMTHitEnergyVec();
@@ -88,5 +88,5 @@ void NuLatEventAction::EndOfEventAction(const G4Event* anEvent)
 		hit->ClearzPosPMTHitVec();
 		hit->ClearPMTHitTimeVec();/**/
 	}
-	// to do: ...
+	// TODO: ...
 }

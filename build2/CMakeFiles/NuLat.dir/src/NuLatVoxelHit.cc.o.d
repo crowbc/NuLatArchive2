@@ -2,11 +2,11 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /home/jack/Documents/geant4/NuLat/src/NuLatVoxelHit.cc \
  /usr/include/stdc-predef.h \
  /home/jack/Documents/geant4/NuLat/include/NuLatVoxelHit.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHit.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/globals.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ios.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Types.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GlobalConfig.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VHit.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/globals.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ios.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Types.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GlobalConfig.hh \
  /usr/include/c++/11/complex \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -178,7 +178,7 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/tls.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/tls.hh \
  /usr/include/c++/11/iostream /usr/include/c++/11/algorithm \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h \
@@ -204,10 +204,10 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /usr/include/c++/11/pstl/execution_defs.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4String.hh \
  /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4String.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/templates.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4String.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/templates.hh \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -217,10 +217,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Exception.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VExceptionHandler.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ExceptionSeverity.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4EnvironmentUtils.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Exception.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ExceptionSeverity.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4EnvironmentUtils.hh \
  /usr/include/c++/11/iomanip /usr/include/c++/11/locale \
  /usr/include/c++/11/bits/locale_facets_nonio.h /usr/include/c++/11/ctime \
  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
@@ -236,18 +235,18 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4THitsCollection.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VHitsCollection.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4THitsCollection.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VHitsCollection.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Allocator.hh \
  /usr/include/c++/11/cstddef \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AllocatorPool.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Allocator.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Region.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4GeomSplitter.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/geomwdefs.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AutoLock.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Threading.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AllocatorPool.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GeomSplitter.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/geomwdefs.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AutoLock.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Threading.hh \
  /usr/include/c++/11/condition_variable \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
@@ -258,53 +257,53 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelHit.cc.o: \
  /usr/include/c++/11/bits/atomic_futex.h \
  /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/thread \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Region.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/geomdefs.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4RotationMatrix.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ThreeVector.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Utility/defs.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/ThreeVector.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/Rotation.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/LorentzVector.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/LorentzVector.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/AxisAngle.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/AxisAngle.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationInterfaces.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationX.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Units/PhysicalConstants.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Units/SystemOfUnits.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationY.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationY.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationZ.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/RotationZ.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Vector/Rotation.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VPhysicalVolume.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4LogicalVolume.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDefStore.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttDef.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4TypeKey.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4AttValue.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4SystemOfUnits.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UnitsTable.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VVisManager.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Transform3D.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Transform3D.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Point3D.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Vector3D.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/CLHEP/Geometry/Normal3D.h \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/graphics_reps_defs.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Colour.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4Color.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4VisAttributes.icc \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIcommand.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UIparameter.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4UItokenNum.hh \
- /opt/applications/geant4/geant4-v11.0.2-installMT/include/Geant4/G4ApplicationState.hh
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/geomdefs.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RotationMatrix.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ThreeVector.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/ThreeVector.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Utility/defs.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/Rotation.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationInterfaces.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/LorentzVector.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/LorentzVector.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/AxisAngle.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/AxisAngle.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationInterfaces.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationX.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationX.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Units/PhysicalConstants.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Units/SystemOfUnits.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationY.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationY.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationZ.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationZ.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/Rotation.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AttDefStore.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AttDef.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TypeKey.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AttValue.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SystemOfUnits.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UnitsTable.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UnitsTable.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VVisManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Transform3D.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Point3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Vector3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Normal3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisAttributes.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/graphics_reps_defs.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Colour.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Color.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisAttributes.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIcommand.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIparameter.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UItokenNum.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ApplicationState.hh

@@ -8,8 +8,6 @@ NuLatPMTSensitiveDetector::NuLatPMTSensitiveDetector(G4String name, G4int xVox, 
 	yVoxels = yVox;
 	zVoxels = zVox;
 	numPMT = yVoxels*zVoxels + xVoxels*zVoxels + xVoxels*yVoxels;// ()*2 for fully instrumented
-	// Debug message - can't see how it changes here. Maybe use SDM pointer?
-	//G4cout << "PMT SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
 }
 // Destructor
 NuLatPMTSensitiveDetector::~NuLatPMTSensitiveDetector()
@@ -38,7 +36,7 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 	pName = track->GetDefinition()->GetParticleName();
 	pID = ParticleNameToIDNumber(pName);
 	// only do this for optical photons to simulate the regime where the PMT is actually sensitve - note this will be tracked when PMT processes are simulated
-	// to do: store hit info in hit class vectors. these will be read in Event manager
+	// TODO: store hit info in hit class vectors. these will be read in Event manager
 	if (pID == 100)
 	{
 		track->SetTrackStatus(fStopAndKill);// not necessary when PMT processes are simulated
@@ -56,7 +54,7 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		pZ0 = momPhoton[2];
 		// Calculates wavelength in nm (change constant to change unit order of magnitude)
 		wlen = HCNM/momPhoton.mag();
-		// Debug Print if enabled -- relevant info should be in hit class
+		// Debug Print if enabled -- relevant info should be in hit class TODO: find a more efficient way to do this than using conditionals
 		if(debugMsg){
 			G4cout << "Photon position: " << posPhoton << "; Photon wavelength: " << wlen << " nm" << G4endl;
 		}
@@ -66,7 +64,7 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		// create hit container for hit PMT, then add the hit
 		/*NuLatPMTHit *hit = (*NuLatPMTHitsCollection)[fID];
 		hit->AddPEHits(1);/**/
-		// Debug Print if enabled -- relevant info should be in hit class
+		// Debug Print if enabled -- relevant info should be in hit class TODO: find a more efficient way to do this than using conditionals
 		if(debugMsg)
 		{
 			G4cout << "Copy number: " << fID << G4endl;
@@ -83,7 +81,7 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 			hit->SetRot(transform.NetRotation());
 			hit->SetPos(transform.NetTranslation());
 		}
-		// to do: move hit collection and hit declaration outside of conditional after PMT process simulations are implemented
+		// TODO: move hit collection and hit declaration outside of conditional after PMT process simulations are implemented
 		// Fill the hit vectors
 		hit->PushPMTHitParticleID(pID);
 		hit->PushPMTHitEnergyVec(aStep->GetTotalEnergyDeposit());// not sure how useful this will be when PMT is not simulated properly
@@ -130,7 +128,7 @@ G4int NuLatPMTSensitiveDetector::ParticleNameToIDNumber(G4String name)
 	if(name == "gamma"){
 		num=1;
 	}
-	else if(name == "e"){
+	else if(name == "e-"){
 		num=2;
 	}
 	else if(name == "e+"){

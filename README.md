@@ -1,10 +1,15 @@
 # NuLat
-This is a Geant4 simulation of a half-instrumented 5x5x5 unlithiated voxel NuLat Detector with a NaI detector connected externally for a coincidence trigger on Co-60 decay gammas. The purpose of this simulation is for calibration of each voxel in the unlithiated 5x5x5 array using energy reconstruction. This is also based on the original NuLat simulation which can be found at https://github.com/crowbc/NuLat_archive.git, and the NaI simulation which can be found at https://github.com/crowbc/NaI.git. All simulations in these repositories are written for Geant4 v11.1 (beta) and are not backwards compatible with older Geant4 builds than v11.0.
+This is a Geant4 simulation of a half-instrumented 5x5x5 unlithiated voxel NuLat Detector. The purpose of this simulation is for calibration of each voxel in the unlithiated 5x5x5 array using energy reconstruction. This is also based on the original NuLat simulation which can be found at https://github.com/crowbc/NuLat_archive.git. All simulations in these repositories are written for Geant4 v11.1.2 and are not backwards compatible with older Geant4 builds than v11.0.
 
 # build2
 The second build added the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels. A sensitive air volume to simulate the NaI detector PMT was added and the scoring volume was set to the NaI detector, which is a single volume. The NuLat voxels will be re-configured as sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
+2.2.4 Geant4 update and Na-22 Source (28 Jul 2023)
+	Removed much of the deprecated code from the NaI coincidence detector. Updated Geant4 build to 11.1.0 from beta version. Changed default source to 1.274 MeV gamma from Na-22 decay, and assumed an 
+	external coincidence trigger for the annihilation gammas. Also assumed sufficient shielding from scatters from the external detectors - a later revision will add this external trigger to the
+	simulation to analyze the effect of the annihilation gammas on the observed spectrum.
+
 2.2.3 Tracks update 2 (14 Apr 2023)
 	Note: Due to the necessary trigger window for a NaI detector being wider than the time window that the readout electronics for NuLat allow, the NaI detector will not be used in coincidence with the 
 	NuLat detector for calibration. Thus, the coincidence detector will be one or more EJ-200 cells identical to the ones deployed in NuLat coupled to a PMT in a dark box. Henceforth, the simulation

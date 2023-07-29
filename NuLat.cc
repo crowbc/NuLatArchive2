@@ -1,9 +1,9 @@
 /*
 	File: Nulat.cc
 	Author: Brian Crow
-	Date: 23Nov2022
+	Date: 20JUL2023
 	Description: This code is for the NuLat detector simulation with added NaI detector in coincidence. See README for notes.
-	Version: 2.2.3 secondary tracks patch (23 Mar 2023)
+	Version: 2.2.4 Trajectories and Simplified Hit Tracking Patch
 	See README.md for change log of previous updates and patches.
 */
 // Included Geant4 libriaries

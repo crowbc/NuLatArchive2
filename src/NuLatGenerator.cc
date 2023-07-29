@@ -6,25 +6,23 @@ NuLatPrimaryGenerator::NuLatPrimaryGenerator()
 	fParticleGun = new G4ParticleGun(1);
 	// define the particle
 	G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-	G4String particleName = "gamma";//"opticalphoton";"geantino";"e-";"e+";
+	G4String particleName = "gamma";//"ion";"opticalphoton";"geantino";"e-";"e+";
 	G4ParticleDefinition *particle = particleTable->FindParticle(particleName);
-	// set ion properties for Co-60 decay source
-	Z = 27;
-	A = 60;
+	// set ion properties for Na-22 decay source
+	Z = 11;
+	A = 22;
 	charge = 0.*eplus;
 	energy = 0.*MeV;
-	if(particleName=="ion")
-	{
-		particle = G4IonTable::GetIonTable()->GetIon(Z, A, energy);
-	}
 	// Place source on +z face of NaI detector. Set initial momentum straight into the NuLat detector for single 1.173 MeV gamma, assuming that the 1.332 MeV triggers the NaI.
 	G4ThreeVector pos(0.,0.,-6.25*in-207.5*mm);
-	// Initial momentum. Set on random cone into the detector from GeneratePrimaries()
+	// Initial momentum straight into detector. Set on random cone into the detector from GeneratePrimaries()
 	G4ThreeVector mom(0.,0.,1.);
 	// set particle gun properties
-	G4double eCo60Lo = 1.173*MeV;
-	G4double eCo60Hi = 1.332*MeV;// Assume this will trigger the NaI detector
-	G4double eminusEn = 1.0*MeV;
+	G4double eCo60Lo = 1.173*MeV;// deprecated (Z = 27, A = 60 for this source)
+	G4double eCo60Hi = 1.332*MeV;// deprecated (Z = 27, A = 60 for this source)
+	G4double eNa22 = 1.274*MeV;// Assume annihilation gammas trigger coincidence detector - see Knoll ch 1
+	G4double eminusEn = 2.0*MeV;
+	G4double eplusEn = ibdQ+0.2*MeV;// adjust by adding to minimum threshold for IBD (set to 2 MeV by default)
 	fParticleGun->SetParticlePosition(pos);
 	fParticleGun->SetParticleMomentumDirection(mom);
 	if(particle==G4Geantino::Geantino())
@@ -33,11 +31,12 @@ NuLatPrimaryGenerator::NuLatPrimaryGenerator()
 	}
 	if(particleName=="gamma")
 	{
-		fParticleGun->SetParticleMomentum(eCo60Lo);
+		fParticleGun->SetParticleMomentum(eNa22);
 	}
 	fParticleGun->SetParticleDefinition(particle);
 	if(particleName=="ion")
 	{
+		particle = G4IonTable::GetIonTable()->GetIon(Z, A, energy);
 		fParticleGun->SetParticleMomentum(0.*MeV);
 		fParticleGun->SetParticleCharge(charge);
 	}
@@ -63,21 +62,7 @@ NuLatPrimaryGenerator::~NuLatPrimaryGenerator()
 void NuLatPrimaryGenerator::GeneratePrimaries(G4Event *NuLatEvent)
 {
 	G4ParticleDefinition *particle = fParticleGun->GetParticleDefinition();
-	// if statement sets default generator to Co-60 decay if particle is defined as geantino - deprecated (used for NaI coincidence detector)
-	/*if(particle==G4Geantino::Geantino())
-	{
-		// ion properties
-		Z = 27;
-		A = 60;
-		charge = 0.*eplus;
-		energy = 0.*keV;
-		// define ion
-		G4ParticleDefinition *ion = G4IonTable::GetIonTable()->GetIon(Z, A, energy);
-		// put ion in particle gun
-		fParticleGun->SetParticleDefinition(ion);
-		fParticleGun->SetParticleCharge(charge);
-	}/**/
-	// to be truly uniform in theta, must use inverse cosine of random number between 1 and cos(gamma)
+	// to be truly uniform in theta, must use inverse cosine of random number between 1 and cos(gamma) -- this is close enough for small values of gamma
 	theta = G4UniformRand()*gamma;
 	phi = G4UniformRand()*360*deg;
 	G4ThreeVector mom(sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta));

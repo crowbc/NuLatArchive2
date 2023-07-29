@@ -35,7 +35,7 @@ NuLatRunAction::NuLatRunAction()
 	// Voxel ID - can use to validate whether or not coordinates are true
 	Aman->CreateNtupleIColumn("fID");// col 3
 	// scoring value for energy deposition
-	Aman->CreateNtupleDColumn("fEdepNuLat");// col 4
+	Aman->CreateNtupleDColumn("fEdep");// col 4
 	// Voxel coords
 	Aman->CreateNtupleDColumn("fX");// col 5
 	Aman->CreateNtupleDColumn("fY");// col 6
@@ -47,7 +47,7 @@ NuLatRunAction::NuLatRunAction()
 	Aman->CreateNtupleDColumn("fPY0");// col 10
 	Aman->CreateNtupleDColumn("fPZ0");// col 11
 	Aman->FinishNtuple(2);
-	// to do: get track info stored in Ntuple
+	// TODO: get trajectory info stored in Ntuple
 }
 // Destructor
 NuLatRunAction::~NuLatRunAction()

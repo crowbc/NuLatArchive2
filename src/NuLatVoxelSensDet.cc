@@ -8,8 +8,6 @@ NuLatVoxelSensitiveDetector::NuLatVoxelSensitiveDetector(G4String name, G4int xV
 	yVoxels = yVox;
 	zVoxels = zVox;
 	nVox = xVoxels*yVoxels*zVoxels;
-	// Debug Message - can't see how it changes here. Maybe use SDM pointer?
-	//G4cout << "Voxel SD collection name: " << name << "; inserted string: " << collectionName[0] << G4endl;
 }
 // Destructor
 NuLatVoxelSensitiveDetector::~NuLatVoxelSensitiveDetector()
@@ -41,7 +39,7 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	G4String pName = track->GetDefinition()->GetParticleName();
 	pID = ParticleNameToIDNumber(pName);
 	//G4ThreeVector posHit, momHit;
-	if (eDep == 0.)
+	if (eDep == 0.)// TODO: find a more efficient way to do these checks
 	{
 		return true;
 	}
