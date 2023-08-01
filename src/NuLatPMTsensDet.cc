@@ -8,6 +8,18 @@ NuLatPMTSensitiveDetector::NuLatPMTSensitiveDetector(G4String name, G4int xVox, 
 	yVoxels = yVox;
 	zVoxels = zVox;
 	numPMT = yVoxels*zVoxels + xVoxels*zVoxels + xVoxels*yVoxels;// ()*2 for fully instrumented
+	queff = 0.25;// use uniform value of 25%
+	/*quEff = new G4PhysicsFreeVector();
+	std::ifstream datafile;
+	datafile.open("eff.dat");
+	while(!datafile.eof())
+	{
+		datafile >> wlen >> queff;
+		G4cout << wlen << " nm: " << queff << " %" << G4endl;
+		queff*=0.01;
+		quEff->InsertValues(wlen, queff);
+	}
+	datafile.close();/**/
 }
 // Destructor
 NuLatPMTSensitiveDetector::~NuLatPMTSensitiveDetector()
@@ -109,14 +121,17 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		Aman->FillNtupleDColumn(0, 3, zpos);
 		Aman->FillNtupleDColumn(0, 4, wlen);
 		Aman->AddNtupleRow(0);
-		// Fill Ntuple columns with sensitive detector hit information
-		Aman->FillNtupleIColumn(1, 0, fEvt);
-		Aman->FillNtupleIColumn(1, 1, fID);
-		Aman->FillNtupleDColumn(1, 2, fX);
-		Aman->FillNtupleDColumn(1, 3, fY);
-		Aman->FillNtupleDColumn(1, 4, fZ);
-		Aman->FillNtupleDColumn(1, 5, fT);
-		Aman->AddNtupleRow(1);
+		// Fill Ntuple columns with sensitive detector hit information - note: store hit only if RNG generates a number below the quantum efficiency
+		if(G4UniformRand() < queff)//quEff->Value(wlen))
+		{
+			Aman->FillNtupleIColumn(1, 0, fEvt);
+			Aman->FillNtupleIColumn(1, 1, fID);
+			Aman->FillNtupleDColumn(1, 2, fX);
+			Aman->FillNtupleDColumn(1, 3, fY);
+			Aman->FillNtupleDColumn(1, 4, fZ);
+			Aman->FillNtupleDColumn(1, 5, fT);
+			Aman->AddNtupleRow(1);
+		}
 	}
 	// return value
 	return true;

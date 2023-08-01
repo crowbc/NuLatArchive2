@@ -32,14 +32,14 @@ void NuLatVoxelSensitiveDetector::Initialize(G4HCofThisEvent* hce)
 G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROHist)
 {
 	G4int evt, pID, trkID;
-	G4double eDep = aStep->GetTotalEnergyDeposit();
+	G4double eDep1st = aStep->GetTotalEnergyDeposit();
 	G4double xPos, yPos, zPos, time, pX0, pY0, pZ0;
 	G4Track *track = aStep->GetTrack();
 	trkID = track->GetTrackID();
 	G4String pName = track->GetDefinition()->GetParticleName();
 	pID = ParticleNameToIDNumber(pName);
 	//G4ThreeVector posHit, momHit;
-	if (eDep == 0.)// TODO: find a more efficient way to do these checks
+	if (eDep1st == 0.)// TODO: find a more efficient way to do these checks
 	{
 		return true;
 	}
@@ -72,9 +72,9 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	pY0 = aStep->GetTrack()->GetVertexMomentumDirection().y();
 	pZ0 = aStep->GetTrack()->GetVertexMomentumDirection().z();
 	// add energy deposit to this voxel
-	hit->AddEdep(eDep);
+	hit->AddEdep(eDep1st);
 	hit->PushVoxEDepPIDVec(pID);
-	hit->PushEDep(eDep);
+	hit->PushEDep(eDep1st);
 	hit->PushxPosVoxEDepVec(xPos);
 	hit->PushyPosVoxEDepVec(yPos);
 	hit->PushzPosVoxEDepVec(zPos);
@@ -89,14 +89,14 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	aMan->FillNtupleIColumn(2, 1, pID);
 	aMan->FillNtupleIColumn(2, 2, trkID);
 	aMan->FillNtupleIColumn(2, 3, copyNo);
-	aMan->FillNtupleDColumn(2, 4, eDep);
-	aMan->FillNtupleDColumn(2, 5, xPos);
-	aMan->FillNtupleDColumn(2, 6, yPos);
-	aMan->FillNtupleDColumn(2, 7, zPos);
-	aMan->FillNtupleDColumn(2, 8, time);
-	aMan->FillNtupleDColumn(2, 9, pX0);
-	aMan->FillNtupleDColumn(2, 10, pY0);
-	aMan->FillNtupleDColumn(2, 11, pZ0);
+	aMan->FillNtupleDColumn(2, 5, eDep1st);
+	aMan->FillNtupleDColumn(2, 6, xPos);
+	aMan->FillNtupleDColumn(2, 7, yPos);
+	aMan->FillNtupleDColumn(2, 8, zPos);
+	aMan->FillNtupleDColumn(2, 9, time);
+	aMan->FillNtupleDColumn(2, 10, pX0);
+	aMan->FillNtupleDColumn(2, 11, pY0);
+	aMan->FillNtupleDColumn(2, 12, pZ0);
 	aMan->AddNtupleRow(2);
 	// Return value
 	return true;

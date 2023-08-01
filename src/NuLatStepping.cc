@@ -22,7 +22,7 @@ void NuLatSteppingAction::UserSteppingAction(const G4Step* aStep)
 	}
 	if(volume == fNuLatScoringVolume)
 	{
-		// Nothing to do. Scoring done in NuLatSensDet.cc
+		// Get scoring from step
 		return;
 	}
 }

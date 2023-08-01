@@ -5,6 +5,9 @@ This is a Geant4 simulation of a half-instrumented 5x5x5 unlithiated voxel NuLat
 The second build added the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels. A sensitive air volume to simulate the NaI detector PMT was added and the scoring volume was set to the NaI detector, which is a single volume. The NuLat voxels will be re-configured as sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
+2.2.5 Quantum Efficiency Emulation
+	Added accross the board 25% quantum efficiency to sensitive detector processing. Re-structured scoring N-tuple to account for both first hit and total energy deposition.
+
 2.2.4 Geant4 update and Na-22 Source (28 Jul 2023)
 	Removed much of the deprecated code from the NaI coincidence detector. Updated Geant4 build to 11.1.0 from beta version. Changed default source to 1.274 MeV gamma from Na-22 decay, and assumed an 
 	external coincidence trigger for the annihilation gammas. Also assumed sufficient shielding from scatters from the external detectors - a later revision will add this external trigger to the

@@ -42,11 +42,12 @@ private:
 	G4int pID, fEvt, fID;
 	G4String pName;
 	// MC truth
-	G4double xpos, ypos, zpos, pX0, pY0, pZ0, wlen;
+	G4double xpos, ypos, zpos, pX0, pY0, pZ0, wlen, queff;
 	G4ThreeVector posPhoton, momPhoton;
 	// PMT location
 	G4double fX, fY, fZ, fT;
 	G4ThreeVector posDet;
+	//G4PhysicsFreeVector *quEff;
 };
 // end of conditional to define the class only once
 #endif

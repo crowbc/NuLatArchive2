@@ -36,16 +36,18 @@ NuLatRunAction::NuLatRunAction()
 	Aman->CreateNtupleIColumn("fID");// col 3
 	// scoring value for energy deposition
 	Aman->CreateNtupleDColumn("fEdep");// col 4
+	// scoring for first hit
+	Aman->CreateNtupleDColumn("fFirstHit");// col 5
 	// Voxel coords
-	Aman->CreateNtupleDColumn("fX");// col 5
-	Aman->CreateNtupleDColumn("fY");// col 6
-	Aman->CreateNtupleDColumn("fZ");// col 7
+	Aman->CreateNtupleDColumn("fX");// col 6
+	Aman->CreateNtupleDColumn("fY");// col 7
+	Aman->CreateNtupleDColumn("fZ");// col 8
 	// time of hit
-	Aman->CreateNtupleDColumn("fT");// col 8
+	Aman->CreateNtupleDColumn("fT");// col 9
 	// columns for momentum components
-	Aman->CreateNtupleDColumn("fPX0");// col 9
-	Aman->CreateNtupleDColumn("fPY0");// col 10
-	Aman->CreateNtupleDColumn("fPZ0");// col 11
+	Aman->CreateNtupleDColumn("fPX0");// col 10
+	Aman->CreateNtupleDColumn("fPY0");// col 11
+	Aman->CreateNtupleDColumn("fPZ0");// col 12
 	Aman->FinishNtuple(2);
 	// TODO: get trajectory info stored in Ntuple
 }

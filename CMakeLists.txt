@@ -49,6 +49,9 @@ target_link_libraries(NuLat ${Geant4_LIBRARIES})
 #endforeach()
 file(GLOB MACRO_FILES "/macros/*.mac")
 file(COPY ${MACRO_FILES} DESTINATION ${PROJECT_BINARY_DIR})
+# Copy all data files into binary directory
+file(GLOB DATA_FILES "/data/*.dat")
+file(COPY ${DATA_FILES} DESTINATION ${PROJECT_BINARY_DIR})
 #----------------------------------------------------------------------------
 # Add program to the project targets
 # (this avoids the need of typing the program name after make)
