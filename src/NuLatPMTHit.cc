@@ -79,6 +79,7 @@ const std::map<G4String,G4AttDef>* NuLatPMTHit::GetAttDefs() const
 }
 std::vector<G4AttValue>* NuLatPMTHit::CreateAttValues() const
 {
+	// TODO: Add Hits to MC Truth Ntuple
 	std::vector<G4AttValue>* values = new std::vector<G4AttValue>;
 	values->push_back(G4AttValue("HitType","NuLatPMTHit",""));
 	values->push_back(G4AttValue("ID",G4UIcommand::ConvertToString(fPMTID),""));

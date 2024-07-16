@@ -81,7 +81,7 @@ private:
 	G4int fPMTID;
 	G4double peHits, wlen;
 	// variable to toggle feedback
-	G4bool fbOn = false;
+	G4bool fbOn = true;
 	// data containers
 	static std::vector<G4int> PMTHitPIDVec;
 	static std::vector<G4int> PMTPEVec;

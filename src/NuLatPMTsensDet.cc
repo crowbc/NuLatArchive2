@@ -92,10 +92,10 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 			transform.Invert();
 			hit->SetRot(transform.NetRotation());
 			hit->SetPos(transform.NetTranslation());
-		}
+		}/**/
 		// TODO: move hit collection and hit declaration outside of conditional after PMT process simulations are implemented
-		// Fill the hit vectors
-		hit->PushPMTHitParticleID(pID);
+		// Fill the hit vectors (not used)
+		/*hit->PushPMTHitPID(pID);
 		hit->PushPMTHitEnergyVec(aStep->GetTotalEnergyDeposit());// not sure how useful this will be when PMT is not simulated properly
 		hit->PushPMTHitWlenVec(wlen);/**/
 		// these three aren't represented yet. can get from fID mapping. can get from PMT position too. can also use the index and dump these vectors
@@ -106,6 +106,7 @@ G4bool NuLatPMTSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory 
 		fX = posDet[0];
 		fY = posDet[1];
 		fZ = posDet[2];
+		fT = aStep->GetTrack()->GetGlobalTime();
 		// Debug Print if enabled -- relevant info should be in hit class
 		if(debugMsg){
 			G4cout << "Detector position: " << posDet << G4endl;

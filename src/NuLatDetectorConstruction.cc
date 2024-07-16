@@ -7,7 +7,7 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	xVoxels = 5;
 	yVoxels = 5;
 	zVoxels = 5;
-	// default geometry dimensions - cut to specification; no need to give user control (maybe re-implement later)
+	// default geometry dimensions
 	xVoxelSize = 2.495*in;
 	yVoxelSize = 2.495*in;
 	zVoxelSize = 2.495*in;
@@ -22,14 +22,15 @@ NuLatDetectorConstruction::NuLatDetectorConstruction()
 	xVCBoxSize = xVoxels*(xVoxelSize+xVoxelSpace)+xVoxelSpace;
 	yVCBoxSize = yVoxels*(yVoxelSize+yVoxelSpace)+yVoxelSpace;
 	zVCBoxSize = zVoxels*(zVoxelSize+zVoxelSpace)+zVoxelSpace;
-	xWorld = 2*xVCBoxSize;// set to needed size
-	yWorld = 2*yVCBoxSize;// set to needed size
-	zWorld = 2*zVCBoxSize;// set to needed size
+	// Set world volume to needed size
+	xWorld = 2*xVCBoxSize;
+	yWorld = 2*yVCBoxSize;
+	zWorld = 2*zVCBoxSize;
 	Li6doped = false;// Doping of cubes not implemented
 	// Li-6 dopant fractional mass (default was 0.5% in old simulation code)
 	massfracLi6 = 0.5*perCent;
 	// Acrylic side plate thickness
-	tAcrylicPlate = 0.125*in;
+	tAcrylicPanel = 0.0625*in;
 	// Define the messenger and declare properties
 	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");//set up /voxel and other subdirectories
 	fMessenger->DeclareProperty("xVoxels", xVoxels, "Number of voxels (cubes) in the x-dimension");
@@ -56,7 +57,6 @@ void NuLatDetectorConstruction::DefineMaterials()
 	G4NistManager *nist = G4NistManager::Instance();
 	// size_t variable for property array lengths
 	const size_t nI = 182;
-	G4double rindexNaI[nI];
 	// Photon energy range for energy dependent material responses - corresponds to a range of 220 nm to 609 nm
 	G4double photonEnergy[nI] = {
 		2.034*eV, 2.068*eV, 2.103*eV, 2.139*eV, 2.177*eV, 2.216*eV, 2.256*eV, 2.298*eV, 2.341*eV, 2.386*eV, //10
@@ -109,93 +109,46 @@ void NuLatDetectorConstruction::DefineMaterials()
 	// 2012 J. Phys.: Conf. Ser. 356 012049 for acrylic optical properties - note: this reference is for films, not bulk material
 	G4double rindexAcrylic[nI];
 	G4double aLenAcrylic[nI];
+	// See PVTproperties.txt for notes on material property tables used in this simulation
 	G4double rindexPVT[nI];
 	G4double aLenPVT[nI];
-	/*
-	Notes on scintillation properties:
-	_________________________________________________________________________________________________________________________________________________________________________________
-	PVT properties:	(note: PVT used in NuLat is Eljen EJ-200 organic plastic scintillator)
-	source:	Nuclear Inst. and Methods in Physics Research, A 954 (2020) 161448
-	doi:		https://doi.org/10.1016/j.nima.2018.10.126
-	Quoted light output, with citation to reference [12] below, is 10000/MeV
-	Additional References:
-	Journal of Colloid and Interface Science Volume 118, Issue 2, August 1987, Pages 314–325 (from Materials.hh, in section for Li-6 optical properties)
-	[12] Eljen Technology. (2016, July 27, 2018). GENERAL PURPOSE EJ-200, EJ-204, EJ-208, EJ-212. 
-		Available: https://eljentechnology.com/products/plastic-scintillators/ej-200-ej-204-ej-208-ej-212
-	Information provided at this reference is as follows:
-	______________________________________________________________________________________________
-	PROPERTIES				EJ-200		EJ-204		EJ-208		EJ-212
-	______________________________________________________________________________________________
-	Light Output (% Anthracene)		64		68		60		65
-	Scintillation Efficiency		10,000		10,400		9,200		10,000
-	(photons/1 MeV e-) 
-	Wavelength of Maximum Emission (nm)	425		408		435		423
-	Light Attenuation Length (cm)		380		160		400		250
-	Rise Time (ns)				0.9		0.7		1.0		0.9
-	Decay Time (ns)				2.1		1.8		3.3		2.4
-	Pulse Width, FWHM (ns)			2.5		2.2		4.2		2.7
-	No. of H Atoms per cm3 (x10^22)		5.17		5.15		5.17		5.17
-	No. of C Atoms per cm3 (x10^22)		4.69		4.68		4.69		4.69
-	No. of Electrons per cm3 (x10^23)	3.33		3.33		3.33		3.33
-	Density (g/cm3)				1.023		1.023		1.023		1.023
-	Polymer Base				<-----------------Polyvinyltoluene------------------->
-	Refractive Index			<-----------------------1.58------------------------->
-	Softening Point				<-----------------------75°C------------------------->
-	Vapor Pressure				<----------------Vacuum-compatible------------------->
-	Coefficient of Linear Expansion		<--------------7.8 x 10^-5 below 67°C---------------->
-	Light Output vs. Temperature		<------At 60°C, L.O. = 95% of that at 20°C----------->
-						<-----------No change from 20°C to -60°C------------->
-	Temperature Range			<----------------- -20°C to 60°C--------------------->
-	______________________________________________________________________________________________
-	TODO:	make table of scintillation component as function of wavelength, and get range of wavelengths from that table to use ...
-		... in all other material properties 
-		validate the remaining entries for the scPVT table
-	notes:	425 nm is wavelength of maximum emission on scPVT table imported from Materials.hh (verified in photon_energy_wlens.ods)
-		Geant4 properties tables uses 1.032*g/cm3 as density of PVT. May need to define my own using this table
-	_________________________________________________________________________________________________________________________________________________________________________________
-	Notes on Hamamatsu PMT's:
-	From catalog on Photomultiplier Tubes and Assemblies for Scintillation Counting and High Energy Physics:
-	(1) Borosilicate high frequency cutoff: ~300 nm
-	(2) Quantum Efficiency: QE = S*1240/wlen*perCent, where S is radiant sensitivity given by: S = Photoelectric current/Radiant power of light (A/W)
-	note on QE: 1240 looks remarkably similar in dimensionality and magnitude to hc in eV*nm but there is a leftover factor of charge dimensionality
-	*/
 	G4double reflSS[nI];
-	/* // deprecated and unused metal material properties
 	G4double reflAl[nI];
-	G4double aLenSS[nI], aLenAl[nI];/**/
-	/* // PMT material properties variables - disable block comment to use
+	// PMT material properties variables
 	// Mu-metal Surface Properties
 	G4double reflMuMetal[nI], effMuMetal[nI], specularLopeMuMetal[nI], specularSpikeMuMetal[nI], backscatterMuMetal[nI];
 	G4double rindexBeCuPhotoCath[nI], aLenBeCuPhotoCath[nI];
-	G4double rindexBorosilicateGlass[nI], aLenBorosilicateGlass[nI];/**/
+	G4double rindexBorosilicateGlass[nI], aLenBorosilicateGlass[nI];
 	// Define Elements
 	H = nist->FindOrBuildElement("H");
-	//Be = nist->FindOrBuildElement("Be");
+	Be = nist->FindOrBuildElement("Be");
 	C = nist->FindOrBuildElement("C");
 	O = nist->FindOrBuildElement("O");
-	/*Na = nist->FindOrBuildElement("Na");
+	//Na = nist->FindOrBuildElement("Na");
 	Si = nist->FindOrBuildElement("Si");/**/
 	Cr = nist->FindOrBuildElement("Cr");
 	Fe = nist->FindOrBuildElement("Fe");
 	Ni = nist->FindOrBuildElement("Ni");
-	/*Cu = nist->FindOrBuildElement("Cu");
+	Cu = nist->FindOrBuildElement("Cu");
 	Mo = nist->FindOrBuildElement("Mo");
-	I = nist->FindOrBuildElement("I");
+	/*I = nist->FindOrBuildElement("I");
 	Tl = nist->FindOrBuildElement("Tl");/**/
+	Pb = nist->FindOrBuildElement("Pb");
 	// Define Materials
 	air = nist->FindOrBuildMaterial("G4_AIR");
-	//vacuum = nist->FindOrBuildMaterial("G4_GALACTIC");
+	vacuum = nist->FindOrBuildMaterial("G4_GALACTIC");
 	//PVT = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
 	EJ200 = new G4Material("EJ200", rhoEJ200, 2);
 	EJ200->AddElement(C, Cfrac_EJ200*100*perCent);
 	EJ200->AddElement(H, Hfrac_EJ200*100*perCent);
-	//aluminum = nist->FindOrBuildMaterial("G4_Al");
+	aluminum = nist->FindOrBuildMaterial("G4_Al");
 	stainless = nist->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+	lead = nist->FindOrBuildMaterial("G4_Pb");
 	acrylic = new G4Material("acrylic", rhoAcrylic, 3);
 	acrylic->AddElement(O, 2);
 	acrylic->AddElement(C, 5);
 	acrylic->AddElement(H, 8);
-	/* // PMT metal materials
+	// PMT metal materials
 	muMetal = new G4Material("muMetal", 8.77*g/cm3, 4);
 	muMetal->AddElement(Fe, 16.*perCent);
 	muMetal->AddElement(Ni, 77.*perCent);
@@ -212,10 +165,10 @@ void NuLatDetectorConstruction::DefineMaterials()
 		rindexAcrylic[i] = 1.492;// taken from Materials.hh
 		aLenAcrylic[i] = 10.*m;// taken from Materials.hh - look for correct values
 		rindexPVT[i] = 1.58;
-		aLenPVT[i] = 380.*cm;
-		//reflAl[i] = 0.95;// taken from Materials.hh - look for correct values (approximately true for polished Al in the wavelengths we're concerned with)
+		aLenPVT[i] = 380.0*cm;// note: the Materials.hh header has this at 90 cm with a note that it needs to be tuned. 380 cm is also the attenuation length mentioned in chapter 8 of Knoll
+		reflAl[i] = 0.95;// taken from Materials.hh - look for correct values (approximately true for polished Al in the wavelengths we're concerned with)
 		reflSS[i] = 1.0;// look for correct values for ~ 300 - 600 nm range
-		/* // PMT properties -- Disable block comment to toggle on
+		// PMT properties -- Disable block comment to toggle on
 		reflMuMetal[i] = 0.0;// taken from Materials.hh - look for correct values
 		effMuMetal[i] = 0.;// taken from Materials.hh - look for correct values
 		specularLopeMuMetal[i] = 0.0;// taken from Materials.hh - look for correct values
@@ -251,14 +204,14 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptPVT->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
 	//PVT->SetMaterialPropertiesTable(mptPVT);
 	EJ200->SetMaterialPropertiesTable(mptPVT);
-	/*mptAl = new G4MaterialPropertiesTable();
+	mptAl = new G4MaterialPropertiesTable();
 	mptAl->AddProperty("REFLECTIVITY", photonEnergy, reflAl, nI);
 	aluminum->SetMaterialPropertiesTable(mptAl);/**/
 	mptSS = new G4MaterialPropertiesTable();
 	mptSS->AddProperty("REFLECTIVITY", photonEnergy, reflSS, nI);
 	stainless->SetMaterialPropertiesTable(mptSS);
-	/* // Phototube mu Metal and photocathode MPT's - disable block comment to use
-	mptMuMetalSurface = new G4MaterialPropertiesTable
+	// Phototube mu Metal and photocathode MPT's - disable block comment to use
+	mptMuMetalSurface = new G4MaterialPropertiesTable();
 	mptMuMetalSurface->AddProperty("REFLECTIVITY", photonEnergy, reflMuMetal, nI);   //overall
 	mptMuMetalSurface->AddProperty("SPECULARLOBECONSTANT", photonEnergy, specularLopeMuMetal, nI);   //normal of micro-facet
 	mptMuMetalSurface->AddProperty("SPECULARSPIKECONSTANT", photonEnergy, specularSpikeMuMetal, nI);   //mirror
@@ -269,13 +222,17 @@ void NuLatDetectorConstruction::DefineMaterials()
 	mptBeCuPhotoCath->AddProperty("RINDEX", photonEnergy, rindexBeCuPhotoCath, nI);
 	mptBeCuPhotoCath->AddProperty("ABSLENGTH", photonEnergy, aLenBeCuPhotoCath, nI);
 	BeCuPhotoCath->SetMaterialPropertiesTable(mptBeCuPhotoCath);
-	/**/
 	// optical surface properties
-	mirrorSurface = new G4OpticalSurface("mirrorSurface");
-	mirrorSurface->SetType(dielectric_metal);
-	mirrorSurface->SetFinish(ground);
-	mirrorSurface->SetModel(unified);
-	mirrorSurface->SetMaterialPropertiesTable(mptSS);
+	AlSurface = new G4OpticalSurface("AlSurface");
+	AlSurface->SetType(dielectric_metal);
+	AlSurface->SetFinish(ground);
+	AlSurface->SetModel(unified);
+	AlSurface->SetMaterialPropertiesTable(mptAl);
+	SSSurface = new G4OpticalSurface("SSSurface");
+	SSSurface->SetType(dielectric_metal);
+	SSSurface->SetFinish(ground);
+	SSSurface->SetModel(unified);
+	SSSurface->SetMaterialPropertiesTable(mptSS);
 }
 // Voxelated Array Constructor
 void NuLatDetectorConstruction::BuildVCBox()
@@ -320,31 +277,25 @@ void NuLatDetectorConstruction::BuildAcrylicBox()
 	attr = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0, 0.2));
 	// Define variables and vectors to construct rotation matrix
 	G4double phi = 90*deg;
-	G4ThreeVector u = G4ThreeVector(0., 0., -1.);
+	G4ThreeVector u = G4ThreeVector(0., 0., 1.);
 	G4ThreeVector v = G4ThreeVector(-std::sin(phi), std::cos(phi), 0);
 	G4ThreeVector w = G4ThreeVector(std::cos(phi), std::sin(phi), 0);
 	// Define Rotation Matrices
-	G4RotationMatrix *xRot = new G4RotationMatrix(-u, v, w);
-	G4RotationMatrix *yRot = new G4RotationMatrix(v, u, w);
+	G4RotationMatrix *yRot = new G4RotationMatrix(u, v, w);
+	G4RotationMatrix *zRot = new G4RotationMatrix(u, w, -v);
 	// Define volume for acrilic box plates
-	solidAcrylicSidePlateX = new G4Box("solidAcrylicSidePlateX", tAcrylicPlate, yVCBoxSize/2, zVCBoxSize/2);
-	logicAcrylicSidePlateX = new G4LogicalVolume(solidAcrylicSidePlateX, acrylic, "logicAcrylicSidePlateX");
-	logicAcrylicSidePlateX->SetVisAttributes(attr);
-	G4double xPos = xVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusX = new G4PVPlacement(0, G4ThreeVector(xPos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlatePlusX", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusX = new G4PVPlacement(0, G4ThreeVector(-xPos, 0., 0.), logicAcrylicSidePlateX, "physAcrylicSidePlateMinusX", logicWorld, false, 0, true);
-	solidAcrylicSidePlateY = new G4Box("solidAcrylicSidePlateY", xVCBoxSize/2, 2.5*mm, zVCBoxSize/2);
-	logicAcrylicSidePlateY = new G4LogicalVolume(solidAcrylicSidePlateY, acrylic, "logicAcrylicSidePlateY");
-	logicAcrylicSidePlateY->SetVisAttributes(attr);
-	G4double yPos = yVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusY = new G4PVPlacement(0, G4ThreeVector(0., yPos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlatePlusY", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusY = new G4PVPlacement(0, G4ThreeVector(0., -yPos, 0.), logicAcrylicSidePlateY, "physAcrylicSidePlateMinusY", logicWorld, false, 0, true);
-	solidAcrylicSidePlateZ = new G4Box("solidAcrylicSidePlateZ", xVCBoxSize/2, yVCBoxSize/2, 2.5*mm);
-	logicAcrylicSidePlateZ = new G4LogicalVolume(solidAcrylicSidePlateZ, acrylic, "logicAcrylicSidePlateZ");
-	logicAcrylicSidePlateZ->SetVisAttributes(attr);
-	G4double zPos = zVCBoxSize/2+tAcrylicPlate;
-	physAcrylicSidePlatePlusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., zPos), logicAcrylicSidePlateZ, "physAcrylicSidePlatePlusZ", logicWorld, false, 0, true);
-	physAcrylicSidePlateMinusZ = new G4PVPlacement(0, G4ThreeVector(0., 0., -zPos), logicAcrylicSidePlateZ, "physAcrylicSidePlateMinusZ", logicWorld, false, 0, true);
+	solidAcrylicPanel = new G4Box("solidAcrylicPanel", tAcrylicPanel, yVCBoxSize/2, zVCBoxSize/2);
+	logicAcrylicPanel = new G4LogicalVolume(solidAcrylicPanel, acrylic, "logicAcrylicPanel");
+	logicAcrylicPanel->SetVisAttributes(attr);
+	G4double xPos = xVCBoxSize/2+tAcrylicPanel;
+	G4double yPos = yVCBoxSize/2+tAcrylicPanel;
+	G4double zPos = zVCBoxSize/2+tAcrylicPanel;
+	physAcrylicPanel = new G4PVPlacement(0, G4ThreeVector(xPos, 0., 0.), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 0, true);
+	physAcrylicPanel = new G4PVPlacement(0, G4ThreeVector(-xPos, 0., 0.), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 1, true);
+	physAcrylicPanel = new G4PVPlacement(yRot, G4ThreeVector(0., yPos, 0.), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 2, true);
+	physAcrylicPanel = new G4PVPlacement(yRot, G4ThreeVector(0., -yPos, 0.), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 3, true);
+	physAcrylicPanel = new G4PVPlacement(zRot, G4ThreeVector(0., 0., zPos), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 4, true);
+	physAcrylicPanel = new G4PVPlacement(zRot, G4ThreeVector(0., 0., -zPos), logicAcrylicPanel, "physAcrylicPanel", logicWorld, false, 5, true);
 }
 //  Light Guide with PMT constructor
 void NuLatDetectorConstruction::BuildLGandPMT()
@@ -376,18 +327,26 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	// make these orange just to stand out
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
-	// Stainless steel dividers - do not use Jack's code for this! Overlaps abound!
-	/*solidSSDivPlate = new G4Trd("solidSSDivPlate", xVCBoxSize/2, xVCBoxSize/2, yVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/2-1*in);// change second (upper) x dimension to aluminum sidewall width/2
-	solidSSDivCut = new G4Box("solidSSDivCut", xVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/4-0.5*in);
-	solidSSDivOuter = new G4Box("solidSSDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
-	solidSSDivInner = new G4Box("solidSSDivInner", dx1/2, dy1/2, 6.5*in/2);
-	solidSSDiv = new G4SubtractionSolid("solidSSDiv", solidSSDivOuter, solidSSDivInner, 0, G4ThreeVector(0., 0., 0.));
-	logicSSDiv = new G4LogicalVolume(solidSSDiv, stainless, "logicSSDiv");/**/
+	// stainless steel plate
+	/*solidSSPlate = new G4Box("solidSSPlate", xdim, ydim, zdim);
+	solidSSPlateHole = new G4Tubs("solidSSPlateHole", 0, router, 0., 360.*deg);
+	solidSSPanel = new G4SubtractionSolid("solidSSPanel", solidSSPlate, solidSSPlateHole, params);
+	logicSSPanel = new G4LogicalVolume(solidSSPanel, stainless, "logicSSPanel");
+	// make PMT plates gray
+	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.5));
+	logicSSPMTPlate->SetVisAttributes(attr);/**/
+	// Aluminum dividers - do not use Jack's code for this! Overlaps abound!
+	/*solidAlDivPlate = new G4Trd("solidAlDivPlate", xVCBoxSize/2, xVCBoxSize/2, yVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/2-1*in);// change second (upper) x dimension to aluminum sidewall width/2
+	solidAlDivCut = new G4Box("solidAlDivCut", xVoxelSpace/2, yVoxelSpace/2, lenLGwPMT/4-0.5*in);
+	solidAlDivOuter = new G4Box("solidAlDivOuter", dx1/2 + 0.025*in, dy1/2 + 0.025*in, 6.5*in/2);// dx1=xVoxelSize+xVoxelSpace-0.127*cm; dy1=yVoxelSize+yVoxelSpace-0.127*cm
+	solidAlDivInner = new G4Box("solidAlDivInner", dx1/2, dy1/2, 6.5*in/2);
+	solidAlDiv = new G4SubtractionSolid("solidAlDiv", solidAlDivOuter, solidAlDivInner, 0, G4ThreeVector(0., 0., 0.));
+	logicAlDiv = new G4LogicalVolume(solidSSDiv, aluminum, "logicAlDiv");/**/
 	// make divider plates light gray
 	/*attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.7));
-	logicSSDiv->SetVisAttributes(attr);/**/
+	logicAlDiv->SetVisAttributes(attr);/**/
 	// make +z light guides
-	zPos = zVCBoxSize/2+2*tAcrylicPlate+dz/2;
+	zPos = zVCBoxSize/2+2*tAcrylicPanel+dz/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -395,11 +354,11 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
 			physLG = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
-			//physSSDiv = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos + 58.7*mm), logicSSDiv, "physSSDiv", logicWorld, false, i*yVoxels+j, true);
+			//physAlDiv = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos + 58.7*mm), logicSSDiv, "physSSDiv", logicWorld, false, i*yVoxels+j, true);
 		}
 	}
 	// make +x light guides
-	xPos = xVCBoxSize/2+2*tAcrylicPlate+dz/2;
+	xPos = xVCBoxSize/2+2*tAcrylicPanel+dz/2;
 	for (G4int i=0; i<yVoxels; i++)
 	{
 		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
@@ -407,11 +366,11 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-			//physSSDiv = new G4PVPlacement(xRot, G4ThreeVector(xPos + 58.7*mm, yPos, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
+			//physAlDiv = new G4PVPlacement(xRot, G4ThreeVector(xPos + 58.7*mm, yPos, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
 		}
 	}
 	// make -y light guides
-	yPos = -yVCBoxSize/2-2*tAcrylicPlate-dz/2;
+	yPos = -yVCBoxSize/2-2*tAcrylicPanel-dz/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -419,7 +378,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		{
 			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
 			physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-			//physSSDiv = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos + 58.7*mm, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
+			//physAlDiv = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos + 58.7*mm, zPos), logicSSDiv, "physSSDiv", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
 	// Define PMT's
@@ -429,7 +388,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
 	// make +z PMT's
-	zPos = zVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
+	zPos = zVCBoxSize/2+2*tAcrylicPanel+dz+lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -440,7 +399,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		}
 	}
 	// make +x PMT's
-	xPos = xVCBoxSize/2+2*tAcrylicPlate+dz+lenPMT/2;
+	xPos = xVCBoxSize/2+2*tAcrylicPanel+dz+lenPMT/2;
 	for (G4int i=0; i<yVoxels; i++)
 	{
 		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
@@ -451,7 +410,7 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 		}
 	}
 	// make -y PMT's
-	yPos = -yVCBoxSize/2-2*tAcrylicPlate-dz-lenPMT/2;
+	yPos = -yVCBoxSize/2-2*tAcrylicPanel-dz-lenPMT/2;
 	for (G4int i=0; i<xVoxels; i++)
 	{
 		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
@@ -461,9 +420,9 @@ void NuLatDetectorConstruction::BuildLGandPMT()
 			physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
 		}
 	}
-	// to do: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary) 
+	// TODO: re-define all PMT's and LG's with LG boxes as mother volumes (maybe not necessary) 
 }
-// Light Guide with no PMT constructor (don't need until ready to add aluminum dividers and aluminum sidewalls)
+// Light Guide with no PMT constructor\
 //void NuLatDetectorConstruction::BuildLGnoPMT()
 // Light Guide (LG) and PMT constructor for mother volumes (not used - reimplement if needed)
 /*void NuLatDetectorConstruction::BuildLGandPMTBoxes()

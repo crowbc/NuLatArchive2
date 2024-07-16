@@ -47,47 +47,40 @@ public:
 	virtual G4VPhysicalVolume* Construct();
 private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
-	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox, *solidSSDivOuter, *solidSSDivInner, *solidSSDivCut;
+	G4Box *solidWorld, *solidVCBox, *solidVoxel, *solidLGBox, *solidAcrylicPanel, *solidAlDivOuter, *solidAlDivInner, *solidAlDivCut, *solidSSPlate;
 	// TODO: reallocate single volume for acrylic pieces and use transformations to place duplicates
-	G4Box *solidAcrylicSidePlateX, *solidAcrylicSidePlateY, *solidAcrylicSidePlateZ;
-	// TODO: reallocate volumes for single LG box and use transformations to place duplicates
-	//G4Box *solidLGBoxPlusX, *solidLGBoxPlusY, *solidLGBoxPlusZ, *solidLGBoxMinusX, *solidLGBoxMinusY, *solidLGBoxMinusZ;
-	G4Trd *solidLGTrd, *solidAcrylicPanel, *solidSSPanel, *solidSSDivPlate;
-	G4Tubs *solidPMT;//, *solidAlBottom, *solidAlBarrel, *solidAlFlange, *solidNaICrystal, *solidNaIPMT;
+	G4Trd *solidLGTrd, *solidAlDivPlate;
+	G4Tubs *solidPMT, *solidSSPlateHole;
 	G4Cons *solidLGCone;
 	G4IntersectionSolid *solidLG;
-	G4SubtractionSolid *solidSSDiv, *solidSSDivBot, *solidSSDivTop;
+	G4SubtractionSolid *solidAlDiv, *solidAlDivBot, *solidAlDivTop, *solidSSPanel;
 	G4LogicalVolume *logicWorld, *logicVCBox, *logicVoxel, *logicLGBox, *logicLG, *logicPMT, *fNuLatScoringVolume;
-	G4LogicalVolume *logicAcrylicSidePlateX, *logicAcrylicSidePlateY, *logicAcrylicSidePlateZ, *logicAcrylicPanel, *logicSSPanel, *logicSSDiv;
-	//G4LogicalVolume *logicLGBoxPlusX, *logicLGBoxPlusY, *logicLGBoxPlusZ, *logicLGBoxMinusX, *logicLGBoxMinusY, *logicLGBoxMinusZ;
-	//G4LogicalVolume *logicAlBottom, *logicAlBarrel, *logicAlFlange, *logicNaICrystal, *logicNaIPMT, *fScoringVolumeNaI;
-	G4VPhysicalVolume *physWorld, *physVCBox, *physVoxel, *physLGBox, *physLG, *physPMT, *physAcrylicPanel, *physSSPanel, *physSSDiv;
+	G4LogicalVolume *logicAcrylicPanel, *logicSSPanel, *logicAlDiv;
+	G4VPhysicalVolume *physWorld, *physVCBox, *physVoxel, *physLGBox, *physLG, *physPMT, *physAcrylicPanel, *physSSPanel, *physAlDiv;
 	G4VPhysicalVolume *physAcrylicSidePlatePlusX, *physAcrylicSidePlatePlusY, *physAcrylicSidePlatePlusZ, *physAcrylicSidePlateMinusX, *physAcrylicSidePlateMinusY, *physAcrylicSidePlateMinusZ;
-	//G4VPhysicalVolume *physLGBoxPlusX, *physLGBoxPlusY, *physLGBoxPlusZ, *physLGBoxMinusX, *physLGBoxMinusY, *physLGBoxMinusZ;
-	//G4VPhysicalVolume *physAlBottom, *physAlBarrel, *physAlFlange, *physNaICrystal, *physNaIPMT;
 	// Declare optical surfaces
-	G4OpticalSurface *mirrorSurface;
+	G4OpticalSurface *AlSurface, *SSSurface, *mirrorSurface;
 	G4LogicalSkinSurface *skinBarrel, *skinBottom, *skinSidePanel;
 	// Material declarations
-	G4Material *air, *PVT, *acrylic, *EJ200, *stainless/*, *vacuum, *aluminum, *muMetal, *BeCuPhotoCath, *borosilicateGlass, *NaI, *NaI_Tl/**/;
-	G4Element *H/*, *Be/**/, *C, *O/*, *Na, *Si/**/, *Cr, *Fe, *Ni/*, *Cu, *Mo, *I, *Tl/**/;
+	G4Material *air, *PVT, *acrylic, *EJ200, *aluminum, *lead, *stainless, *vacuum, *muMetal, *BeCuPhotoCath, *borosilicateGlass/*, *NaI, *NaI_Tl/**/;
+	G4Element *H, *Be, *C, *O/*, *Na/**/, *Si, *Cr, *Fe, *Ni, *Cu, *Mo/*, *I, *Tl/**/, *Pb;
 	//G4Isotope *Li6;
-	G4MaterialPropertiesTable *mptAir, *mptPVT, *mptAcrylic, *mptAl, *mptSS/*, *mptNaI, *mptMuMetal, *mptBeCuPhotoCath, *mptMuMetalSurface/**/;
-	// physical constants for computing photon energies or wavelengths:
-	// divide by wavelength in nm to get energy in eV, or divide by energy in eV to get wavelength in nm
+	G4MaterialPropertiesTable *mptAir, *mptPVT, *mptAcrylic, *mptAl, *mptSS/*, *mptNaI/**/, *mptMuMetal, *mptBeCuPhotoCath, *mptMuMetalSurface;
+	// physical constant for computing photon energies or wavelengths: (note - divide by wavelength in nm to get energy in eV, or divide by energy in eV to get wavelength in nm)
 	const G4double HCNM = 1239.841939*eV;
 	// conversion factor inches to mm
 	const G4double in = 25.4*mm;
 	// scintillation properties of PVT
-	const G4double scintYieldPVT = 10000./MeV;// same constant for EJ-200. See line 142 of NuLatDetectorConstruction.cc
+	const G4double scintYieldPVT = 10000./MeV;// same constant for EJ-200. See PVTproperties.txt
 	const G4double stcEJ200 = 2.1*ns;
 	const G4double srtEJ200 = 0.9*ns;
+	const G4double fwhmEJ200 = 2.5*ns;
 	// mass fractions of EJ-200 PVT - see Eljen Technology. (2016, July 27, 2018). GENERAL PURPOSE EJ-200, EJ-204, EJ-208, EJ-212. 
 		// Available: https://eljentechnology.com/products/plastic-scintillators/ej-200-ej-204-ej-208-ej-212
 	// Atomic Weights obtained from Atomic Number, Mass Number, and Atomic Mass Unit. (2019, June 28). https://chem.libretexts.org/@go/page/158404
 		// Available: https://chem.libretexts.org/Courses/University_of_Arkansas_Little_Rock/Chem_1402%3A_General_Chemistry_1_(Kattoum)/Text/2%3A_Atoms%2C_Molecules%2C_and_Ions/2.02%3A_Atomic_Number%2C_Mass_Number%2C_and_Atomic_Mass_Unit
-	const G4double Catoms_EJ200 = 0.469E23;
-	const G4double Hatoms_EJ200 = 0.517E23;
+	const G4double Catoms_EJ200 = 0.469E23;// per cm^3
+	const G4double Hatoms_EJ200 = 0.517E23;// per cm^3
 	//const G4double N_A = 6.022E23;//
 	const G4double uu = 1.66054E-27*kg;
 	const G4double Cmass = 12.011*uu;
@@ -107,7 +100,7 @@ private:
 	G4double xVoxelSpace, yVoxelSpace, zVoxelSpace;
 	G4double lenPMT, lenLGTaper, lenLGSqu, lenLGwPMT, massfracLi6;
 	G4bool Li6doped, debugMsg;
-	G4double xVCBoxSize, yVCBoxSize, zVCBoxSize, tAcrylicPlate;
+	G4double xVCBoxSize, yVCBoxSize, zVCBoxSize, tAcrylicPanel;
 	//G4double rMuMetal, hMuMetal, tGlass, rPMTPhotoCath, tGlassMin;
 	// function declarations
 	void DefineMaterials();

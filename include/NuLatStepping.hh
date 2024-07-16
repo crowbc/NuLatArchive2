@@ -16,8 +16,15 @@ public:
 	~NuLatSteppingAction();
 	// User Stepping Action
 	virtual void UserSteppingAction(const G4Step*);
+	virtual G4int ParticleNameToIDNumber(G4String name);
 private:
 	NuLatEventAction *fEventAction;
+	// variable for particle name
+	G4String pName;
+	// variable for particle ID
+	G4int pID;
+	// variable for energy deposit
+	G4double eDepTot;
 };
 
 #endif

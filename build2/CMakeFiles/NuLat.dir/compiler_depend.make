@@ -555,6 +555,8 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ApplicationState.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UserTrackingAction.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerKernel.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerFactory.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManager.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTRunManager.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTBarrier.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RNGHelper.hh \
@@ -563,7 +565,43 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/c++/11/bits/stl_deque.h \
   /usr/include/c++/11/bits/deque.tcc \
   /usr/include/c++/11/bits/stl_queue.h \
-  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManager.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskRunManager.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TBBTaskGroup.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskGroup.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/AutoLock.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Threading.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Config.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/JoinFunction.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Task.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VTask.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadData.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadPool.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VUserTaskQueue.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskGroup.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskManager.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskManager.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskRunManager.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ThreadPool.hh \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserTaskQueue.hh \
+  /usr/include/c++/11/regex \
+  /usr/include/c++/11/bitset \
+  /usr/include/c++/11/iterator \
+  /usr/include/c++/11/bits/stream_iterator.h \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/bits/stl_stack.h \
+  /usr/include/c++/11/bits/regex_constants.h \
+  /usr/include/c++/11/bits/regex_error.h \
+  /usr/include/c++/11/bits/regex_automaton.h \
+  /usr/include/c++/11/bits/regex_automaton.tcc \
+  /usr/include/c++/11/bits/regex_scanner.h \
+  /usr/include/c++/11/bits/regex_scanner.tcc \
+  /usr/include/c++/11/bits/regex_compiler.h \
+  /usr/include/c++/11/bits/regex_compiler.tcc \
+  /usr/include/c++/11/bits/regex.h \
+  /usr/include/c++/11/bits/regex.tcc \
+  /usr/include/c++/11/bits/regex_executor.h \
+  /usr/include/c++/11/bits/regex_executor.tcc \
+  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTRunManager.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UImanager.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/icomsdefs.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VStateDependent.hh \
@@ -857,24 +895,6 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: ../NuLat.cc \
   /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
   /usr/include/x86_64-linux-gnu/bits/sigthread.h \
   /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
-  /usr/include/c++/11/regex \
-  /usr/include/c++/11/bitset \
-  /usr/include/c++/11/iterator \
-  /usr/include/c++/11/bits/stream_iterator.h \
-  /usr/include/c++/11/stack \
-  /usr/include/c++/11/bits/stl_stack.h \
-  /usr/include/c++/11/bits/regex_constants.h \
-  /usr/include/c++/11/bits/regex_error.h \
-  /usr/include/c++/11/bits/regex_automaton.h \
-  /usr/include/c++/11/bits/regex_automaton.tcc \
-  /usr/include/c++/11/bits/regex_scanner.h \
-  /usr/include/c++/11/bits/regex_scanner.tcc \
-  /usr/include/c++/11/bits/regex_compiler.h \
-  /usr/include/c++/11/bits/regex_compiler.tcc \
-  /usr/include/c++/11/bits/regex.h \
-  /usr/include/c++/11/bits/regex.tcc \
-  /usr/include/c++/11/bits/regex_executor.h \
-  /usr/include/c++/11/bits/regex_executor.tcc \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUPLSplitter.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserPhysicsList.hh \
   /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ProductionCutsTable.hh \
@@ -7260,20 +7280,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserPhysicsList.hh:
 
-/usr/include/c++/11/bits/regex.h:
-
-/usr/include/c++/11/bits/regex_compiler.h:
-
-/usr/include/c++/11/bits/regex_constants.h:
-
-/usr/include/c++/11/bits/stl_stack.h:
-
-/usr/include/c++/11/stack:
-
-/usr/include/c++/11/bitset:
-
-/usr/include/c++/11/regex:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
 
 /usr/include/x86_64-linux-gnu/bits/ss_flags.h:
@@ -7362,8 +7368,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TH1ToolsManager.hh:
 
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTHnFileManager.hh:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4BaseFileManager.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/tools/histo/h1d:
@@ -7438,10 +7442,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserDetectorConstruction.hh:
 
-/usr/include/c++/11/iterator:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4OpenGLStoredX.hh:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4OpenGLImmediateX.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ToolsSGOffscreen.hh:
@@ -7449,12 +7449,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GMocrenFile.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HepRepFile.hh:
-
-/usr/include/c++/11/bits/regex_scanner.tcc:
-
-/usr/include/c++/11/bits/stream_iterator.h:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4DAWNFILE.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ASCIITree.hh:
 
@@ -7471,10 +7465,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VModelFactory.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisExecutive.icc:
-
-/usr/include/c++/11/bits/regex_executor.tcc:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisManager.icc:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TrajectoriesModel.hh:
 
@@ -7502,8 +7492,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Tubs.hh:
 
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Trd.icc:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Polyhedra.icc:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Trd.hh:
@@ -7516,12 +7504,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Cons.hh:
 
-/usr/include/c++/11/bits/regex_executor.h:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/tools/eqT:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Normal3D.hh:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4DisplacedSolid.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/TwoVector.icc:
@@ -7533,10 +7515,6 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4THitsCollection.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4THitsMap.hh:
-
-/usr/include/c++/11/bits/regex.tcc:
-
-/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VMarker.icc:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4CSGSolid.hh:
 
@@ -7584,6 +7562,74 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisManager.hh:
 
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisManager.icc:
+
+/usr/include/c++/11/bits/regex_executor.tcc:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/tools/eqT:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Normal3D.hh:
+
+/usr/include/c++/11/bits/regex_executor.h:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VMarker.icc:
+
+/usr/include/c++/11/bits/regex.tcc:
+
+/usr/include/c++/11/bits/regex.h:
+
+/usr/include/c++/11/bits/regex_compiler.h:
+
+/usr/include/c++/11/bits/regex_constants.h:
+
+/usr/include/c++/11/bits/stl_stack.h:
+
+/usr/include/c++/11/stack:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4DAWNFILE.hh:
+
+/usr/include/c++/11/bits/regex_scanner.tcc:
+
+/usr/include/c++/11/bits/stream_iterator.h:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4OpenGLStoredX.hh:
+
+/usr/include/c++/11/iterator:
+
+/usr/include/c++/11/bitset:
+
+/usr/include/c++/11/regex:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskManager.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskManager.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskGroup.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VUserTaskQueue.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadPool.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadData.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTHnFileManager.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VTask.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/JoinFunction.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Config.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Threading.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/AutoLock.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TBBTaskGroup.hh:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Trd.icc:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskRunManager.hh:
+
 /usr/include/fenv.h:
 
 /usr/include/c++/11/bits/stl_queue.h:
@@ -7627,6 +7673,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TypeKey.hh:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ThreadPool.hh:
 
 /usr/include/string.h:
 
@@ -7778,6 +7826,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /usr/include/c++/11/bits/ostream.tcc:
 
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Task.hh:
+
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StackedTrack.hh:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Random/RandBinomial.h:
@@ -7825,6 +7875,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /usr/include/c++/11/debug/assertions.h:
 
 ../src/NuLatPhysics.cc:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskRunManager.hh:
 
 /usr/include/c++/11/iosfwd:
 
@@ -7900,9 +7952,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Random/RandStudentT.h:
 
-/usr/include/c++/11/bits/regex_automaton.h:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Tubs.icc:
+
+/usr/include/c++/11/bits/regex_automaton.h:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SmartVoxelNode.hh:
 
@@ -8306,6 +8358,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GlobalConfig.hh:
 
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserTaskQueue.hh:
+
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LorentzVector.hh:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
@@ -8345,6 +8399,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Orb.hh:
 
 /usr/include/c++/11/backward/binders.h:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskGroup.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
@@ -8429,6 +8485,8 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerFactory.hh:
 
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
@@ -8628,9 +8686,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GRSSolid.icc:
 
-/usr/include/c++/11/bits/regex_error.h:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicsConstructor.hh:
+
+/usr/include/c++/11/bits/regex_error.h:
 
 /usr/include/c++/11/atomic:
 
@@ -8798,9 +8856,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MaterialTable.hh:
 
-/usr/include/c++/11/bits/regex_automaton.tcc:
-
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/tools/histo/b3:
+
+/usr/include/c++/11/bits/regex_automaton.tcc:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Track.icc:
 
@@ -8928,9 +8986,9 @@ CMakeFiles/NuLat.dir/src/NuLatVoxelSensDet.cc.o: ../src/NuLatVoxelSensDet.cc \
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Transform3D.hh:
 
-/usr/include/c++/11/bits/regex_compiler.tcc:
-
 ../include/NuLatPhysics.hh:
+
+/usr/include/c++/11/bits/regex_compiler.tcc:
 
 /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GRSVolume.hh:
 

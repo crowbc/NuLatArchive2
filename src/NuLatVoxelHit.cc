@@ -79,7 +79,7 @@ const std::map<G4String,G4AttDef>* NuLatVoxelHit::GetAttDefs() const
 	}
 	return store;
 }
-// value populator
+// value populator - TODO: add hits to MC Truth Ntuple
 std::vector<G4AttValue>* NuLatVoxelHit::CreateAttValues() const
 {
 	std::vector<G4AttValue>* values = new std::vector<G4AttValue>;

@@ -86,7 +86,7 @@ private:
 	// variable declarations
 	G4int fCellID;
 	G4double eDep;
-	G4bool fbOn = false;
+	G4bool fbOn = true;
 	// storage structures
 	static std::vector<G4int>  voxEDepPIDVec;
 	static std::vector<G4double>  voxEDepVec;

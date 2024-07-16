@@ -2,11 +2,15 @@
 This is a Geant4 simulation of a half-instrumented 5x5x5 unlithiated voxel NuLat Detector. The purpose of this simulation is for calibration of each voxel in the unlithiated 5x5x5 array using energy reconstruction. This is also based on the original NuLat simulation which can be found at https://github.com/crowbc/NuLat_archive.git. All simulations in these repositories are written for Geant4 v11.1.2 and are not backwards compatible with older Geant4 builds than v11.0.
 
 # build2
-The second build added the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels. A sensitive air volume to simulate the NaI detector PMT was added and the scoring volume was set to the NaI detector, which is a single volume. The NuLat voxels will be re-configured as sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
+The second build added and subsequently removed the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels.  The NuLat voxels are sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
-2.2.5 Quantum Efficiency Emulation
-	Added accross the board 25% quantum efficiency to sensitive detector processing. Re-structured scoring N-tuple to account for both first hit and total energy deposition.
+2.3.0 Tracking Update (16 Jul 2024)
+	The simulation is in an unusable state as written in this version. The push is for archiving purposes only.
+
+2.2.5 Quantum Efficiency Emulation (31 Jul 2023)
+	Added accross the board 25% quantum efficiency to sensitive detector processing. Re-structured scoring N-tuple to account for both first hit and total energy deposition. Added data subdirectory to 
+	store data used in detector simulations.
 
 2.2.4 Geant4 update and Na-22 Source (28 Jul 2023)
 	Removed much of the deprecated code from the NaI coincidence detector. Updated Geant4 build to 11.1.0 from beta version. Changed default source to 1.274 MeV gamma from Na-22 decay, and assumed an 

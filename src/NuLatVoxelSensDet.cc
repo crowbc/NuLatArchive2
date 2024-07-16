@@ -52,15 +52,15 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	G4int copyNo = physVol->GetCopyNo();
 	NuLatVoxelHit *hit = (*voxHitColl)[copyNo];
 	// check if it is first touch - commented out the conditional to get all hits, not just first touches
-	//if (!(hit->GetLogV()))
-	//{
+	if (!(hit->GetLogV()))
+	{
 		// fill volume information
 		hit->SetLogV(physVol->GetLogicalVolume());
 		G4AffineTransform transform = touch->GetHistory()->GetTopTransform();
 		transform.Invert();
 		hit->SetRot(transform.NetRotation());
 		hit->SetPos(transform.NetTranslation());
-	//}
+	}
 	// populate variables
 	evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
 	//posHit = aStep->GetTrack()->GetPosition();
@@ -84,7 +84,7 @@ G4bool NuLatVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistor
 	hit->PushpZ0VoxEDepVec(pZ0);
 	// initialize analysis manager and fill Ntuples
 	G4AnalysisManager *aMan = G4AnalysisManager::Instance();
-	// Fill Ntuple columns with Voxel energy deposition information - to do: add columns for other MC information (can I store track objects like in Rat-Pac?)
+	// Fill Ntuple columns with Voxel energy deposition information - TODO: add columns for other MC information (can I store track objects like in Rat-Pac?)
 	aMan->FillNtupleIColumn(2, 0, evt);
 	aMan->FillNtupleIColumn(2, 1, pID);
 	aMan->FillNtupleIColumn(2, 2, trkID);

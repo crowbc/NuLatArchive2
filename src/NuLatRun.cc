@@ -35,9 +35,9 @@ NuLatRunAction::NuLatRunAction()
 	// Voxel ID - can use to validate whether or not coordinates are true
 	Aman->CreateNtupleIColumn("fID");// col 3
 	// scoring value for energy deposition
-	Aman->CreateNtupleDColumn("fEdep");// col 4
+	Aman->CreateNtupleDColumn("fTotEdep");// col 4
 	// scoring for first hit
-	Aman->CreateNtupleDColumn("fFirstHit");// col 5
+	Aman->CreateNtupleDColumn("fFirstHitEdep");// col 5
 	// Voxel coords
 	Aman->CreateNtupleDColumn("fX");// col 6
 	Aman->CreateNtupleDColumn("fY");// col 7

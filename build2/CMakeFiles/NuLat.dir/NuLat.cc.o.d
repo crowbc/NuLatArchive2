@@ -493,13 +493,47 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ApplicationState.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UserTrackingAction.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerKernel.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerFactory.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTRunManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTBarrier.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RNGHelper.hh \
  /usr/include/c++/11/queue /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_queue.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskRunManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TBBTaskGroup.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskGroup.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/AutoLock.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Threading.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Config.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/JoinFunction.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/Task.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VTask.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadData.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/ThreadPool.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/VUserTaskQueue.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskGroup.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TaskManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/PTL/TaskRunManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ThreadPool.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserTaskQueue.hh \
+ /usr/include/c++/11/regex /usr/include/c++/11/bitset \
+ /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
+ /usr/include/c++/11/stack /usr/include/c++/11/bits/stl_stack.h \
+ /usr/include/c++/11/bits/regex_constants.h \
+ /usr/include/c++/11/bits/regex_error.h \
+ /usr/include/c++/11/bits/regex_automaton.h \
+ /usr/include/c++/11/bits/regex_automaton.tcc \
+ /usr/include/c++/11/bits/regex_scanner.h \
+ /usr/include/c++/11/bits/regex_scanner.tcc \
+ /usr/include/c++/11/bits/regex_compiler.h \
+ /usr/include/c++/11/bits/regex_compiler.tcc \
+ /usr/include/c++/11/bits/regex.h /usr/include/c++/11/bits/regex.tcc \
+ /usr/include/c++/11/bits/regex_executor.h \
+ /usr/include/c++/11/bits/regex_executor.tcc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MTRunManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UImanager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/icomsdefs.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VStateDependent.hh \
@@ -789,20 +823,6 @@ CMakeFiles/NuLat.dir/NuLat.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /usr/include/c++/11/regex /usr/include/c++/11/bitset \
- /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
- /usr/include/c++/11/stack /usr/include/c++/11/bits/stl_stack.h \
- /usr/include/c++/11/bits/regex_constants.h \
- /usr/include/c++/11/bits/regex_error.h \
- /usr/include/c++/11/bits/regex_automaton.h \
- /usr/include/c++/11/bits/regex_automaton.tcc \
- /usr/include/c++/11/bits/regex_scanner.h \
- /usr/include/c++/11/bits/regex_scanner.tcc \
- /usr/include/c++/11/bits/regex_compiler.h \
- /usr/include/c++/11/bits/regex_compiler.tcc \
- /usr/include/c++/11/bits/regex.h /usr/include/c++/11/bits/regex.tcc \
- /usr/include/c++/11/bits/regex_executor.h \
- /usr/include/c++/11/bits/regex_executor.tcc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUPLSplitter.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserPhysicsList.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ProductionCutsTable.hh \
