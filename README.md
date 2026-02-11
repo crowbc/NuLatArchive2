@@ -5,6 +5,9 @@ This is a Geant4 simulation of a half-instrumented 5x5x5 unlithiated voxel NuLat
 The second build added and subsequently removed the sodium iodide detector geometry centered on the -z face of the detector just outside the acrylic box containing the voxels.  The NuLat voxels are sensitive detectors to track energy depositions by location in the detector. This will serve as a theoretical value to compare with energy reconstruction from PMT counts in simulation and with PMT pulse integrals for the experimental setup.
 
 Change Log:
+2.3.1 Tracking Update Hotfix 1 (10 Feb 2026)
+	Push for archival purposes to remove local files
+
 2.3.0 Tracking Update (16 Jul 2024)
 	The simulation is in an unusable state as written in this version. The push is for archiving purposes only.
 
